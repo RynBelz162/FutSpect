@@ -22,6 +22,7 @@ class TableFragment : Fragment() {
         tableViewModel = ViewModelProviders.of(this).get(TableViewModel::class.java)
         val binding = FragmentTableBinding.inflate(inflater, container, false).apply {
             viewModel = tableViewModel
+            lifecycleOwner = this@TableFragment
         }
 
         return binding.root
