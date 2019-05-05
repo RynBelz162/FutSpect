@@ -23,6 +23,8 @@ class TableViewModel : ViewModel() {
     suspend fun fetchCompetitions()  = withContext(Dispatchers.Default) {
         val result = FootballRetrofitFactory
             .createFootballApiService()
-            .getCompetitions().await()
+            .getCompetitionsAsync().await()
+
+        val competitions = result.body()
     }
 }

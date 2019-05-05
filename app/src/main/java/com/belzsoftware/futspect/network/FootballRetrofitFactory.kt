@@ -9,17 +9,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object FootballRetrofitFactory {
 
-    private const val baseUrl: String = "http://api.football-data.org/v2/x"
+    private const val baseUrl: String = "https://api.football-data.org/v2/"
 
     private val authInterceptor = Interceptor { chain ->
-        val newUrl = chain.request().url()
-            .newBuilder()
-            .addQueryParameter("X-Auth-Token", futspectFbApiKey)
-            .build()
-
         val newRequest = chain.request()
             .newBuilder()
-            .url(newUrl)
+            .addHeader("X-Auth-Token", futspectFbApiKey)
             .build()
 
         chain.proceed(newRequest)
