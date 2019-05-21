@@ -14,15 +14,15 @@ class MainActivity : AppCompatActivity() {
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_tables -> {
-                replaceFragment(TableFragment.newInstance())
+                replaceFragment(TableFragment())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_fixtures -> {
-                replaceFragment(FixturesFragment.newInstance())
+                replaceFragment(FixturesFragment())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_menu -> {
-                replaceFragment(MoreFragment.newInstance())
+                replaceFragment(MoreFragment())
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        replaceFragment(TableFragment.newInstance())
+        replaceFragment(TableFragment())
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 

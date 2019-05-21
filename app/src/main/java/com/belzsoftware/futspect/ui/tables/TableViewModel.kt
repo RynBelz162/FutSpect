@@ -1,30 +1,30 @@
 package com.belzsoftware.futspect.ui.tables
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.belzsoftware.futspect.model.league.League
 import com.belzsoftware.futspect.network.FootballRetrofitFactory
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class TableViewModel : ViewModel() {
+
+    val leagues = MutableLiveData<List<League>>()
+
     init {
         initialLoad()
     }
 
-    val leagueName: String = "Premier league yo"
-
     private fun initialLoad() {
         viewModelScope.launch {
-            fetchCompetitions()
+            val result = FootballRetrofitFactory
+                .createFootballApiService()
+                .getLeaguesAsync()
+                .await()
+
+            leagues.value =
+                result.body()?.competitions
+                    ?: emptyList()
         }
-    }
-
-    suspend fun fetchCompetitions()  = withContext(Dispatchers.Default) {
-        val result = FootballRetrofitFactory
-            .createFootballApiService()
-            .getCompetitionsAsync().await()
-
-        val competitions = result.body()
     }
 }
