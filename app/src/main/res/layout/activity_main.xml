@@ -8,20 +8,21 @@
               android:orientation="vertical"
               tools:context=".MainActivity">
 
-    <FrameLayout
-            android:id="@+id/main_content"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-
-    </FrameLayout>
+    <fragment android:layout_width="match_parent"
+              android:layout_height="0dp"
+              android:layout_weight="1"
+              android:id="@+id/nav_host_fragment"
+              android:name="androidx.navigation.fragment.NavHostFragment"
+              app:defaultNavHost="true"
+              app:navGraph="@navigation/nav_graph"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            app:menu="@menu/navigation" app:elevation="24dp"
+            app:menu="@menu/navigation"
+            app:elevation="24dp"
             android:background="?android:attr/windowBackground"
             app:itemBackground="@color/primaryColor"
             app:itemTextColor="@drawable/bnv_item_foreground"
