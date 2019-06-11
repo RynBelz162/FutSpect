@@ -23,7 +23,7 @@ class TableViewModel : ViewModel() {
                 .await()
 
             leagues.value =
-                result.body()?.competitions
+                result.body()?.leagues
                     ?: emptyList()
         }
     }
