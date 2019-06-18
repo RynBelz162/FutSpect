@@ -11,7 +11,7 @@
         <item name="fontFamily">@font/rubik_regular</item>
     </style>
 
-    <style name="Widget.FutSpect.MoreButton" parent="Widget.MaterialComponents.Button.TextButton">
+    <style name="Widget.FutSpect.MoreButton" parent="Widget.MaterialComponents.Button.TextButton.Icon">
         <item name="rippleColor">@color/primaryLightColor</item>
         <item name="android:textColor">@color/primaryColor</item>
         <item name="android:gravity">left|center_vertical</item>
@@ -19,6 +19,8 @@
         <item name="android:layout_marginBottom">@dimen/margin_small</item>
         <item name="android:layout_marginStart">@dimen/margin_small</item>
         <item name="android:layout_marginEnd">@dimen/margin_small</item>
+        <item name="iconPadding">@dimen/padding_small</item>
+        <item name="iconTint">@color/primaryColor</item>
     </style>
 
 </resources>

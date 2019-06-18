@@ -5,6 +5,8 @@
     
     <dimen name="margin_small">8dp</dimen>
     <dimen name="margin_normal">16dp</dimen>
+
+    <dimen name="padding_small">8dp</dimen>
     
     <dimen name="size_more_app_name">35sp</dimen>
     <dimen name="size_more_header">200dp</dimen>
