@@ -11,10 +11,10 @@ import retrofit2.http.Query
 interface FootballApiService {
 
     @GET("competitions")
-    fun getLeaguesAsync(): Deferred<Response<LeagueSearch>>
+    suspend fun getLeaguesAsync(): Response<LeagueSearch>
 
     @GET("competitions/{id}/matches")
-    fun getMatchesForLeagueAsync(
+    suspend fun getMatchesForLeagueAsync(
         @Path("id") leagueId: Int,
-        @Query("matchDay") matchDay: Int) : Deferred<Response<FixtureSearch>>
+        @Query("matchDay") matchDay: Int) : Response<FixtureSearch>
 }

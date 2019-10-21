@@ -72,7 +72,7 @@
               android:layout_height="wrap_content"
               android:id="@+id/textView_app_name"
               android:textColor="@color/primaryTextColor"
-              android:textSize="@dimen/size_more_app_name"
+              android:textSize="@dimen/header_four"
               app:layout_constraintStart_toEndOf="@+id/imageView_app_icon"
               app:layout_constraintHorizontal_bias="0.5"
               app:layout_constraintEnd_toStartOf="@+id/view_green"

@@ -4,24 +4,25 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.belzsoftware.futspect.R
 import com.belzsoftware.futspect.databinding.FragmentFixturesBinding
+import com.belzsoftware.futspect.util.viewModelProvider
+import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_table.*
+import javax.inject.Inject
 
-class FixturesFragment : Fragment() {
+class FixturesFragment : DaggerFragment() {
 
-    private val fixturesViewModel: FixturesViewModel by lazy {
-        ViewModelProviders.of(this).get(FixturesViewModel::class.java)
-    }
-
-    private val fixturesAdapter = FixturesAdapter()
+    @Inject lateinit var viewModelFactory : ViewModelProvider.Factory
+    private lateinit var fixturesViewModel : FixturesViewModel
     private lateinit var binding: FragmentFixturesBinding
+    private val fixturesAdapter = FixturesAdapter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        fixturesViewModel = viewModelProvider(viewModelFactory)
+
         binding = FragmentFixturesBinding.inflate(inflater, container, false).apply {
             viewModel = fixturesViewModel
             lifecycleOwner = this@FixturesFragment

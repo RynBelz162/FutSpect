@@ -4,10 +4,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.belzsoftware.futspect.model.fixture.Fixture
-import com.belzsoftware.futspect.network.FootballRetrofitFactory
+import com.belzsoftware.futspect.network.FootballApiService
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class FixturesViewModel : ViewModel() {
+class FixturesViewModel @Inject constructor(
+    private val footballApiService: FootballApiService
+) : ViewModel() {
     val fixtures = MutableLiveData<List<Fixture>>()
 
     init {
@@ -16,10 +19,7 @@ class FixturesViewModel : ViewModel() {
 
     private fun loadMatches() {
         viewModelScope.launch {
-            val result = FootballRetrofitFactory
-                .createFootballApiService()
-                .getMatchesForLeagueAsync(2003, 1)
-                .await()
+            val result = footballApiService.getMatchesForLeagueAsync(2003, 1)
 
             fixtures.value =
                     result.body()?.fixtures

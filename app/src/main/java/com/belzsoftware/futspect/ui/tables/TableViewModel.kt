@@ -4,10 +4,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.belzsoftware.futspect.model.league.League
-import com.belzsoftware.futspect.network.FootballRetrofitFactory
+import com.belzsoftware.futspect.network.FootballApiService
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class TableViewModel : ViewModel() {
+class TableViewModel @Inject constructor(
+    private val footballApiService: FootballApiService
+): ViewModel() {
 
     val leagues = MutableLiveData<List<League>>()
 
@@ -17,14 +20,15 @@ class TableViewModel : ViewModel() {
 
     private fun initialLoad() {
         viewModelScope.launch {
-            val result = FootballRetrofitFactory
-                .createFootballApiService()
-                .getLeaguesAsync()
-                .await()
+            val result = footballApiService.getLeaguesAsync()
 
-            leagues.value =
+
+            val leagueList =
                 result.body()?.leagues
                     ?: emptyList()
+
+            leagues.value = leagueList
+                .sortedWith(compareBy({ it.area.id }, { it.id }))
         }
     }
 }
