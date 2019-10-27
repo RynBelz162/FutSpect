@@ -19,13 +19,13 @@
 
             <TextView android:layout_width="match_parent"
                       android:layout_height="match_parent"
-                      android:textColor="@color/secondaryTextColor"
+                      android:textColor="?android:attr/textColorSecondary"
                       android:textSize="@dimen/header_six"
                       android:text="@{league.name}"/>
 
             <TextView android:layout_width="match_parent"
                       android:layout_height="match_parent"
-                      android:textColor="@color/secondaryTextColor"
+                      android:textColor="?android:attr/textColorSecondary"
                       android:textSize="@dimen/body_two"
                       android:text="@{league.area.name}"/>
 

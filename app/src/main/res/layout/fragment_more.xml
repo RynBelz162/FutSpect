@@ -9,7 +9,7 @@
           android:layout_height="@dimen/size_more_header"
           android:id="@+id/view_green"
           app:layout_constraintTop_toTopOf="parent"
-          android:background="@color/primaryColor" tools:layout_editor_absoluteX="-203dp"/>
+          android:background="?attr/colorPrimary" tools:layout_editor_absoluteX="-203dp"/>
 
     <com.google.android.material.button.MaterialButton android:layout_width="match_parent"
                                                        android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:id="@+id/textView_app_name"
-              android:textColor="@color/primaryTextColor"
+              android:textColor="?android:attr/textColorPrimary"
               android:textSize="@dimen/header_four"
               app:layout_constraintStart_toEndOf="@+id/imageView_app_icon"
               app:layout_constraintHorizontal_bias="0.5"

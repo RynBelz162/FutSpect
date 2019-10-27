@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.FutSpect" parent="Base.Theme.FutSpect">
+        <item name="colorPrimary">@color/material_teal_200</item>
+        <item name="colorPrimaryVariant">@color/material_light_teal_200</item>
+        <item name="colorPrimaryDark">@color/material_dark_teal_200</item>
+        <item name="colorAccent">@color/material_indigo_200</item>
+    </style>
+</resources>

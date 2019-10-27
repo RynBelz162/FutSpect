@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primaryColor">#004D40</color>
-    <color name="primaryLightColor">#39796b</color>
-    <color name="primaryDarkColor">#00251a</color>
-    <color name="secondaryColor">#b2ebf2</color>
-    <color name="secondaryLightColor">#e5ffff</color>
-    <color name="secondaryDarkColor">#81b9bf</color>
-    <color name="primaryTextColor">#FFFFFF</color>
-    <color name="secondaryTextColor">#000000</color>
+    <!--Greens-->
+    <color name="material_teal_500">#009688</color>
+    <color name="material_light_teal_500">#52c7b8</color>
+    <color name="material_dark_teal_500">#00251a</color>
+    <color name="material_teal_200">#80cbc4</color>
+    <color name="material_light_teal_200">#b2fef7</color>
+    <color name="material_dark_teal_200">#4f9a94</color>
+
+    <!--Blues-->
+    <color name="material_indigo_500">#3f51b5</color>
+    <color name="material_light_indigo_500">#757de8</color>
+    <color name="material_dark_indigo_500">#002984</color>
+    <color name="material_indigo_200">#9fa8da</color>
+    <color name="material_light_indigo_200">#d1d9ff</color>
+    <color name="material_dark_indigo_200">#6f79a8</color>
 </resources>
