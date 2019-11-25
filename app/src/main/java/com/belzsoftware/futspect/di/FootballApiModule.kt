@@ -2,7 +2,7 @@ package com.belzsoftware.futspect.di
 
 import com.belzsoftware.futspect.network.FootballApiService
 import com.belzsoftware.futspect.util.BASE_FOOTBALL_URL
-import com.belzsoftware.futspect.util.futspectFbApiKey
+import com.belzsoftware.futspect.util.FUTSPECT_API_KEY
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -21,7 +21,7 @@ class FootballApiModule {
     internal fun provideInterceptor()= Interceptor { chain ->
         val newRequest = chain.request()
             .newBuilder()
-            .addHeader("X-Auth-Token", futspectFbApiKey)
+            .addHeader("X-Auth-Token", FUTSPECT_API_KEY)
             .build()
 
         chain.proceed(newRequest)

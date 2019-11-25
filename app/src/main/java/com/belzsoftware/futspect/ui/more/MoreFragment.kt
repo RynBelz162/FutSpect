@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
+import androidx.preference.PreferenceManager
 import com.belzsoftware.futspect.R
+import com.belzsoftware.futspect.util.NIGHT_MODE_PREF
 import com.google.android.material.button.MaterialButton
 
 class MoreFragment : Fragment() {
@@ -23,13 +25,23 @@ class MoreFragment : Fragment() {
     }
 
     private fun toggleDarkTheme() {
-        val currentMode = AppCompatDelegate.getDefaultNightMode()
+        val pref = PreferenceManager
+            .getDefaultSharedPreferences(context)
+            .getInt(NIGHT_MODE_PREF, AppCompatDelegate.MODE_NIGHT_NO)
 
-        if (currentMode == AppCompatDelegate.MODE_NIGHT_YES) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            return
+        when (pref) {
+            AppCompatDelegate.MODE_NIGHT_NO -> setNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            AppCompatDelegate.MODE_NIGHT_YES -> setNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
+    }
 
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+    private fun setNightMode(mode: Int) {
+        AppCompatDelegate.setDefaultNightMode(mode)
+
+        PreferenceManager
+            .getDefaultSharedPreferences(context)
+            .edit()
+            .putInt(NIGHT_MODE_PREF, mode)
+            .apply()
     }
 }
