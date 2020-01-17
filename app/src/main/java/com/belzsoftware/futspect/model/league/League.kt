@@ -1,10 +1,12 @@
 package com.belzsoftware.futspect.model.league
 
-import com.belzsoftware.futspect.model.shared.Area
+import com.google.gson.annotations.SerializedName
 
 data class League(
-    val id: Int,
+    @SerializedName("league_id") val id: Int,
     val name: String,
-    var plan: String,
-    val area: Area
+    val country: String,
+    @SerializedName("country_code") val countryCode: String,
+    val logo: String,
+    val standings: Int
 )

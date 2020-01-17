@@ -24,11 +24,11 @@ class TableViewModel @Inject constructor(
 
 
             val leagueList =
-                result.body()?.leagues
+                result.body()?.api?.leagues
                     ?: emptyList()
 
             leagues.value = leagueList
-                .sortedWith(compareBy({ it.area.id }, { it.id }))
+                .sortedWith(compareBy({ it.countryCode }, { it.id }))
         }
     }
 }

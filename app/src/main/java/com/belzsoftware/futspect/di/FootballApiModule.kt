@@ -21,7 +21,7 @@ class FootballApiModule {
     internal fun provideInterceptor()= Interceptor { chain ->
         val newRequest = chain.request()
             .newBuilder()
-            .addHeader("X-Auth-Token", FUTSPECT_API_KEY)
+            .addHeader("X-RapidAPI-Key", FUTSPECT_API_KEY)
             .build()
 
         chain.proceed(newRequest)
@@ -36,9 +36,10 @@ class FootballApiModule {
 
     @Provides
     @Singleton
-    internal fun providerOkHttpClient(interceptor: Interceptor) : OkHttpClient {
-        return OkHttpClient().newBuilder()
-            .addInterceptor(interceptor)
+    internal fun providerOkHttpClient() : OkHttpClient {
+        return OkHttpClient()
+            .newBuilder()
+            //.addInterceptor(interceptor)
             .build()
     }
 

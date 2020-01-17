@@ -19,10 +19,10 @@ class FixturesViewModel @Inject constructor(
 
     private fun loadMatches() {
         viewModelScope.launch {
-            val result = footballApiService.getMatchesForLeagueAsync(2003, 1)
+            val result = footballApiService.getFixturesForLeague(524)
 
             fixtures.value =
-                    result.body()?.fixtures
+                    result.body()?.api?.fixtures
                         ?: emptyList()
         }
     }

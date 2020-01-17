@@ -1,13 +1,15 @@
 package com.belzsoftware.futspect.model.fixture
 
 import com.belzsoftware.futspect.model.team.Team
+import com.google.gson.annotations.SerializedName
 import java.util.*
 
 data class Fixture(
-    val id: Int,
-    val utcDate: Date,
-    val matchDay: Int,
-    val attendance: Int,
+    @SerializedName("fixture_id") val id: Int,
+    @SerializedName("league_id") val leagueId: Int,
+    @SerializedName("event_date") val eventDate: Date,
+    val status: String,
+    val statusShort: String,
     val homeTeam: Team,
     val awayTeam: Team
 )

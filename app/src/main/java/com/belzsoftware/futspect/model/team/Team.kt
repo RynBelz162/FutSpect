@@ -1,9 +1,9 @@
 package com.belzsoftware.futspect.model.team
 
+import com.google.gson.annotations.SerializedName
+
 data class Team(
-    val id: Int,
-    val name: String,
-    val captain: Player,
-    val lineup: List<Player>,
-    val bench: List<Player>
+    @SerializedName("team_id") val id: Int,
+    @SerializedName("team_name") val name: String,
+    val logo: String
 )

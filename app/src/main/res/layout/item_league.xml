@@ -27,7 +27,7 @@
                       android:layout_height="match_parent"
                       android:textColor="?android:attr/textColorSecondary"
                       android:textSize="@dimen/body_two"
-                      android:text="@{league.area.name}"/>
+                      android:text="@{league.country}"/>
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
