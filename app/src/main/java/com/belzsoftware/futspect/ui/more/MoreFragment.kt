@@ -10,18 +10,40 @@ import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
 import com.belzsoftware.futspect.R
 import com.belzsoftware.futspect.util.NIGHT_MODE_PREF
-import com.google.android.material.button.MaterialButton
+import kotlinx.android.synthetic.main.fragment_more.*
 
 class MoreFragment : Fragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_more, container, false)
+        return inflater.inflate(R.layout.fragment_more, container, false)
+    }
 
-        val dayNightButton: MaterialButton = view!!.findViewById(R.id.button_dark_theme)
-        dayNightButton.setOnClickListener { toggleDarkTheme() }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        setButtonNameIcon()
+        button_dark_theme.setOnClickListener { toggleDarkTheme() }
+    }
 
-        return view
+    private fun setButtonNameIcon() {
+        val pref = PreferenceManager
+            .getDefaultSharedPreferences(context)
+            .getInt(NIGHT_MODE_PREF, AppCompatDelegate.MODE_NIGHT_NO)
+
+        when (pref) {
+            AppCompatDelegate.MODE_NIGHT_NO -> toggleButtonNameIcon(
+                R.drawable.ic_outline_brightness_2_24px,
+                R.string.more_dark_theme
+            )
+            AppCompatDelegate.MODE_NIGHT_YES -> toggleButtonNameIcon(
+                R.drawable.ic_outline_brightness_5_24px,
+                R.string.more_light_theme
+            )
+        }
     }
 
     private fun toggleDarkTheme() {
@@ -30,9 +52,26 @@ class MoreFragment : Fragment() {
             .getInt(NIGHT_MODE_PREF, AppCompatDelegate.MODE_NIGHT_NO)
 
         when (pref) {
-            AppCompatDelegate.MODE_NIGHT_NO -> setNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            AppCompatDelegate.MODE_NIGHT_YES -> setNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            AppCompatDelegate.MODE_NIGHT_NO -> {
+                setNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                toggleButtonNameIcon(
+                    R.drawable.ic_outline_brightness_2_24px,
+                    R.string.more_dark_theme
+                )
+            }
+            AppCompatDelegate.MODE_NIGHT_YES -> {
+                setNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                toggleButtonNameIcon(
+                    R.drawable.ic_outline_brightness_5_24px,
+                    R.string.more_light_theme
+                )
+            }
         }
+    }
+
+    private fun toggleButtonNameIcon(resourceId: Int, stringId: Int) {
+        button_dark_theme.setIconResource(resourceId)
+        button_dark_theme.setText(stringId)
     }
 
     private fun setNightMode(mode: Int) {
