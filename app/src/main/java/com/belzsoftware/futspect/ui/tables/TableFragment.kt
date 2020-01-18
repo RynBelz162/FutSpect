@@ -25,7 +25,7 @@ class TableFragment : DaggerFragment() {
 
         binding = FragmentTableBinding.inflate(inflater, container, false).apply {
             viewModel = tableViewModel
-            lifecycleOwner = this@TableFragment
+            lifecycleOwner = viewLifecycleOwner
         }
 
         tableViewModel.leagues.observe(this, Observer {

@@ -25,7 +25,7 @@ class FixturesFragment : DaggerFragment() {
 
         binding = FragmentFixturesBinding.inflate(inflater, container, false).apply {
             viewModel = fixturesViewModel
-            lifecycleOwner = this@FixturesFragment
+            lifecycleOwner = viewLifecycleOwner
         }
 
         fixturesViewModel.fixtures.observe(this, Observer {

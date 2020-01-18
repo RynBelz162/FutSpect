@@ -1,5 +1,6 @@
 package com.belzsoftware.futspect.ui.fixtures
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,7 +12,9 @@ import javax.inject.Inject
 class FixturesViewModel @Inject constructor(
     private val footballApiService: FootballApiService
 ) : ViewModel() {
-    val fixtures = MutableLiveData<List<Fixture>>()
+
+    private val _fixtures = MutableLiveData<List<Fixture>>()
+    val fixtures: LiveData<List<Fixture>> = _fixtures
 
     init {
         loadMatches()
@@ -21,9 +24,9 @@ class FixturesViewModel @Inject constructor(
         viewModelScope.launch {
             val result = footballApiService.getFixturesForLeague(524)
 
-            fixtures.value =
-                    result.body()?.api?.fixtures
-                        ?: emptyList()
+            _fixtures.value =
+                result.body()?.api?.fixtures
+                    ?: emptyList()
         }
     }
 }

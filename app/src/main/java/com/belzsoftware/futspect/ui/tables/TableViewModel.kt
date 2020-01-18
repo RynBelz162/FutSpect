@@ -1,5 +1,6 @@
 package com.belzsoftware.futspect.ui.tables
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,9 +11,10 @@ import javax.inject.Inject
 
 class TableViewModel @Inject constructor(
     private val footballApiService: FootballApiService
-): ViewModel() {
+) : ViewModel() {
 
-    val leagues = MutableLiveData<List<League>>()
+    private val _leagues = MutableLiveData<List<League>>()
+    val leagues: LiveData<List<League>> = _leagues
 
     init {
         initialLoad()
@@ -27,7 +29,7 @@ class TableViewModel @Inject constructor(
                 result.body()?.api?.leagues
                     ?: emptyList()
 
-            leagues.value = leagueList
+            _leagues.value = leagueList
                 .sortedWith(compareBy({ it.countryCode }, { it.id }))
         }
     }
