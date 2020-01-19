@@ -15,12 +15,17 @@ import javax.inject.Inject
 
 class FixturesFragment : DaggerFragment() {
 
-    @Inject lateinit var viewModelFactory : ViewModelProvider.Factory
-    private lateinit var fixturesViewModel : FixturesViewModel
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    private lateinit var fixturesViewModel: FixturesViewModel
     private lateinit var binding: FragmentFixturesBinding
     private val fixturesAdapter = FixturesAdapter()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         fixturesViewModel = viewModelProvider(viewModelFactory)
 
         binding = FragmentFixturesBinding.inflate(inflater, container, false).apply {
