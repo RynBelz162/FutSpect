@@ -2,32 +2,43 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-        <variable name="league"
-                  type="com.belzsoftware.futspect.model.league.League"/>
+
+        <variable
+                name="league"
+                type="com.belzsoftware.futspect.model.league.League" />
+
+        <variable
+                name="clickListener"
+                type="android.view.View.OnClickListener" />
     </data>
 
-    <com.google.android.material.card.MaterialCardView android:layout_width="match_parent"
-                                                       android:layout_height="wrap_content"
-                                                       android:layout_marginTop="@dimen/margin_small"
-                                                       android:layout_marginLeft="@dimen/margin_small"
-                                                       android:layout_marginRight="@dimen/margin_small">
+    <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginRight="@dimen/margin_small"
+            android:onClick="@{clickListener}">
 
-        <LinearLayout android:layout_width="match_parent"
-                      android:layout_height="match_parent"
-                      android:layout_margin="@dimen/margin_small"
-                      android:orientation="vertical">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/margin_small"
+                android:orientation="vertical">
 
-            <TextView android:layout_width="match_parent"
-                      android:layout_height="match_parent"
-                      android:textColor="?android:attr/textColorSecondary"
-                      android:textSize="@dimen/header_six"
-                      android:text="@{league.name}"/>
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@{league.name}"
+                    android:textColor="?android:attr/textColorSecondary"
+                    android:textSize="@dimen/header_six" />
 
-            <TextView android:layout_width="match_parent"
-                      android:layout_height="match_parent"
-                      android:textColor="?android:attr/textColorSecondary"
-                      android:textSize="@dimen/body_two"
-                      android:text="@{league.country}"/>
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@{league.country}"
+                    android:textColor="?android:attr/textColorSecondary"
+                    android:textSize="@dimen/body_two" />
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

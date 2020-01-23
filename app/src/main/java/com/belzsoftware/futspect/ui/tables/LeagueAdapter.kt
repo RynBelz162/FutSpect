@@ -1,10 +1,12 @@
 package com.belzsoftware.futspect.ui.tables
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.databinding.library.baseAdapters.BR
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -19,24 +21,33 @@ class LeagueAdapter : ListAdapter<League, LeagueViewHolder>(LeagueDiff()) {
         )
     }
 
-    override fun getItemViewType(position: Int): Int
-            = R.layout.item_league
+    override fun getItemViewType(position: Int): Int = R.layout.item_league
 
-    override fun onBindViewHolder(holder: LeagueViewHolder, position: Int)
-            = holder.bind(getItem(position))
+    override fun onBindViewHolder(holder: LeagueViewHolder, position: Int) =
+        holder.bind(getItem(position))
 }
 
-class LeagueViewHolder(private val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
+class LeagueViewHolder(private val binding: ViewDataBinding) :
+    RecyclerView.ViewHolder(binding.root) {
     fun bind(item: League) {
         binding.setVariable(BR.league, item)
+        binding.setVariable(BR.clickListener, createOnClickListener(item.id))
         binding.executePendingBindings()
+    }
+
+    private fun createOnClickListener(id: Int): View.OnClickListener {
+        return View.OnClickListener {
+            val direction =
+                TableFragmentDirections.actionNavigationTablesToTableStandingFragment(id)
+            it.findNavController().navigate(direction)
+
+        }
     }
 }
 
 class LeagueDiff : DiffUtil.ItemCallback<League>() {
-    override fun areItemsTheSame(oldItem: League, newItem: League): Boolean
-            = oldItem.id == newItem.id
+    override fun areItemsTheSame(oldItem: League, newItem: League): Boolean =
+        oldItem.id == newItem.id
 
-    override fun areContentsTheSame(oldItem: League, newItem: League): Boolean
-            = oldItem == newItem
+    override fun areContentsTheSame(oldItem: League, newItem: League): Boolean = oldItem == newItem
 }

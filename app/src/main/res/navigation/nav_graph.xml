@@ -4,10 +4,23 @@
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph" app:startDestination="@id/navigation_tables">
 
     <fragment android:id="@+id/navigation_tables" android:name="com.belzsoftware.futspect.ui.tables.TableFragment"
-              android:label="TableFragment"/>
+              android:label="TableFragment">
+        <action
+                android:id="@+id/action_navigation_tables_to_tableStandingFragment"
+                app:destination="@id/tableStandingFragment" />
+    </fragment>
     <fragment android:id="@+id/navigation_fixtures"
               android:name="com.belzsoftware.futspect.ui.fixtures.FixturesFragment"
               android:label="fragment_fixtures" tools:layout="@layout/fragment_fixtures"/>
     <fragment android:id="@+id/navigation_more" android:name="com.belzsoftware.futspect.ui.more.MoreFragment"
               android:label="fragment_more" tools:layout="@layout/fragment_more"/>
+    <fragment
+            android:id="@+id/tableStandingFragment"
+            android:name="com.belzsoftware.futspect.ui.tables.standings.TableStandingFragment"
+            android:label="fragment_table_standing"
+            tools:layout="@layout/fragment_table_standing" >
+        <argument
+                android:name="leagueId"
+                app:argType="integer" />
+    </fragment>
 </navigation>

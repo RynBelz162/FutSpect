@@ -10,4 +10,7 @@
     <string name="more_light_theme">Light Theme</string>
     <string name="more_app_icon_description">FutSpects App Icon</string>
     <string name="fixtures_vs">vs.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
