@@ -1,4 +1,4 @@
-package com.belzsoftware.futspect.ui.tables
+package com.belzsoftware.futspect.ui.leagues
 
 import androidx.lifecycle.ViewModel
 import com.belzsoftware.futspect.di.ViewModelKey
@@ -8,13 +8,13 @@ import dagger.android.ContributesAndroidInjector
 import dagger.multibindings.IntoMap
 
 @Module
-abstract class TableModule {
+abstract class LeaguesModule {
 
     @ContributesAndroidInjector
-    abstract fun contributesTableFragment() : TableFragment
+    abstract fun contributesLeaguesFragment() : LeaguesFragment
 
     @Binds
     @IntoMap
-    @ViewModelKey(TableViewModel::class)
-    abstract fun bindAgendaViewModel(viewModel: TableViewModel) : ViewModel
+    @ViewModelKey(LeaguesViewModel::class)
+    abstract fun bindAgendaViewModel(viewModel: LeaguesViewModel) : ViewModel
 }

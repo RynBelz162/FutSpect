@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-            android:id="@+id/navigation_tables"
+            android:id="@+id/navigation_leagues"
             android:icon="@drawable/ic_baseline_view_list_24px"
-            android:title="@string/title_tables"/>
+            android:title="@string/title_leagues"/>
 
     <item
             android:id="@+id/navigation_fixtures"

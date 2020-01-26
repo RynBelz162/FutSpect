@@ -2,7 +2,7 @@ package com.belzsoftware.futspect.di
 
 import com.belzsoftware.futspect.ui.MainActivity
 import com.belzsoftware.futspect.ui.fixtures.FixturesModule
-import com.belzsoftware.futspect.ui.tables.TableModule
+import com.belzsoftware.futspect.ui.leagues.LeaguesModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -11,7 +11,7 @@ abstract class ActivityBindingModule {
 
     @ContributesAndroidInjector(
         modules = [
-            TableModule::class,
+            LeaguesModule::class,
             FixturesModule::class
         ]
     )

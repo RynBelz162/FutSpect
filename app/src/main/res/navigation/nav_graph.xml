@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph" app:startDestination="@id/navigation_tables">
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph" app:startDestination="@id/navigation_leagues">
 
-    <fragment android:id="@+id/navigation_tables" android:name="com.belzsoftware.futspect.ui.tables.TableFragment"
-              android:label="TableFragment">
+    <fragment
+            android:id="@+id/navigation_leagues"
+            android:name="com.belzsoftware.futspect.ui.leagues.LeaguesFragment"
+            android:label="LeaguesFragment">
         <action
                 android:id="@+id/action_navigation_tables_to_tableStandingFragment"
                 app:destination="@id/tableStandingFragment" />
@@ -16,9 +18,9 @@
               android:label="fragment_more" tools:layout="@layout/fragment_more"/>
     <fragment
             android:id="@+id/tableStandingFragment"
-            android:name="com.belzsoftware.futspect.ui.tables.standings.TableStandingFragment"
+            android:name="com.belzsoftware.futspect.ui.leagues.table.TableFragment"
             android:label="fragment_table_standing"
-            tools:layout="@layout/fragment_table_standing" >
+            tools:layout="@layout/fragment_table" >
         <argument
                 android:name="leagueId"
                 app:argType="integer" />

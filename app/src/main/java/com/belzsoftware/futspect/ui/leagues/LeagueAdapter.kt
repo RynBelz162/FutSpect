@@ -1,4 +1,4 @@
-package com.belzsoftware.futspect.ui.tables
+package com.belzsoftware.futspect.ui.leagues
 
 import android.view.LayoutInflater
 import android.view.View
@@ -38,7 +38,7 @@ class LeagueViewHolder(private val binding: ViewDataBinding) :
     private fun createOnClickListener(id: Int): View.OnClickListener {
         return View.OnClickListener {
             val direction =
-                TableFragmentDirections.actionNavigationTablesToTableStandingFragment(id)
+                LeaguesFragmentDirections.actionNavigationTablesToTableStandingFragment(id)
             it.findNavController().navigate(direction)
 
         }

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.belzsoftware.futspect.databinding.FragmentFixturesBinding
 import com.belzsoftware.futspect.util.viewModelProvider
 import dagger.android.support.DaggerFragment
-import kotlinx.android.synthetic.main.fragment_table.*
+import kotlinx.android.synthetic.main.fragment_leagues.*
 import javax.inject.Inject
 
 class FixturesFragment : DaggerFragment() {

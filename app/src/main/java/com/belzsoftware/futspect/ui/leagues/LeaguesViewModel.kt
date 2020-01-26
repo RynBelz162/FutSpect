@@ -1,4 +1,4 @@
-package com.belzsoftware.futspect.ui.tables
+package com.belzsoftware.futspect.ui.leagues
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,7 +9,7 @@ import com.belzsoftware.futspect.network.FootballApiService
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class TableViewModel @Inject constructor(
+class LeaguesViewModel @Inject constructor(
     private val footballApiService: FootballApiService
 ) : ViewModel() {
 
