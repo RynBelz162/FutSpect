@@ -1,36 +1,16 @@
 package com.belzsoftware.futspect.ui.leagues
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.belzsoftware.futspect.model.league.League
-import com.belzsoftware.futspect.network.FootballApiService
-import kotlinx.coroutines.launch
+import com.belzsoftware.futspect.data.league.LeaguesRepository
+import com.belzsoftware.futspect.model.league.LeagueSearch
+import com.belzsoftware.futspect.model.shared.ApiCall
+import com.belzsoftware.futspect.model.shared.Result
 import javax.inject.Inject
 
 class LeaguesViewModel @Inject constructor(
-    private val footballApiService: FootballApiService
+    leaguesRepository: LeaguesRepository
 ) : ViewModel() {
 
-    private val _leagues = MutableLiveData<List<League>>()
-    val leagues: LiveData<List<League>> = _leagues
-
-    init {
-        initialLoad()
-    }
-
-    private fun initialLoad() {
-        viewModelScope.launch {
-            val result = footballApiService.getLeaguesAsync()
-
-
-            val leagueList =
-                result.body()?.api?.leagues
-                    ?: emptyList()
-
-            _leagues.value = leagueList
-                .sortedWith(compareBy({ it.countryCode }, { it.id }))
-        }
-    }
+    val leagues: LiveData<Result<ApiCall<LeagueSearch>>> = leaguesRepository.getLeagues()
 }

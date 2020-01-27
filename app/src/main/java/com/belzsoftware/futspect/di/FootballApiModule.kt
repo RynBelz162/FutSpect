@@ -1,6 +1,6 @@
 package com.belzsoftware.futspect.di
 
-import com.belzsoftware.futspect.network.FootballApiService
+import com.belzsoftware.futspect.data.network.FootballApiService
 import com.belzsoftware.futspect.util.BASE_FOOTBALL_URL
 import com.belzsoftware.futspect.util.FUTSPECT_API_KEY
 import com.google.gson.Gson

@@ -1,17 +1,19 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlinVersion = '1.3.60'
-    ext.lifecycleVersion = '2.2.0-beta01'
+    ext.kotlinVersion = '1.3.61'
+    ext.lifecycleVersion = '2.2.0'
+    ext.liveDataVersion = '2.2.0'
     ext.appCompatVersion = '1.1.0'
     ext.constraintLayoutVersion = '1.1.3'
-    ext.materialVersion = '1.1.0-beta01'
+    ext.materialVersion = '1.2.0-alpha04'
     ext.coroutineVersion = '1.1.0'
     ext.retrofitVersion = '2.6.0'
     ext.okhttp3Version = '4.2.0'
-    ext.navVersion = '2.2.0-beta01'
+    ext.navVersion = '2.2.0'
     ext.daggerVersion = '2.24'
     ext.preferenceVersion = '1.1.0'
+    ext.recyclerViewVersion = '1.1.0'
 
 
     repositories {

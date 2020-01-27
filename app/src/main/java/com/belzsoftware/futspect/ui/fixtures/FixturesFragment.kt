@@ -8,7 +8,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.belzsoftware.futspect.databinding.FragmentFixturesBinding
+import com.belzsoftware.futspect.model.shared.Result
 import com.belzsoftware.futspect.util.viewModelProvider
+import com.google.android.material.snackbar.Snackbar
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_leagues.*
 import javax.inject.Inject
@@ -33,8 +35,18 @@ class FixturesFragment : DaggerFragment() {
             lifecycleOwner = viewLifecycleOwner
         }
 
-        fixturesViewModel.fixtures.observe(this, Observer {
-            fixturesAdapter.submitList(it)
+        fixturesViewModel.fixtures.observe(viewLifecycleOwner, Observer { result ->
+            when (result) {
+                is Result.loading -> progress_bar.visibility = View.VISIBLE
+                is Result.success -> {
+                    progress_bar.visibility = View.GONE
+                    fixturesAdapter.submitList(result.data.api.fixtures)
+                }
+                is Result.error -> {
+                    progress_bar.visibility = View.GONE
+                    Snackbar.make(binding.root, result.message, Snackbar.LENGTH_LONG).show()
+                }
+            }
         })
 
         return binding.root

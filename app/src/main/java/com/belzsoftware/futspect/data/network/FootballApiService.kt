@@ -1,4 +1,4 @@
-package com.belzsoftware.futspect.network
+package com.belzsoftware.futspect.data.network
 
 import com.belzsoftware.futspect.model.fixture.FixtureSearch
 import com.belzsoftware.futspect.model.league.LeagueSearch

@@ -14,7 +14,8 @@ import javax.inject.Singleton
         ActivityBindingModule::class,
         ViewModelModule::class,
         AppModule::class,
-        FootballApiModule::class
+        FootballApiModule::class,
+        DataModule::class
     ]
 )
 interface AppComponent : AndroidInjector<MainApplication> {
