@@ -12,11 +12,11 @@ class DataModule {
 
     @Provides
     @Singleton
-    fun providesLeaguesRemoteSource(footballApiService: FootballApiService)
-        = LeaguesRemoteSource(footballApiService)
+    fun providesLeaguesRemoteSource(footballApiService: FootballApiService) =
+        LeaguesRemoteSource(footballApiService)
 
     @Provides
     @Singleton
-    fun providesFixturesRemoteSource(footballApiService: FootballApiService)
-            = FixturesRemoteSource(footballApiService)
+    fun providesFixturesRemoteSource(footballApiService: FootballApiService) =
+        FixturesRemoteSource(footballApiService)
 }

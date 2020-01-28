@@ -19,7 +19,7 @@ class LeaguesFragment : DaggerFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    private lateinit var tableViewModel: LeaguesViewModel
+    private lateinit var leaguesViewModel: LeaguesViewModel
     private lateinit var binding: FragmentLeaguesBinding
     private val leagueAdapter: LeagueAdapter = LeagueAdapter()
 
@@ -28,14 +28,14 @@ class LeaguesFragment : DaggerFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        tableViewModel = viewModelProvider(viewModelFactory)
+        leaguesViewModel = viewModelProvider(viewModelFactory)
 
         binding = FragmentLeaguesBinding.inflate(inflater, container, false).apply {
-            viewModel = tableViewModel
+            viewModel = leaguesViewModel
             lifecycleOwner = viewLifecycleOwner
         }
 
-        tableViewModel.leagues.observe(viewLifecycleOwner, Observer { result ->
+        leaguesViewModel.leagues.observe(viewLifecycleOwner, Observer { result ->
             when (result) {
                 is Result.loading-> progress_bar.visibility = View.VISIBLE
                 is Result.success -> {
