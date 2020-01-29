@@ -2,7 +2,7 @@ package com.belzsoftware.futspect.model.standings
 
 import com.google.gson.annotations.SerializedName
 
-class Standing(
+data class Standing(
     val rank: Int,
     @SerializedName("team_id") val teamId: Int,
     val teamName: String,

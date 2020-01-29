@@ -15,6 +15,6 @@ class LeaguesRepository @Inject constructor(private val remoteSource: LeaguesRem
     fun getLeagues(): LiveData<Result<ApiCall<LeagueSearch>>> =
         resultLiveData { remoteSource.fetchLeagues() }
 
-    fun getTable(leagueId: Int, season: String): LiveData<Result<ApiCall<StandingsSearch>>> =
-        resultLiveData { remoteSource.fetchTable(leagueId, season) }
+    fun getTable(leagueId: Int): LiveData<Result<ApiCall<StandingsSearch>>> =
+        resultLiveData { remoteSource.fetchTable(leagueId) }
 }

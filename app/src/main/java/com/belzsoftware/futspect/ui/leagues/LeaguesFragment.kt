@@ -21,7 +21,7 @@ class LeaguesFragment : DaggerFragment() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var leaguesViewModel: LeaguesViewModel
     private lateinit var binding: FragmentLeaguesBinding
-    private val leagueAdapter: LeagueAdapter = LeagueAdapter()
+    private val leagueAdapter = LeagueAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,

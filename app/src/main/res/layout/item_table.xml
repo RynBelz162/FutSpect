@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="standing"
+                type="com.belzsoftware.futspect.model.standings.Standing" />
+    </data>
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_small">
+
+        <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/padding_small"
+                android:paddingEnd="@dimen/padding_small"
+                android:text="@{String.valueOf(standing.rank)}"
+                android:textSize="@dimen/header_six"
+                tools:text="1" />
+
+        <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{standing.teamName}"
+                android:textSize="@dimen/header_six"
+                tools:text="Arsenal" />
+
+    </LinearLayout>
+</layout>

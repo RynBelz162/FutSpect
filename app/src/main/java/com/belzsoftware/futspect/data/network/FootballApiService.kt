@@ -7,7 +7,6 @@ import com.belzsoftware.futspect.model.standings.StandingsSearch
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
-import retrofit2.http.Query
 
 interface FootballApiService {
 
@@ -15,13 +14,12 @@ interface FootballApiService {
     suspend fun getLeaguesAsync(): Response<ApiCall<LeagueSearch>>
 
     @GET("fixtures/league/{id}")
-    suspend fun getFixturesForLeague(
+    suspend fun getFixturesForLeagueAsync(
         @Path("id") leagueId: Int
     ): Response<ApiCall<FixtureSearch>>
 
-    @GET("standings")
-    suspend fun getStandingsForLeagueAndSeason(
-        @Query("league") leagueId: Int,
-        @Query("season") seasonYear: String
+    @GET("leagueTable/{leagueId}")
+    suspend fun getStandingsForLeagueAsync(
+        @Path("leagueId") leagueId: Int
     ): Response<ApiCall<StandingsSearch>>
 }

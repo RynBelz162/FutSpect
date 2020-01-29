@@ -4,10 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.belzsoftware.futspect.databinding.FragmentTableBinding
+import com.belzsoftware.futspect.model.shared.Result
 import com.belzsoftware.futspect.util.viewModelProvider
+import com.google.android.material.snackbar.Snackbar
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_table.*
 import javax.inject.Inject
@@ -18,8 +22,7 @@ class TableFragment : DaggerFragment() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var tableViewModel: TableViewModel
     private lateinit var binding: FragmentTableBinding
-
-    val args: TableFragmentArgs by navArgs()
+    private val tableAdapter = TableAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,11 +36,32 @@ class TableFragment : DaggerFragment() {
             lifecycleOwner = viewLifecycleOwner
         }
 
+        tableViewModel.standings.observe(viewLifecycleOwner, Observer { result ->
+            when (result) {
+                is Result.loading -> progress_bar.visibility = View.VISIBLE
+                is Result.success -> {
+                    progress_bar.visibility = View.GONE
+
+                    val list = result.data.api.standings.flatten()
+                    tableAdapter.submitList(list)
+                }
+                is Result.error -> {
+                    progress_bar.visibility = View.GONE
+                    Snackbar.make(binding.root, result.message, Snackbar.LENGTH_LONG)
+                }
+            }
+        })
+
         return binding.root
     }
 
-    // nav args test
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        league_id_text.text = args.leagueId.toString()
+        super.onViewCreated(view, savedInstanceState)
+
+        recycler_view.apply {
+            layoutManager = LinearLayoutManager(activity)
+            adapter = tableAdapter
+            addItemDecoration(DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL))
+        }
     }
 }
