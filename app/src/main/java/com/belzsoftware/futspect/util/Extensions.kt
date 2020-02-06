@@ -1,10 +1,7 @@
 package com.belzsoftware.futspect.util
 
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.liveData
+import androidx.lifecycle.*
 import com.belzsoftware.futspect.model.shared.Result
 import kotlinx.coroutines.Dispatchers
 import retrofit2.Response
@@ -35,4 +32,7 @@ suspend fun <T> getResult(call: suspend () -> Response<T>): Result<T> {
         return Result.error(e.message ?: e.toString())
     }
 }
+
+inline fun <T> defaultResult() =
+    MutableLiveData<Result<T>>(Result.loading())
 

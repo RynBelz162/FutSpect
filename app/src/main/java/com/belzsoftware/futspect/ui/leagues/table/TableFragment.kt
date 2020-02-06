@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.belzsoftware.futspect.databinding.FragmentTableBinding
@@ -23,6 +24,7 @@ class TableFragment : DaggerFragment() {
     private lateinit var tableViewModel: TableViewModel
     private lateinit var binding: FragmentTableBinding
     private val tableAdapter = TableAdapter()
+    private val args: TableFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,6 +37,8 @@ class TableFragment : DaggerFragment() {
             viewModel = tableViewModel
             lifecycleOwner = viewLifecycleOwner
         }
+
+        tableViewModel.setLeagueId(args.leagueId)
 
         tableViewModel.standings.observe(viewLifecycleOwner, Observer { result ->
             when (result) {
