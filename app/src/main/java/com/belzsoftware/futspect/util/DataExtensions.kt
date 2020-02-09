@@ -33,6 +33,5 @@ suspend fun <T> getResult(call: suspend () -> Response<T>): Result<T> {
     }
 }
 
-inline fun <T> defaultResult() =
+fun <T> defaultResult() =
     MutableLiveData<Result<T>>(Result.loading())
-

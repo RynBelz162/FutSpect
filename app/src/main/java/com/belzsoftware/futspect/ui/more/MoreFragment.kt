@@ -10,9 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
 import com.belzsoftware.futspect.R
 import com.belzsoftware.futspect.util.NIGHT_MODE_PREF
-import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_main.*
+import com.belzsoftware.futspect.util.createLongSnackbar
 import kotlinx.android.synthetic.main.fragment_more.*
 
 class MoreFragment : Fragment() {
@@ -30,7 +28,7 @@ class MoreFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setButtonNameIcon()
         button_dark_theme.setOnClickListener { toggleDarkTheme() }
-        button_about.setOnClickListener { TestSnackbar() }
+        button_about.setOnClickListener { activity?.createLongSnackbar(R.string.more_about) }
     }
 
     private fun setButtonNameIcon() {
@@ -86,12 +84,5 @@ class MoreFragment : Fragment() {
             .edit()
             .putInt(NIGHT_MODE_PREF, mode)
             .apply()
-    }
-
-    private fun TestSnackbar() {
-        Snackbar.make(activity!!.coordinator, R.string.more_about, LENGTH_SHORT).apply {
-            anchorView = activity?.navigation
-            show()
-        }
     }
 }

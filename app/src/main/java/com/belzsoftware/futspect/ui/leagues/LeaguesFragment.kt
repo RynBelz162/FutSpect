@@ -9,8 +9,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.belzsoftware.futspect.databinding.FragmentLeaguesBinding
 import com.belzsoftware.futspect.model.shared.Result
+import com.belzsoftware.futspect.util.createLongSnackbar
+import com.belzsoftware.futspect.util.hideView
+import com.belzsoftware.futspect.util.showView
 import com.belzsoftware.futspect.util.viewModelProvider
-import com.google.android.material.snackbar.Snackbar
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_leagues.*
 import javax.inject.Inject
@@ -37,14 +39,14 @@ class LeaguesFragment : DaggerFragment() {
 
         leaguesViewModel.leagues.observe(viewLifecycleOwner, Observer { result ->
             when (result) {
-                is Result.loading-> progress_bar.visibility = View.VISIBLE
+                is Result.loading -> progress_bar.showView()
                 is Result.success -> {
-                    progress_bar.visibility = View.GONE
+                    progress_bar.hideView()
                     leagueAdapter.submitList(result.data.api.leagues)
                 }
                 is Result.error -> {
-                    progress_bar.visibility = View.GONE
-                    Snackbar.make(binding.root, result.message, Snackbar.LENGTH_LONG).show()
+                    progress_bar.hideView()
+                    activity?.createLongSnackbar(result.message)
                 }
             }
         })
