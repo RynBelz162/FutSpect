@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.navArgs
+import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.belzsoftware.futspect.databinding.FragmentTableBinding
@@ -40,7 +42,30 @@ class TableFragment : DaggerFragment() {
             lifecycleOwner = viewLifecycleOwner
         }
 
-        tableViewModel.setLeagueId(args.leagueId)
+        setUpViewModel()
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setUpToolbar()
+
+        recycler_view.apply {
+            layoutManager = LinearLayoutManager(activity)
+            adapter = tableAdapter
+            addItemDecoration(DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL))
+        }
+    }
+
+    private fun setUpToolbar() {
+        val navHostFragment = NavHostFragment.findNavController(this)
+        NavigationUI.setupWithNavController(toolbar, navHostFragment)
+    }
+
+    private fun setUpViewModel() {
+        tableViewModel.setLeagueId(args.league)
 
         tableViewModel.standings.observe(viewLifecycleOwner, Observer { result ->
             when (result) {
@@ -57,17 +82,5 @@ class TableFragment : DaggerFragment() {
                 }
             }
         })
-
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        recycler_view.apply {
-            layoutManager = LinearLayoutManager(activity)
-            adapter = tableAdapter
-            addItemDecoration(DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL))
-        }
     }
 }

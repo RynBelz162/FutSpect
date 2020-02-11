@@ -31,14 +31,14 @@ class LeagueViewHolder(private val binding: ViewDataBinding) :
     RecyclerView.ViewHolder(binding.root) {
     fun bind(item: League) {
         binding.setVariable(BR.league, item)
-        binding.setVariable(BR.clickListener, createOnClickListener(item.id))
+        binding.setVariable(BR.clickListener, createOnClickListener(item))
         binding.executePendingBindings()
     }
 
-    private fun createOnClickListener(id: Int): View.OnClickListener {
+    private fun createOnClickListener(league: League): View.OnClickListener {
         return View.OnClickListener {
             val direction =
-                LeaguesFragmentDirections.actionNavigationTablesToTableStandingFragment(id)
+                LeaguesFragmentDirections.actionNavigationTablesToTableStandingFragment(league)
             it.findNavController().navigate(direction)
 
         }
