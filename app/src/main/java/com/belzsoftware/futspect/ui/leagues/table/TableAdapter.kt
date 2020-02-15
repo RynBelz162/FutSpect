@@ -1,42 +1,99 @@
 package com.belzsoftware.futspect.ui.leagues.table
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.belzsoftware.futspect.BR
 import com.belzsoftware.futspect.R
+import com.belzsoftware.futspect.databinding.ItemTableBinding
+import com.belzsoftware.futspect.model.standings.DataItem
 import com.belzsoftware.futspect.model.standings.Standing
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class TableAdapter : ListAdapter<Standing, StandingViewHolder>(StandingDiff()) {
+private const val ITEM_VIEW_TYPE_HEADER = 0
+private const val ITEM_VIEW_TYPE_ITEM = 1
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StandingViewHolder {
-        return StandingViewHolder(
-            DataBindingUtil.inflate(LayoutInflater.from(parent.context), viewType, parent, false)
-        )
+class TableAdapter : ListAdapter<DataItem, RecyclerView.ViewHolder>(StandingDiff()) {
+
+    private val adapterScope = CoroutineScope(Dispatchers.Default)
+
+    fun addHeaderAndSubmitList(list: List<Standing>?) {
+        adapterScope.launch {
+            val items = when (list) {
+                null -> listOf(DataItem.Header)
+                else -> listOf(DataItem.Header) + list.map { DataItem.StandingItem(it) }
+            }
+            withContext(Dispatchers.Main) {
+                submitList(items)
+            }
+        }
     }
 
-    override fun getItemViewType(position: Int): Int = R.layout.item_table
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when (viewType) {
+            ITEM_VIEW_TYPE_HEADER -> HeaderViewHolder.from(parent)
+            ITEM_VIEW_TYPE_ITEM -> StandingViewHolder.from(parent)
+            else -> throw ClassCastException("Unknown viewType $viewType")
+        }
+    }
 
-    override fun onBindViewHolder(holder: StandingViewHolder, position: Int) =
-        holder.bind(getItem(position))
+    override fun getItemViewType(position: Int): Int {
+        return when (getItem(position)) {
+            is DataItem.Header -> ITEM_VIEW_TYPE_HEADER
+            is DataItem.StandingItem -> ITEM_VIEW_TYPE_ITEM
+        }
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (holder) {
+            is StandingViewHolder -> {
+                val standingItem = getItem(position) as DataItem.StandingItem
+                holder.bind(standingItem.standing)
+            }
+        }
+    }
 }
 
-class StandingViewHolder(private val binding: ViewDataBinding) :
+class StandingViewHolder(private val binding: ItemTableBinding) :
     RecyclerView.ViewHolder(binding.root) {
     fun bind(item: Standing) {
         binding.setVariable(BR.standing, item)
         binding.executePendingBindings()
     }
+
+    companion object {
+        fun from(parent: ViewGroup): StandingViewHolder {
+            val layoutInflater = LayoutInflater.from(parent.context)
+            val binding = ItemTableBinding.inflate(layoutInflater, parent, false)
+            return StandingViewHolder(binding)
+        }
+    }
 }
 
-class StandingDiff : DiffUtil.ItemCallback<Standing>() {
-    override fun areItemsTheSame(oldItem: Standing, newItem: Standing): Boolean =
-        oldItem.teamId == newItem.teamId
+class HeaderViewHolder(view: View) :
+    RecyclerView.ViewHolder(view) {
 
-    override fun areContentsTheSame(oldItem: Standing, newItem: Standing): Boolean =
+    companion object {
+        fun from(parent: ViewGroup): HeaderViewHolder {
+            val layoutInflater = LayoutInflater.from(parent.context)
+            val view = layoutInflater.inflate(R.layout.header_table, parent, false)
+            return HeaderViewHolder(view)
+        }
+    }
+}
+
+class StandingDiff : DiffUtil.ItemCallback<DataItem>() {
+    override fun areItemsTheSame(oldItem: DataItem, newItem: DataItem): Boolean =
+        oldItem.id == newItem.id
+
+    @SuppressLint("DiffUtilEquals")
+    override fun areContentsTheSame(oldItem: DataItem, newItem: DataItem): Boolean =
         oldItem == newItem
 }

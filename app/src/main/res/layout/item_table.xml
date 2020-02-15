@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -9,27 +10,85 @@
                 type="com.belzsoftware.futspect.model.standings.Standing" />
     </data>
 
-    <LinearLayout
-            android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="@dimen/padding_small">
 
         <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
+                android:id="@+id/rankTextView"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:paddingStart="@dimen/padding_small"
-                android:paddingEnd="@dimen/padding_small"
+                android:gravity="center"
                 android:text="@{String.valueOf(standing.rank)}"
-                android:textSize="@dimen/header_six"
+                android:textSize="@dimen/body"
+                app:layout_constraintHorizontal_weight="1.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/nameTextView"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:text="1" />
 
         <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
+                android:id="@+id/nameTextView"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@{standing.teamName}"
-                android:textSize="@dimen/header_six"
+                android:textSize="@dimen/body"
+                app:layout_constraintHorizontal_weight="10"
+                app:layout_constraintStart_toEndOf="@+id/rankTextView"
+                app:layout_constraintEnd_toStartOf="@+id/winsTextView"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:text="Arsenal" />
 
-    </LinearLayout>
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/winsTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(standing.all.win)}"
+                android:textSize="@dimen/body"
+                app:layout_constraintHorizontal_weight="1.5"
+                app:layout_constraintStart_toEndOf="@+id/nameTextView"
+                app:layout_constraintEnd_toStartOf="@+id/drawTextView"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="13" />
+
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/drawTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(standing.all.draw)}"
+                android:textSize="@dimen/body"
+                app:layout_constraintHorizontal_weight="1.5"
+                app:layout_constraintStart_toEndOf="@+id/winsTextView"
+                app:layout_constraintEnd_toStartOf="@+id/lossTextView"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="2" />
+
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/lossTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(standing.all.lose)}"
+                android:textSize="@dimen/body"
+                app:layout_constraintHorizontal_weight="1.5"
+                app:layout_constraintStart_toEndOf="@+id/drawTextView"
+                app:layout_constraintEnd_toStartOf="@+id/pointsTextView"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="7" />
+
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/pointsTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:text="@{String.valueOf(standing.points)}"
+                android:textSize="@dimen/body"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@+id/lossTextView"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="43" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -74,7 +74,7 @@ class TableFragment : DaggerFragment() {
                     progress_bar.hideView()
 
                     val list = result.data.api.standings.flatten()
-                    tableAdapter.submitList(list)
+                    tableAdapter.addHeaderAndSubmitList(list)
                 }
                 is Result.error -> {
                     progress_bar.hideView()
