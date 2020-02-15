@@ -10,7 +10,7 @@ buildscript {
     ext.coroutineVersion = '1.1.0'
     ext.retrofitVersion = '2.6.0'
     ext.okhttp3Version = '4.2.0'
-    ext.navVersion = '2.2.0'
+    ext.navVersion = '2.2.1'
     ext.daggerVersion = '2.24'
     ext.preferenceVersion = '1.1.0'
     ext.recyclerViewVersion = '1.1.0'

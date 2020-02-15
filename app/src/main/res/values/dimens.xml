@@ -6,6 +6,7 @@
     <!--all text-->
     <dimen name="header_six">20sp</dimen>
     <dimen name="header_four">34sp</dimen>
+    <dimen name="header_three">48sp</dimen>
     <dimen name="body">16sp</dimen>
     <dimen name="body_two">14sp</dimen>
 

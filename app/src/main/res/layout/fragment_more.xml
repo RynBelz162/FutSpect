@@ -1,83 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   xmlns:tools="http://schemas.android.com/tools"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="match_parent">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <View android:layout_width="match_parent"
-          android:layout_height="@dimen/size_more_header"
-          android:id="@+id/view_green"
-          app:layout_constraintTop_toTopOf="parent"
-          android:background="?attr/colorPrimary" tools:layout_editor_absoluteX="-203dp"/>
+    <View
+            android:id="@+id/view_green"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_more_header"
+            android:background="?attr/colorPrimary"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="-203dp" />
 
-    <com.google.android.material.button.MaterialButton android:layout_width="match_parent"
-                                                       android:layout_height="wrap_content"
-                                                       app:layout_constraintStart_toStartOf="parent"
-                                                       android:id="@+id/button_settings"
-                                                       app:layout_constraintBottom_toTopOf="@+id/button_feedback"
-                                                       style="@style/Widget.FutSpect.MoreButton"
-                                                       android:text="@string/more_settings"
-                                                       app:layout_constraintEnd_toEndOf="parent"
-                                                       android:layout_marginTop="8dp"
-                                                       app:layout_constraintTop_toBottomOf="@+id/view_green"
-                                                       app:icon="@drawable/ic_outline_settings_24px"/>
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_settings"
+            style="@style/Widget.FutSpect.MoreButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/more_settings"
+            app:icon="@drawable/ic_outline_settings_24px"
+            app:layout_constraintBottom_toTopOf="@+id/button_feedback"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_green" />
 
-    <com.google.android.material.button.MaterialButton android:layout_width="match_parent"
-                                                       android:layout_height="wrap_content"
-                                                       app:layout_constraintStart_toStartOf="parent"
-                                                       android:id="@+id/button_feedback"
-                                                       app:layout_constraintTop_toBottomOf="@+id/button_about"
-                                                       app:layout_constraintBottom_toTopOf="@+id/button_settings"
-                                                       style="@style/Widget.FutSpect.MoreButton"
-                                                       android:text="@string/more_feedback"
-                                                       app:layout_constraintEnd_toEndOf="parent"
-                                                       app:icon="@drawable/ic_outline_comment_24px"/>
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_feedback"
+            style="@style/Widget.FutSpect.MoreButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/more_feedback"
+            app:icon="@drawable/ic_outline_comment_24px"
+            app:layout_constraintBottom_toTopOf="@+id/button_settings"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_about" />
 
-    <com.google.android.material.button.MaterialButton android:layout_width="match_parent"
-                                                       android:layout_height="wrap_content"
-                                                       app:layout_constraintStart_toStartOf="parent"
-                                                       android:id="@+id/button_about"
-                                                       app:layout_constraintTop_toBottomOf="@+id/button_feedback"
-                                                       app:layout_constraintBottom_toTopOf="@+id/button_dark_theme"
-                                                       style="@style/Widget.FutSpect.MoreButton"
-                                                       android:text="@string/more_about"
-                                                       app:layout_constraintEnd_toEndOf="parent"
-                                                       app:icon="@drawable/ic_outline_info_24px"/>
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_about"
+            style="@style/Widget.FutSpect.MoreButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/more_about"
+            app:icon="@drawable/ic_outline_info_24px"
+            app:layout_constraintBottom_toTopOf="@+id/button_dark_theme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_feedback" />
 
-    <com.google.android.material.button.MaterialButton android:layout_width="match_parent"
-                                                       android:layout_height="wrap_content"
-                                                       app:layout_constraintStart_toStartOf="parent"
-                                                       android:id="@+id/button_dark_theme"
-                                                       app:layout_constraintTop_toBottomOf="@+id/button_about"
-                                                       style="@style/Widget.FutSpect.MoreButton"
-                                                       android:text="@string/more_dark_theme"
-                                                       app:layout_constraintEnd_toEndOf="parent"
-                                                       app:icon="@drawable/ic_outline_brightness_2_24px"/>
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_dark_theme"
+            style="@style/Widget.FutSpect.MoreButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/more_dark_theme"
+            app:icon="@drawable/ic_outline_brightness_2_24px"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_about" />
 
-    <ImageView android:src="@mipmap/ic_launcher_round"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:id="@+id/imageView_app_icon"
-               android:contentDescription="@string/more_app_icon_description"
-               app:layout_constraintStart_toEndOf="@+id/view_green"
-               app:layout_constraintHorizontal_bias="0.5"
-               app:layout_constraintEnd_toStartOf="@+id/textView_app_name"
-               app:layout_constraintTop_toTopOf="@+id/view_green"
-               app:layout_constraintBottom_toBottomOf="@+id/view_green"
-               android:layout_marginEnd="@dimen/margin_normal"/>
+    <ImageView
+            android:id="@+id/imageView_app_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:contentDescription="@string/app_icon_description"
+            android:src="@mipmap/ic_launcher_round"
+            app:layout_constraintBottom_toBottomOf="@+id/view_green"
+            app:layout_constraintEnd_toStartOf="@+id/textView_app_name"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/view_green"
+            app:layout_constraintTop_toTopOf="@+id/view_green" />
 
-    <TextView android:text="@string/app_name"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:id="@+id/textView_app_name"
-              android:textColor="?android:attr/textColorPrimary"
-              android:textSize="@dimen/header_four"
-              app:layout_constraintStart_toEndOf="@+id/imageView_app_icon"
-              app:layout_constraintHorizontal_bias="0.5"
-              app:layout_constraintEnd_toStartOf="@+id/view_green"
-              app:layout_constraintTop_toTopOf="@+id/view_green"
-              app:layout_constraintBottom_toBottomOf="@+id/view_green"
-              android:layout_marginStart="@dimen/margin_normal"/>
+    <TextView
+            android:id="@+id/textView_app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:text="@string/app_name"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="@dimen/header_four"
+            app:layout_constraintBottom_toBottomOf="@+id/view_green"
+            app:layout_constraintEnd_toStartOf="@+id/view_green"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imageView_app_icon"
+            app:layout_constraintTop_toTopOf="@+id/view_green" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,6 +21,7 @@ class MainActivity : DaggerAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
 
+        setTheme(R.style.Theme_FutSpect)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
