@@ -82,7 +82,7 @@ dependencies {
     implementation "androidx.preference:preference-ktx:$preferenceVersion"
 
     // Local unit tests
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13'
 
     // Instrumentation tests
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
