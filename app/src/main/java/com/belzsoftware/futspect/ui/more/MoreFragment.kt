@@ -27,8 +27,8 @@ class MoreFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setButtonNameIcon()
-        button_dark_theme.setOnClickListener { toggleDarkTheme() }
-        button_about.setOnClickListener { activity?.createLongSnackbar(R.string.more_about) }
+        button_more_darkTheme.setOnClickListener { toggleDarkTheme() }
+        button_more_about.setOnClickListener { activity?.createLongSnackbar(R.string.more_about) }
     }
 
     private fun setButtonNameIcon() {
@@ -72,8 +72,8 @@ class MoreFragment : Fragment() {
     }
 
     private fun toggleButtonNameIcon(resourceId: Int, stringId: Int) {
-        button_dark_theme.setIconResource(resourceId)
-        button_dark_theme.setText(stringId)
+        button_more_darkTheme.setIconResource(resourceId)
+        button_more_darkTheme.setText(stringId)
     }
 
     private fun setNightMode(mode: Int) {

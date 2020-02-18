@@ -7,63 +7,63 @@
         android:padding="@dimen/padding_small">
 
     <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/rankTextView"
+            android:id="@+id/textView_header_rank"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/table_header_rank"
             android:textSize="@dimen/body"
-            app:layout_constraintEnd_toStartOf="@+id/nameTextView"
+            app:layout_constraintEnd_toStartOf="@+id/textView_header_name"
             app:layout_constraintHorizontal_weight="1.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/nameTextView"
+            android:id="@+id/textView_header_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/table_header_team"
             android:textSize="@dimen/body"
-            app:layout_constraintEnd_toStartOf="@+id/winsTextView"
+            app:layout_constraintEnd_toStartOf="@+id/textView_header_wins"
             app:layout_constraintHorizontal_weight="10"
-            app:layout_constraintStart_toEndOf="@+id/rankTextView"
+            app:layout_constraintStart_toEndOf="@+id/textView_header_rank"
             app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/winsTextView"
+            android:id="@+id/textView_header_wins"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/table_header_win"
             android:textSize="@dimen/body"
-            app:layout_constraintEnd_toStartOf="@+id/drawTextView"
+            app:layout_constraintEnd_toStartOf="@+id/textView_header_draws"
             app:layout_constraintHorizontal_weight="1.5"
-            app:layout_constraintStart_toEndOf="@+id/nameTextView"
+            app:layout_constraintStart_toEndOf="@+id/textView_header_name"
             app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/drawTextView"
+            android:id="@+id/textView_header_draws"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/table_header_draw"
             android:textSize="@dimen/body"
-            app:layout_constraintEnd_toStartOf="@+id/lossTextView"
+            app:layout_constraintEnd_toStartOf="@+id/textView_header_losses"
             app:layout_constraintHorizontal_weight="1.5"
-            app:layout_constraintStart_toEndOf="@+id/winsTextView"
+            app:layout_constraintStart_toEndOf="@+id/textView_header_wins"
             app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/lossTextView"
+            android:id="@+id/textView_header_losses"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/table_header_loss"
             android:textSize="@dimen/body"
-            app:layout_constraintEnd_toStartOf="@+id/pointsTextView"
+            app:layout_constraintEnd_toStartOf="@+id/textView_header_points"
             app:layout_constraintHorizontal_weight="1.5"
-            app:layout_constraintStart_toEndOf="@+id/drawTextView"
+            app:layout_constraintStart_toEndOf="@+id/textView_header_draws"
             app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/pointsTextView"
+            android:id="@+id/textView_header_points"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="start"
@@ -71,7 +71,7 @@
             android:textSize="@dimen/body"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toEndOf="@+id/lossTextView"
+            app:layout_constraintStart_toEndOf="@+id/textView_header_losses"
             app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

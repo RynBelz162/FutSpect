@@ -26,7 +26,7 @@ fun FragmentActivity.createLongSnackbar(@StringRes stringId: Int) {
 
 private fun createSnackBar(activity: FragmentActivity, message: String, length: Int) {
     Snackbar.make(activity.coordinator, message, length).apply {
-        anchorView = activity.navigation
+        anchorView = activity.navigation_main
         show()
     }
 }

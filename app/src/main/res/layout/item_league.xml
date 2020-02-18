@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -15,9 +16,10 @@
     <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_small"
+            android:layout_marginStart="@dimen/margin_normal"
             android:layout_marginTop="@dimen/margin_small"
-            android:layout_marginRight="@dimen/margin_small"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_marginBottom="@dimen/margin_small"
             android:onClick="@{clickListener}">
 
         <LinearLayout
@@ -31,14 +33,16 @@
                     android:layout_height="match_parent"
                     android:text="@{league.name}"
                     android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="@dimen/header_six" />
+                    android:textSize="@dimen/header_six"
+                    tools:text="Premier League" />
 
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@{league.country}"
                     android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="@dimen/body_two" />
+                    android:textSize="@dimen/body_two"
+                    tools:text="England" />
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

@@ -14,7 +14,7 @@ import com.belzsoftware.futspect.util.hideView
 import com.belzsoftware.futspect.util.showView
 import com.belzsoftware.futspect.util.viewModelProvider
 import dagger.android.support.DaggerFragment
-import kotlinx.android.synthetic.main.fragment_leagues.*
+import kotlinx.android.synthetic.main.fragment_fixtures.*
 import javax.inject.Inject
 
 class FixturesFragment : DaggerFragment() {
@@ -39,13 +39,13 @@ class FixturesFragment : DaggerFragment() {
 
         fixturesViewModel.fixtures.observe(viewLifecycleOwner, Observer { result ->
             when (result) {
-                is Result.loading -> progress_bar.showView()
+                is Result.loading -> progressbar_fixtures.showView()
                 is Result.success -> {
-                    progress_bar.hideView()
+                    progressbar_fixtures.hideView()
                     fixturesAdapter.submitList(result.data.api.fixtures)
                 }
                 is Result.error -> {
-                    progress_bar.hideView()
+                    progressbar_fixtures.hideView()
                     activity?.createLongSnackbar(result.message)
                 }
             }
@@ -57,7 +57,7 @@ class FixturesFragment : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recycler_view.apply {
+        recyclerView_fixtures.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = fixturesAdapter
         }

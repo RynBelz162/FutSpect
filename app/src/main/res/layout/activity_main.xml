@@ -7,7 +7,7 @@
         android:layout_height="match_parent">
 
     <LinearLayout
-            android:id="@+id/container"
+            android:id="@+id/container_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -23,7 +23,7 @@
                 app:navGraph="@navigation/nav_graph" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/navigation"
+                android:id="@+id/navigation_main"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"

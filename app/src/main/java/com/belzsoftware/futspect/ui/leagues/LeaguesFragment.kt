@@ -39,13 +39,13 @@ class LeaguesFragment : DaggerFragment() {
 
         leaguesViewModel.leagues.observe(viewLifecycleOwner, Observer { result ->
             when (result) {
-                is Result.loading -> progress_bar.showView()
+                is Result.loading -> progressbar_leagues.showView()
                 is Result.success -> {
-                    progress_bar.hideView()
+                    progressbar_leagues.hideView()
                     leagueAdapter.submitList(result.data.api.leagues)
                 }
                 is Result.error -> {
-                    progress_bar.hideView()
+                    progressbar_leagues.hideView()
                     activity?.createLongSnackbar(result.message)
                 }
             }
@@ -57,7 +57,7 @@ class LeaguesFragment : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recycler_view.apply {
+        recyclerView_leagues.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = leagueAdapter
         }

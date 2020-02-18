@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -13,8 +13,9 @@
     <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_small"
+            android:layout_marginStart="@dimen/margin_normal"
             android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginEnd="@dimen/margin_normal"
             android:layout_marginBottom="@dimen/margin_small">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,7 +24,7 @@
                 android:layout_margin="@dimen/margin_small">
 
             <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/textView_fixture_homeTeam"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
@@ -33,13 +34,13 @@
                     android:textColor="?android:attr/textColorPrimary"
                     android:textSize="@dimen/body"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/textView"
+                    app:layout_constraintEnd_toStartOf="@+id/textView_fixture_vs"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Arsenal" />
 
             <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/textView_fixture_vs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="@dimen/padding_small"
@@ -52,7 +53,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/textView_fixture_awayTeam"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
@@ -64,7 +65,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.50"
-                    app:layout_constraintStart_toEndOf="@+id/textView"
+                    app:layout_constraintStart_toEndOf="@+id/textView_fixture_vs"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Wolverhampton Wanderers" />
 

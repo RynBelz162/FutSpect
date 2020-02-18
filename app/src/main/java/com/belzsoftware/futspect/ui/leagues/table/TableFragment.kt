@@ -52,7 +52,7 @@ class TableFragment : DaggerFragment() {
 
         setUpToolbar()
 
-        recycler_view.apply {
+        recyclerView_table.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = tableAdapter
             addItemDecoration(DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL))
@@ -61,7 +61,7 @@ class TableFragment : DaggerFragment() {
 
     private fun setUpToolbar() {
         val navHostFragment = NavHostFragment.findNavController(this)
-        NavigationUI.setupWithNavController(toolbar, navHostFragment)
+        NavigationUI.setupWithNavController(toolbar_table, navHostFragment)
     }
 
     private fun setUpViewModel() {
@@ -69,15 +69,15 @@ class TableFragment : DaggerFragment() {
 
         tableViewModel.standings.observe(viewLifecycleOwner, Observer { result ->
             when (result) {
-                is Result.loading -> progress_bar.showView()
+                is Result.loading -> progressbar_table.showView()
                 is Result.success -> {
-                    progress_bar.hideView()
+                    progressbar_table.hideView()
 
                     val list = result.data.api.standings.flatten()
                     tableAdapter.addHeaderAndSubmitList(list)
                 }
                 is Result.error -> {
-                    progress_bar.hideView()
+                    progressbar_table.hideView()
                     activity?.createLongSnackbar(result.message)
                 }
             }

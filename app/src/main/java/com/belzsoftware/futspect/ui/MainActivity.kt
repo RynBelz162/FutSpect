@@ -32,8 +32,8 @@ class MainActivity : DaggerAppCompatActivity() {
         navController.navigateUp()
 
     private fun setUpNav() {
-        navigation.setupWithNavController(navController)
-        navigation.setOnNavigationItemSelectedListener { item ->
+        navigation_main.setupWithNavController(navController)
+        navigation_main.setOnNavigationItemSelectedListener { item ->
             onNavDestinationSelected(item, navController)
         }
 
@@ -41,8 +41,8 @@ class MainActivity : DaggerAppCompatActivity() {
             when (destination.id) {
                 R.id.navigation_leagues,
                 R.id.navigation_fixtures,
-                R.id.navigation_more -> navigation.showView()
-                else -> navigation.hideView()
+                R.id.navigation_more -> navigation_main.showView()
+                else -> navigation_main.hideView()
             }
         }
     }
