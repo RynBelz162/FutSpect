@@ -7,6 +7,8 @@
     <color name="material_teal_200">#80cbc4</color>
     <color name="material_light_teal_200">#b2fef7</color>
     <color name="material_dark_teal_200">#4f9a94</color>
+    <color name="material_green_500">#4caf50</color>
+    <color name="material_green_200">#a5d6a7</color>
 
     <!--Blues-->
     <color name="material_indigo_500">#3f51b5</color>
@@ -15,4 +17,12 @@
     <color name="material_indigo_200">#9fa8da</color>
     <color name="material_light_indigo_200">#d1d9ff</color>
     <color name="material_dark_indigo_200">#6f79a8</color>
+
+    <!--    Reds-->
+    <color name="material_red_500">#f44336</color>
+    <color name="material_red_200">#ef9a9a</color>
+
+    <!--    Yellows-->
+    <color name="material_yellow_500">#ffeb3b</color>
+    <color name="material_yellow_200">#fff59d</color>
 </resources>

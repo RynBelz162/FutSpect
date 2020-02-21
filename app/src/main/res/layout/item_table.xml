@@ -13,8 +13,18 @@
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:padding="@dimen/padding_small">
+
+        <View
+                android:id="@+id/view_table_accentView"
+                rankColor="@{standing.description}"
+                android:layout_width="5dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="h,1:4.5"
+                app:layout_constraintEnd_toStartOf="@+id/textView_header_rank"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:background="?attr/colorOkay" />
 
         <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textView_header_rank"
@@ -25,7 +35,7 @@
                 android:textSize="@dimen/body"
                 app:layout_constraintEnd_toStartOf="@+id/textView_header_name"
                 app:layout_constraintHorizontal_weight="1.5"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@id/view_table_accentView"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="1" />
 

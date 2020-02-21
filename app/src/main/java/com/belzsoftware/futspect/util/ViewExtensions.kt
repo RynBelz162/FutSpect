@@ -1,6 +1,10 @@
 package com.belzsoftware.futspect.util
 
+import android.content.Context
+import android.util.TypedValue
 import android.view.View
+import androidx.annotation.AttrRes
+import androidx.annotation.ColorInt
 import androidx.annotation.StringRes
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.snackbar.Snackbar
@@ -29,4 +33,11 @@ private fun createSnackBar(activity: FragmentActivity, message: String, length: 
         anchorView = activity.navigation_main
         show()
     }
+}
+
+@ColorInt
+fun getAttrColor(context: Context, @AttrRes id: Int): Int {
+    val typeValue = TypedValue()
+    context.theme.resolveAttribute(id, typeValue, true)
+    return typeValue.data
 }
