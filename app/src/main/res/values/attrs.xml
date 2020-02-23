@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <attr name="colorOkay" format="reference|color" />
-    <attr name="colorWarning" format="reference|color" />
 </resources>

@@ -1,38 +1,53 @@
 package com.belzsoftware.futspect.ui
 
+import android.content.Context
 import android.graphics.drawable.ColorDrawable
 import android.view.View
 import androidx.test.core.app.ApplicationProvider
 import com.belzsoftware.futspect.R
 import com.belzsoftware.futspect.ui.leagues.table.rankColor
+import com.belzsoftware.futspect.util.getAttrColor
+import org.junit.Assert
+import org.junit.Before
 import org.junit.Test
 
-// TODO: Fix these tests, asserts not working?
 class TableTests {
+
+    private lateinit var context: Context
+
+    @Before
+    fun setUpTheme() {
+        context = ApplicationProvider.getApplicationContext<Context>()
+        context.setTheme(R.style.Theme_FutSpect)
+    }
+
     @Test
     fun rankColor_nullDescription_setsDefault() {
-        val view = View(ApplicationProvider.getApplicationContext())
+        val view = View(context)
         rankColor(view, null)
 
+        val expectedColor = getAttrColor(context, R.attr.colorSurface)
         val bgColor = view.background as ColorDrawable
-        assert(bgColor.color == R.color.design_default_color_surface)
+        Assert.assertEquals(expectedColor, bgColor.color)
     }
 
     @Test
     fun rankColor_promotionDescription_setsOkay() {
-        val view = View(ApplicationProvider.getApplicationContext())
+        val view = View(context)
         rankColor(view, "Promotion is super awesome")
 
+        val expectedColor = getAttrColor(context, R.attr.colorOkay)
         val bgColor = view.background as ColorDrawable
-        assert(bgColor.color == R.color.material_green_500)
+        Assert.assertEquals(expectedColor, bgColor.color)
     }
 
     @Test
     fun rankColor_relegationDescription_setsError() {
-        val view = View(ApplicationProvider.getApplicationContext())
+        val view = View(context)
         rankColor(view, "Relegation is super lame")
 
+        val expectedColor = getAttrColor(context, R.attr.colorError)
         val bgColor = view.background as ColorDrawable
-        assert(bgColor.color == R.color.design_default_color_error)
+        Assert.assertEquals(expectedColor, bgColor.color)
     }
 }
