@@ -19,4 +19,6 @@
 
     <!--more fragment-->
     <dimen name="size_more_header">200dp</dimen>
+
+    <dimen name="view_table_accent_width">6dp</dimen>
 </resources>

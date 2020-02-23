@@ -4,7 +4,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="@dimen/padding_small">
+        android:paddingStart="@dimen/view_table_accent_width"
+        android:paddingTop="@dimen/padding_small"
+        android:paddingEnd="@dimen/padding_small"
+        android:paddingBottom="@dimen/padding_small">
 
     <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textView_header_rank"

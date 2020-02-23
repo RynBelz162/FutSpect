@@ -9,7 +9,7 @@ buildscript {
     ext.materialVersion = '1.2.0-alpha04'
     ext.coroutineVersion = '1.3.0'
     ext.retrofitVersion = '2.7.1'
-    ext.okhttp3Version = '4.3.1'
+    ext.okhttp3Version = '4.4.0'
     ext.navVersion = '2.2.1'
     ext.daggerVersion = '2.26'
     ext.preferenceVersion = '1.1.0'

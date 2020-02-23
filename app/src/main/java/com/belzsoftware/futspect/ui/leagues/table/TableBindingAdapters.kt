@@ -10,7 +10,7 @@ private const val RELEGATION = "Relegation"
 
 @BindingAdapter("rankColor")
 fun rankColor(view: View, description: String?) {
-    description ?: return view.setBackgroundColor(getAttrColor(view.context, R.attr.colorOnSurface))
+    description ?: return view.setBackgroundColor(getAttrColor(view.context, R.attr.colorSurface))
 
     view.apply {
         when {
@@ -28,7 +28,7 @@ fun rankColor(view: View, description: String?) {
                 )
             )
 
-            else -> this.setBackgroundColor(getAttrColor(context, R.attr.colorOnSurface))
+            else -> this.setBackgroundColor(getAttrColor(context, R.attr.colorSurface))
         }
     }
 }
