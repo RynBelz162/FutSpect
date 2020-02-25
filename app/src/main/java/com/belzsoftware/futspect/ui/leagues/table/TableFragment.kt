@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.belzsoftware.futspect.databinding.FragmentTableBinding
 import com.belzsoftware.futspect.model.shared.Result
+import com.belzsoftware.futspect.model.standings.DataItem
+import com.belzsoftware.futspect.ui.shared.HeaderItemDecoration
 import com.belzsoftware.futspect.util.createLongSnackbar
 import com.belzsoftware.futspect.util.hideView
 import com.belzsoftware.futspect.util.showView
@@ -55,6 +57,7 @@ class TableFragment : DaggerFragment() {
         recyclerView_table.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = tableAdapter
+            addItemDecoration(HeaderItemDecoration(this,  false, isHeader()))
             addItemDecoration(DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL))
         }
     }
@@ -82,5 +85,11 @@ class TableFragment : DaggerFragment() {
                 }
             }
         })
+    }
+
+    private fun isHeader(): (itemPosition: Int) -> Boolean {
+        return {
+            tableAdapter.currentList[it].id == DataItem.Header.id
+        }
     }
 }
