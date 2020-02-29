@@ -8,4 +8,3 @@ const val BASE_FOOTBALL_URL: String = "https://www.api-football.com/demo/api/v2/
 
 // Preference Constants
 const val NIGHT_MODE_PREF = "NIGHT_MODE_PREF"
-

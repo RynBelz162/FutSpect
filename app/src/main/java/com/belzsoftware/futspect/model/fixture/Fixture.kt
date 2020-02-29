@@ -11,5 +11,7 @@ data class Fixture(
     val status: String,
     val statusShort: String,
     val homeTeam: Team,
-    val awayTeam: Team
+    val awayTeam: Team,
+    val goalsHomeTeam: Int,
+    val goalsAwayTeam: Int
 )

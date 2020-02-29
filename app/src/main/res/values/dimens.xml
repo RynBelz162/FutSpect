@@ -16,6 +16,7 @@
 
     <!--all padding-->
     <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_normal">16dp</dimen>
 
     <!--more fragment-->
     <dimen name="size_more_header">200dp</dimen>

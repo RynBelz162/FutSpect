@@ -18,6 +18,7 @@
 
     <!--    Fixtures-->
     <string name="fixtures_vs">vs.</string>
+    <string name="fixtures_dash">-</string>
 
     <!--    Table-->
     <string name="table_header_rank">#</string>

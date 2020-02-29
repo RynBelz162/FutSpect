@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_small">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/textView_fixture_homeTeam"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -33,26 +33,71 @@
                     android:text="@{fixture.homeTeam.name}"
                     android:textColor="?android:attr/textColorPrimary"
                     android:textSize="@dimen/body"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/textView_fixture_vs"
+                    app:layout_constraintEnd_toStartOf="@+id/textView_fixture_homeScore"
+                    app:layout_constraintHorizontal_weight="5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Arsenal" />
 
-            <TextView
-                    android:id="@+id/textView_fixture_vs"
-                    android:layout_width="wrap_content"
+            <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView_fixture_homeScore"
+                    scoreVisibility="@{fixture.statusShort}"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="@dimen/padding_small"
-                    android:paddingRight="@dimen/padding_small"
+                    android:gravity="end"
+                    android:text="@{String.valueOf(fixture.goalsHomeTeam)}"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="@dimen/body"
+                    app:layout_constraintEnd_toStartOf="@+id/textView_fixture_vs"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toEndOf="@+id/textView_fixture_homeTeam"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="2" />
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView_fixture_vs"
+                    infoVisibility="@{fixture.statusShort}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:text="@string/fixtures_vs"
                     android:textColor="?android:attr/textColorPrimary"
                     android:textSize="@dimen/body"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/textView_fixture_dash"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toEndOf="@+id/textView_fixture_homeScore"
                     app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView_fixture_dash"
+                    scoreVisibility="@{fixture.statusShort}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/fixtures_dash"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="@dimen/body"
+                    app:layout_constraintEnd_toStartOf="@+id/textView_fixture_awayScore"
+                    app:layout_constraintHorizontal_weight=".5"
+                    app:layout_constraintStart_toEndOf="@+id/textView_fixture_vs"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView_fixture_awayScore"
+                    scoreVisibility="@{fixture.statusShort}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="@{String.valueOf(fixture.goalsAwayTeam)}"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="@dimen/body"
+                    app:layout_constraintEnd_toStartOf="@+id/textView_fixture_awayTeam"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toEndOf="@+id/textView_fixture_dash"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="1" />
+
+            <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/textView_fixture_awayTeam"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -62,12 +107,11 @@
                     android:text="@{fixture.awayTeam.name}"
                     android:textColor="?android:attr/textColorPrimary"
                     android:textSize="@dimen/body"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.50"
-                    app:layout_constraintStart_toEndOf="@+id/textView_fixture_vs"
+                    app:layout_constraintHorizontal_weight="5"
+                    app:layout_constraintStart_toEndOf="@+id/textView_fixture_awayScore"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Wolverhampton Wanderers" />
+                    tools:text="Liverpool" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
