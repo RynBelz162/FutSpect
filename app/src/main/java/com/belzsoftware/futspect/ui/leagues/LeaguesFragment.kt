@@ -42,7 +42,7 @@ class LeaguesFragment : DaggerFragment() {
                 is Result.loading -> progressbar_leagues.showView()
                 is Result.success -> {
                     progressbar_leagues.hideView()
-                    leagueAdapter.submitList(result.data.api.leagues)
+                    leagueAdapter.submitList(result.data.response)
                 }
                 is Result.error -> {
                     progressbar_leagues.hideView()

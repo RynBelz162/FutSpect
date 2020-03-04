@@ -22,7 +22,7 @@
             android:label="fragment_table_standing"
             tools:layout="@layout/fragment_table" >
         <argument
-                android:name="league"
-                app:argType="com.belzsoftware.futspect.model.league.League" />
+                android:name="leagueResponse"
+                app:argType="com.belzsoftware.futspect.model.league.LeagueResponse" />
     </fragment>
 </navigation>

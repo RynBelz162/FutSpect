@@ -5,8 +5,8 @@
     <data>
 
         <variable
-                name="league"
-                type="com.belzsoftware.futspect.model.league.League" />
+                name="leagueResponse"
+                type="com.belzsoftware.futspect.model.league.LeagueResponse" />
 
         <variable
                 name="clickListener"
@@ -31,7 +31,7 @@
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@{league.name}"
+                    android:text="@{leagueResponse.league.name}"
                     android:textColor="?android:attr/textColorSecondary"
                     android:textSize="@dimen/header_six"
                     tools:text="Premier League" />
@@ -39,7 +39,7 @@
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@{league.country}"
+                    android:text="@{leagueResponse.country.name}"
                     android:textColor="?android:attr/textColorSecondary"
                     android:textSize="@dimen/body_two"
                     tools:text="England" />

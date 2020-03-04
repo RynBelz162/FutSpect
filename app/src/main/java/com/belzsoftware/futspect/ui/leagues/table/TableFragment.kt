@@ -68,7 +68,7 @@ class TableFragment : DaggerFragment() {
     }
 
     private fun setUpViewModel() {
-        tableViewModel.setLeagueId(args.league)
+        tableViewModel.setLeagueId(args.leagueResponse.league)
 
         tableViewModel.standings.observe(viewLifecycleOwner, Observer { result ->
             when (result) {
@@ -76,7 +76,7 @@ class TableFragment : DaggerFragment() {
                 is Result.success -> {
                     progressbar_table.hideView()
 
-                    val list = result.data.api.standings.flatten()
+                    val list = result.data.response.standings.flatten()
                     tableAdapter.addHeaderAndSubmitList(list)
                 }
                 is Result.error -> {

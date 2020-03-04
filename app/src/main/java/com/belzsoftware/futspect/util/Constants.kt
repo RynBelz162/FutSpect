@@ -4,7 +4,7 @@ import com.belzsoftware.futspect.BuildConfig
 
 // API Constants
 const val FUTSPECT_API_KEY = BuildConfig.FbApiKey
-const val BASE_FOOTBALL_URL: String = "https://www.api-football.com/demo/api/v2/"
+const val BASE_FOOTBALL_URL: String = "https://api-football-beta.p.rapidapi.com/"
 
 // Preference Constants
 const val NIGHT_MODE_PREF = "NIGHT_MODE_PREF"
