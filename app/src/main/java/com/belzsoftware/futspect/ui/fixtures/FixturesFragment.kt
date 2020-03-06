@@ -42,7 +42,7 @@ class FixturesFragment : DaggerFragment() {
                 is Result.loading -> progressbar_fixtures.showView()
                 is Result.success -> {
                     progressbar_fixtures.hideView()
-                    fixturesAdapter.submitList(result.data.response.fixtures)
+                    fixturesAdapter.submitList(result.data.response)
                 }
                 is Result.error -> {
                     progressbar_fixtures.hideView()

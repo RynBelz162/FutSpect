@@ -5,7 +5,7 @@ sealed class DataItem {
     abstract val id: Int
 
     data class StandingItem (val standing: Standing): DataItem() {
-        override val id = standing.teamId
+        override val id = standing.team.id
     }
 
     object Header : DataItem() {

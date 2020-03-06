@@ -1,25 +1,28 @@
 package com.belzsoftware.futspect.data.network
 
-import com.belzsoftware.futspect.model.fixture.FixtureSearch
+import com.belzsoftware.futspect.model.fixture.FixtureResponse
 import com.belzsoftware.futspect.model.league.LeagueResponse
 import com.belzsoftware.futspect.model.shared.ApiCall
-import com.belzsoftware.futspect.model.standings.StandingsSearch
+import com.belzsoftware.futspect.model.standings.StandingResponse
 import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface FootballApiService {
 
     @GET("leagues")
     suspend fun getLeaguesAsync(): Response<ApiCall<List<LeagueResponse>>>
 
-    @GET("fixtures/league/{id}")
-    suspend fun getFixturesForLeagueAsync(
-        @Path("id") leagueId: Int
-    ): Response<ApiCall<FixtureSearch>>
+    @GET("fixtures")
+    suspend fun getFixturesForLeagueAndDateAsync(
+        //@Query("league") leagueId: Int,
+        @Query("date") date: String,
+        @Query("season") season: Int
+    ): Response<ApiCall<List<FixtureResponse>>>
 
-    @GET("leagueTable/{leagueId}")
+    @GET("standings")
     suspend fun getStandingsForLeagueAsync(
-        @Path("leagueId") leagueId: Int
-    ): Response<ApiCall<StandingsSearch>>
+        @Query("season") season: Int,
+        @Query("league") leagueId: Int
+    ): Response<ApiCall<List<StandingResponse>>>
 }

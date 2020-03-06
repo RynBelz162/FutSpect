@@ -57,7 +57,7 @@ class TableFragment : DaggerFragment() {
         recyclerView_table.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = tableAdapter
-            addItemDecoration(HeaderItemDecoration(this,  false, isHeader()))
+            addItemDecoration(HeaderItemDecoration(this, false, isHeader()))
             addItemDecoration(DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL))
         }
     }
@@ -76,7 +76,7 @@ class TableFragment : DaggerFragment() {
                 is Result.success -> {
                     progressbar_table.hideView()
 
-                    val list = result.data.response.standings.flatten()
+                    val list = result.data.response.firstOrNull()?.league?.standings?.flatten()
                     tableAdapter.addHeaderAndSubmitList(list)
                 }
                 is Result.error -> {

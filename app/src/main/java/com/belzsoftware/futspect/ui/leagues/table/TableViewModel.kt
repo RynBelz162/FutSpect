@@ -8,7 +8,7 @@ import com.belzsoftware.futspect.data.league.LeaguesRepository
 import com.belzsoftware.futspect.model.league.League
 import com.belzsoftware.futspect.model.shared.ApiCall
 import com.belzsoftware.futspect.model.shared.Result
-import com.belzsoftware.futspect.model.standings.StandingsSearch
+import com.belzsoftware.futspect.model.standings.StandingResponse
 import com.belzsoftware.futspect.util.defaultResult
 import javax.inject.Inject
 
@@ -19,8 +19,8 @@ class TableViewModel @Inject constructor(
     private val _league = MutableLiveData<League>()
     val league: LiveData<League> = _league
 
-    private val _standings = MediatorLiveData<Result<ApiCall<StandingsSearch>>>()
-    val standings: LiveData<Result<ApiCall<StandingsSearch>>> = _standings
+    private val _standings = MediatorLiveData<Result<ApiCall<List<StandingResponse>>>>()
+    val standings: LiveData<Result<ApiCall<List<StandingResponse>>>> = _standings
 
     fun setLeagueId(league: League) {
         _league.value = league
@@ -30,7 +30,7 @@ class TableViewModel @Inject constructor(
         }
     }
 
-    private fun loadStandings(): LiveData<Result<ApiCall<StandingsSearch>>> {
+    private fun loadStandings(): LiveData<Result<ApiCall<List<StandingResponse>>>> {
         val leagueId = _league.value?.id ?: return defaultResult()
         return leaguesRepository.getTable(leagueId)
     }

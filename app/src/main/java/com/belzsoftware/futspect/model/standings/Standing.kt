@@ -1,20 +1,19 @@
 package com.belzsoftware.futspect.model.standings
 
-import com.google.gson.annotations.SerializedName
+import com.belzsoftware.futspect.model.team.Team
+import java.util.*
 
 data class Standing(
     val rank: Int,
-    @SerializedName("team_id") val teamId: Int,
-    val teamName: String,
-    val logo: String,
+    val team: Team,
+    val points: Int,
+    val goalDiff: Int,
     val group: String,
-    val forme: String,
+    val form: String,
     val status: String,
     val description: String,
     val all: MatchesPlayed,
     val home: MatchesPlayed,
     val away: MatchesPlayed,
-    val goalsDiff: Int,
-    val points: Int,
-    val lastUpdate: String
+    val update: Date
 )

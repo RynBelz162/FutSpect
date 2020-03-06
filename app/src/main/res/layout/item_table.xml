@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/padding_small"
                 android:layout_marginBottom="@dimen/padding_small"
-                android:text="@{standing.teamName}"
+                android:text="@{standing.team.name}"
                 android:textSize="@dimen/body"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/textView_header_wins"
