@@ -78,20 +78,22 @@ dependencies {
     // Dagger 2
     implementation "com.google.dagger:dagger-android:$daggerVersion"
     implementation "com.google.dagger:dagger-android-support:$daggerVersion"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
     kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
 
-    // preference
+    // Preference
     implementation "androidx.preference:preference-ktx:$preferenceVersion"
+
+    // Coil
+    implementation "io.coil-kt:coil:$coilVersion"
 
     // Local unit tests
     testImplementation 'junit:junit:4.13'
 
     // Instrumentation tests
     androidTestImplementation 'androidx.test:core:1.2.0'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test:rules:1.2.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }

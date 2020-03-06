@@ -44,6 +44,11 @@
                     android:textSize="@dimen/body_two"
                     tools:text="England" />
 
+            <androidx.appcompat.widget.AppCompatImageView
+                    setImage="@{leagueResponse.league.logo}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 </layout>
