@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -22,33 +23,44 @@
             android:layout_marginBottom="@dimen/margin_small"
             android:onClick="@{clickListener}">
 
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/margin_small"
-                android:orientation="vertical">
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_small">
 
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+            <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imageView_league_logo"
+                    setLeagueLogo="@{leagueResponse.league}"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@tools:sample/avatars" />
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView_league_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_normal"
+                    android:ellipsize="end"
                     android:text="@{leagueResponse.league.name}"
                     android:textColor="?android:attr/textColorSecondary"
                     android:textSize="@dimen/header_six"
+                    app:layout_constraintStart_toEndOf="@id/imageView_league_logo"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:text="Premier League" />
 
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+            <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_normal"
                     android:text="@{leagueResponse.country.name}"
                     android:textColor="?android:attr/textColorSecondary"
                     android:textSize="@dimen/body_two"
+                    app:layout_constraintStart_toEndOf="@id/imageView_league_logo"
+                    app:layout_constraintTop_toBottomOf="@id/textView_league_name"
                     tools:text="England" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                    setImage="@{leagueResponse.league.logo}"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </layout>

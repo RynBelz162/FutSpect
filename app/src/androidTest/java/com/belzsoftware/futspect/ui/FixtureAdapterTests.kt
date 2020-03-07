@@ -9,7 +9,7 @@ import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 
-class FixtureTests {
+class FixtureAdapterTests {
     private lateinit var context: Context
 
     @Before
