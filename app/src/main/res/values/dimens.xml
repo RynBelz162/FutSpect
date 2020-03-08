@@ -21,5 +21,9 @@
     <!--more fragment-->
     <dimen name="size_more_header">200dp</dimen>
 
+    <!--table fragment-->
     <dimen name="view_table_accent_width">6dp</dimen>
+
+    <!--league fragment-->
+    <dimen name="league_imageView_heightWidth">50dp</dimen>
 </resources>

@@ -38,11 +38,11 @@ class MoreFragment : Fragment() {
 
         when (pref) {
             AppCompatDelegate.MODE_NIGHT_NO -> toggleButtonNameIcon(
-                R.drawable.ic_outline_brightness_2_24px,
+                R.drawable.ic_outline_brightness_2,
                 R.string.more_dark_theme
             )
             AppCompatDelegate.MODE_NIGHT_YES -> toggleButtonNameIcon(
-                R.drawable.ic_outline_brightness_5_24px,
+                R.drawable.ic_outline_brightness_5,
                 R.string.more_light_theme
             )
         }
@@ -57,14 +57,14 @@ class MoreFragment : Fragment() {
             AppCompatDelegate.MODE_NIGHT_NO -> {
                 setNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 toggleButtonNameIcon(
-                    R.drawable.ic_outline_brightness_2_24px,
+                    R.drawable.ic_outline_brightness_2,
                     R.string.more_dark_theme
                 )
             }
             AppCompatDelegate.MODE_NIGHT_YES -> {
                 setNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 toggleButtonNameIcon(
-                    R.drawable.ic_outline_brightness_5_24px,
+                    R.drawable.ic_outline_brightness_5,
                     R.string.more_light_theme
                 )
             }

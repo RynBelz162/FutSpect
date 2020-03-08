@@ -30,9 +30,9 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imageView_league_logo"
-                    setLeagueLogo="@{leagueResponse.league}"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    setLeagueLogo="@{leagueResponse}"
+                    android:layout_width="@dimen/league_imageView_heightWidth"
+                    android:layout_height="@dimen/league_imageView_heightWidth"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@tools:sample/avatars" />

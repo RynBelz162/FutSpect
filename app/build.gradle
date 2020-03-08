@@ -86,6 +86,8 @@ dependencies {
 
     // Coil
     implementation "io.coil-kt:coil:$coilVersion"
+    implementation "io.coil-kt:coil-svg:$coilVersion"
+
 
     // Local unit tests
     testImplementation 'junit:junit:4.13'

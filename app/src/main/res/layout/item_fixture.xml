@@ -33,11 +33,22 @@
                     android:text="@{fixtureResponse.teams.home.name}"
                     android:textColor="?android:attr/textColorPrimary"
                     android:textSize="@dimen/body"
-                    app:layout_constraintEnd_toStartOf="@+id/textView_fixture_homeScore"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView_fixture_homeTeamLogo"
                     app:layout_constraintHorizontal_weight="5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Arsenal" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imageView_fixture_homeTeamLogo"
+                    setImage="@{fixtureResponse.teams.home.logo}"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="@dimen/margin_small"
+                    app:layout_constraintEnd_toStartOf="@id/textView_fixture_homeScore"
+                    app:layout_constraintStart_toEndOf="@id/textView_fixture_homeTeam"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@tools:sample/avatars" />
 
             <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/textView_fixture_homeScore"
@@ -50,7 +61,7 @@
                     android:textSize="@dimen/body"
                     app:layout_constraintEnd_toStartOf="@+id/textView_fixture_vs"
                     app:layout_constraintHorizontal_weight="1"
-                    app:layout_constraintStart_toEndOf="@+id/textView_fixture_homeTeam"
+                    app:layout_constraintStart_toEndOf="@+id/imageView_fixture_homeTeamLogo"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="2" />
 
@@ -64,7 +75,7 @@
                     android:textColor="?android:attr/textColorPrimary"
                     android:textSize="@dimen/body"
                     app:layout_constraintEnd_toStartOf="@+id/textView_fixture_dash"
-                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintHorizontal_weight="2.5"
                     app:layout_constraintStart_toEndOf="@+id/textView_fixture_homeScore"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -91,11 +102,22 @@
                     android:text="@{String.valueOf(fixtureResponse.goals.away)}"
                     android:textColor="?android:attr/textColorPrimary"
                     android:textSize="@dimen/body"
-                    app:layout_constraintEnd_toStartOf="@+id/textView_fixture_awayTeam"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView_fixture_awayTeamLogo"
                     app:layout_constraintHorizontal_weight="1"
                     app:layout_constraintStart_toEndOf="@+id/textView_fixture_dash"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="1" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imageView_fixture_awayTeamLogo"
+                    setImage="@{fixtureResponse.teams.away.logo}"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    app:layout_constraintEnd_toStartOf="@id/textView_fixture_awayTeam"
+                    app:layout_constraintStart_toEndOf="@id/textView_fixture_awayScore"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@tools:sample/avatars" />
 
             <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/textView_fixture_awayTeam"
@@ -109,7 +131,7 @@
                     android:textSize="@dimen/body"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_weight="5"
-                    app:layout_constraintStart_toEndOf="@+id/textView_fixture_awayScore"
+                    app:layout_constraintStart_toEndOf="@+id/imageView_fixture_awayTeamLogo"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Liverpool" />
 
