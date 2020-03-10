@@ -13,7 +13,7 @@ inline fun <reified VM : ViewModel> Fragment.viewModelProvider(
 
 fun <T> resultLiveData(networkCall: suspend () -> Result<T>): LiveData<Result<T>> =
     liveData(Dispatchers.IO) {
-        emit(Result.loading())
+        emit(Result.Loading())
 
         val result = networkCall.invoke()
         emit(result)
@@ -24,14 +24,14 @@ suspend fun <T> getResult(call: suspend () -> Response<T>): Result<T> {
         val response = call()
         if (response.isSuccessful) {
             val body = response.body()
-            if (body != null) return Result.success(body)
+            if (body != null) return Result.Success(body)
         }
 
-        return Result.error("${response.code()} ${response.message()}")
+        return Result.Error("${response.code()} ${response.message()}")
     } catch (e: Exception) {
-        return Result.error(e.message ?: e.toString())
+        return Result.Error(e.message ?: e.toString())
     }
 }
 
 fun <T> defaultResult() =
-    MutableLiveData<Result<T>>(Result.loading())
+    MutableLiveData<Result<T>>(Result.Loading())

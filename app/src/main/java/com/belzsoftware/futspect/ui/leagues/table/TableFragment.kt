@@ -72,14 +72,14 @@ class TableFragment : DaggerFragment() {
 
         tableViewModel.standings.observe(viewLifecycleOwner, Observer { result ->
             when (result) {
-                is Result.loading -> progressbar_table.showView()
-                is Result.success -> {
+                is Result.Loading -> progressbar_table.showView()
+                is Result.Success -> {
                     progressbar_table.hideView()
 
                     val list = result.data.response.firstOrNull()?.league?.standings?.flatten()
                     tableAdapter.addHeaderAndSubmitList(list)
                 }
-                is Result.error -> {
+                is Result.Error -> {
                     progressbar_table.hideView()
                     activity?.createLongSnackbar(result.message)
                 }

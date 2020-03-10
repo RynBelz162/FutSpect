@@ -1,9 +1,11 @@
 package com.belzsoftware.futspect.model.status
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class Status(
-    @SerializedName("long") val longStatus: String,
-    @SerializedName("short") val shortStatus: String,
-    val elapsed: Int
+    @Json(name = "long") val longStatus: String,
+    @Json(name = "short") val shortStatus: String,
+    val elapsed: Int?
 )

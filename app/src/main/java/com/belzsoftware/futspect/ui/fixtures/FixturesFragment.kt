@@ -39,12 +39,12 @@ class FixturesFragment : DaggerFragment() {
 
         fixturesViewModel.fixtures.observe(viewLifecycleOwner, Observer { result ->
             when (result) {
-                is Result.loading -> progressbar_fixtures.showView()
-                is Result.success -> {
+                is Result.Loading -> progressbar_fixtures.showView()
+                is Result.Success -> {
                     progressbar_fixtures.hideView()
                     fixturesAdapter.submitList(result.data.response)
                 }
-                is Result.error -> {
+                is Result.Error -> {
                     progressbar_fixtures.hideView()
                     activity?.createLongSnackbar(result.message)
                 }

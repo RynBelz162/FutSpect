@@ -15,6 +15,7 @@ buildscript {
     ext.preferenceVersion = '1.1.0'
     ext.recyclerViewVersion = '1.1.0'
     ext.coilVersion = '0.9.5'
+    ext.moshiVersion = '1.9.2'
 
 
     repositories {
