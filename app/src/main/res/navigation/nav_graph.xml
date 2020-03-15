@@ -10,6 +10,9 @@
         <action
                 android:id="@+id/action_navigation_tables_to_tableStandingFragment"
                 app:destination="@id/tableStandingFragment" />
+        <action
+                android:id="@+id/action_navigation_leagues_to_leagueFilterBottomSheetModalFragment"
+                app:destination="@id/navigation_league_filters" />
     </fragment>
     <fragment android:id="@+id/navigation_fixtures"
               android:name="com.belzsoftware.futspect.ui.fixtures.FixturesFragment"
@@ -25,4 +28,8 @@
                 android:name="leagueResponse"
                 app:argType="com.belzsoftware.futspect.model.league.LeagueResponse" />
     </fragment>
+    <dialog
+            android:id="@+id/navigation_league_filters"
+            android:name="com.belzsoftware.futspect.ui.leagues.filter.LeagueFilterBottomSheetModalFragment"
+            android:label="LeagueFilterBottomSheetModalFragment" />
 </navigation>

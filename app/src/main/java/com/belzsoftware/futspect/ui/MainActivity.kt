@@ -41,7 +41,8 @@ class MainActivity : DaggerAppCompatActivity() {
             when (destination.id) {
                 R.id.navigation_leagues,
                 R.id.navigation_fixtures,
-                R.id.navigation_more -> navigation_main.showView()
+                R.id.navigation_more,
+                R.id.navigation_league_filters -> navigation_main.showView()
                 else -> navigation_main.hideView()
             }
         }

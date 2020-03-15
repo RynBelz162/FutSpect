@@ -28,4 +28,12 @@
     <string name="table_header_loss">L</string>
     <string name="table_header_points">P</string>
 
+    <!--    Leagues-->
+    <string name="league_filter_search_hint">Search</string>
+    <string name="league_filter_clear">Clear</string>
+    <string name="league_chip_filter_league">League</string>
+    <string name="league_chip_filter_cup">Cup</string>
+    <string name="league_filter_apply">Apply</string>
+    <string name="league_filter_header">Filter Leagues</string>
+
 </resources>

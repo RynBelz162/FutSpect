@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.belzsoftware.futspect.databinding.FragmentLeaguesBinding
 import com.belzsoftware.futspect.model.shared.Result
@@ -61,5 +62,12 @@ class LeaguesFragment : DaggerFragment() {
             layoutManager = LinearLayoutManager(activity)
             adapter = leagueAdapter
         }
+
+        fab_leagues_filter.setOnClickListener {
+            val direction =
+                LeaguesFragmentDirections.actionNavigationLeaguesToLeagueFilterBottomSheetModalFragment()
+            it.findNavController().navigate(direction)
+        }
+
     }
 }
