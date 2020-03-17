@@ -25,14 +25,13 @@
 
             <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/textView_fixture_homeTeam"
+                    style="@style/TextAppearance.MaterialComponents.Body1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:gravity="center"
                     android:maxLines="1"
                     android:text="@{fixtureResponse.teams.home.name}"
-                    android:textColor="?android:attr/textColorPrimary"
-                    android:textSize="@dimen/body"
                     app:layout_constraintEnd_toStartOf="@+id/imageView_fixture_homeTeamLogo"
                     app:layout_constraintHorizontal_weight="5"
                     app:layout_constraintStart_toStartOf="parent"
@@ -52,13 +51,12 @@
 
             <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/textView_fixture_homeScore"
+                    style="@style/TextAppearance.MaterialComponents.Body1"
                     scoreVisibility="@{fixtureResponse.fixture.status.shortStatus}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="end"
                     android:text="@{String.valueOf(fixtureResponse.goals.home)}"
-                    android:textColor="?android:attr/textColorPrimary"
-                    android:textSize="@dimen/body"
                     app:layout_constraintEnd_toStartOf="@+id/textView_fixture_vs"
                     app:layout_constraintHorizontal_weight="1"
                     app:layout_constraintStart_toEndOf="@+id/imageView_fixture_homeTeamLogo"
@@ -67,13 +65,12 @@
 
             <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/textView_fixture_vs"
+                    style="@style/TextAppearance.MaterialComponents.Body1"
                     infoVisibility="@{fixtureResponse.fixture.status.shortStatus}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/fixtures_vs"
-                    android:textColor="?android:attr/textColorPrimary"
-                    android:textSize="@dimen/body"
                     app:layout_constraintEnd_toStartOf="@+id/textView_fixture_dash"
                     app:layout_constraintHorizontal_weight="2.5"
                     app:layout_constraintStart_toEndOf="@+id/textView_fixture_homeScore"
@@ -81,13 +78,12 @@
 
             <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/textView_fixture_dash"
+                    style="@style/TextAppearance.MaterialComponents.Body1"
                     scoreVisibility="@{fixtureResponse.fixture.status.shortStatus}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/fixtures_dash"
-                    android:textColor="?android:attr/textColorPrimary"
-                    android:textSize="@dimen/body"
                     app:layout_constraintEnd_toStartOf="@+id/textView_fixture_awayScore"
                     app:layout_constraintHorizontal_weight=".5"
                     app:layout_constraintStart_toEndOf="@+id/textView_fixture_vs"
@@ -95,13 +91,12 @@
 
             <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/textView_fixture_awayScore"
+                    style="@style/TextAppearance.MaterialComponents.Body1"
                     scoreVisibility="@{fixtureResponse.fixture.status.shortStatus}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="start"
                     android:text="@{String.valueOf(fixtureResponse.goals.away)}"
-                    android:textColor="?android:attr/textColorPrimary"
-                    android:textSize="@dimen/body"
                     app:layout_constraintEnd_toStartOf="@+id/imageView_fixture_awayTeamLogo"
                     app:layout_constraintHorizontal_weight="1"
                     app:layout_constraintStart_toEndOf="@+id/textView_fixture_dash"
@@ -121,14 +116,13 @@
 
             <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/textView_fixture_awayTeam"
+                    style="@style/TextAppearance.MaterialComponents.Body1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:gravity="center"
                     android:maxLines="1"
                     android:text="@{fixtureResponse.teams.away.name}"
-                    android:textColor="?android:attr/textColorPrimary"
-                    android:textSize="@dimen/body"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_weight="5"
                     app:layout_constraintStart_toEndOf="@+id/imageView_fixture_awayTeamLogo"

@@ -6,12 +6,12 @@
         android:orientation="vertical">
 
     <com.google.android.material.textview.MaterialTextView
+            style="@style/TextAppearance.MaterialComponents.Headline6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_normal"
             android:layout_marginTop="@dimen/margin_normal"
-            android:text="@string/league_filter_header"
-            android:textSize="@dimen/header_six" />
+            android:text="@string/league_filter_header" />
 
     <com.google.android.material.chip.ChipGroup
             android:layout_width="match_parent"

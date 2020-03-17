@@ -39,24 +39,23 @@
 
             <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/textView_league_name"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_normal"
                     android:ellipsize="end"
                     android:text="@{leagueResponse.league.name}"
-                    android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="@dimen/header_six"
                     app:layout_constraintStart_toEndOf="@id/imageView_league_logo"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Premier League" />
 
             <com.google.android.material.textview.MaterialTextView
+                    style="@style/TextAppearance.MaterialComponents.Body2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_normal"
                     android:text="@{leagueResponse.country.name}"
-                    android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="@dimen/body_two"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/imageView_league_logo"
                     app:layout_constraintTop_toBottomOf="@id/textView_league_name"
                     tools:text="England" />

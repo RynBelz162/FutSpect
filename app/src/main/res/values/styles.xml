@@ -12,8 +12,7 @@
         <item name="iconTint">?attr/colorPrimary</item>
     </style>
 
-    <style name="Widget.FutSpect.TitleHeader" parent="Widget.MaterialComponents.TextView">
-        <item name="android:textSize">@dimen/header_four</item>
+    <style name="Widget.FutSpect.TitleHeader" parent="TextAppearance.MaterialComponents.Headline4">
         <item name="android:layout_margin">@dimen/margin_normal</item>
     </style>
 

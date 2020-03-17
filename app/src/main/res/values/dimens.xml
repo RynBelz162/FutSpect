@@ -3,13 +3,6 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <!--all text-->
-    <dimen name="header_six">20sp</dimen>
-    <dimen name="header_four">34sp</dimen>
-    <dimen name="header_three">48sp</dimen>
-    <dimen name="body">16sp</dimen>
-    <dimen name="body_two">14sp</dimen>
-
     <!--all margin-->
     <dimen name="margin_small">8dp</dimen>
     <dimen name="margin_normal">16dp</dimen>

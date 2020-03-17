@@ -3,20 +3,20 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/colorSurface"
         android:orientation="horizontal"
         android:paddingStart="@dimen/view_table_accent_width"
         android:paddingTop="@dimen/padding_small"
         android:paddingEnd="@dimen/padding_small"
-        android:paddingBottom="@dimen/padding_small"
-        android:background="?attr/colorSurface">
+        android:paddingBottom="@dimen/padding_small">
 
     <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textView_header_rank"
+            style="@style/TextAppearance.MaterialComponents.Body1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/table_header_rank"
-            android:textSize="@dimen/body"
             app:layout_constraintEnd_toStartOf="@+id/textView_header_name"
             app:layout_constraintHorizontal_weight="1.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -24,10 +24,10 @@
 
     <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textView_header_name"
+            style="@style/TextAppearance.MaterialComponents.Body1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/table_header_team"
-            android:textSize="@dimen/body"
             app:layout_constraintEnd_toStartOf="@+id/textView_header_wins"
             app:layout_constraintHorizontal_weight="10"
             app:layout_constraintStart_toEndOf="@+id/textView_header_rank"
@@ -35,10 +35,10 @@
 
     <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textView_header_wins"
+            style="@style/TextAppearance.MaterialComponents.Body1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/table_header_win"
-            android:textSize="@dimen/body"
             app:layout_constraintEnd_toStartOf="@+id/textView_header_draws"
             app:layout_constraintHorizontal_weight="1.5"
             app:layout_constraintStart_toEndOf="@+id/textView_header_name"
@@ -46,10 +46,10 @@
 
     <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textView_header_draws"
+            style="@style/TextAppearance.MaterialComponents.Body1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/table_header_draw"
-            android:textSize="@dimen/body"
             app:layout_constraintEnd_toStartOf="@+id/textView_header_losses"
             app:layout_constraintHorizontal_weight="1.5"
             app:layout_constraintStart_toEndOf="@+id/textView_header_wins"
@@ -57,10 +57,10 @@
 
     <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textView_header_losses"
+            style="@style/TextAppearance.MaterialComponents.Body1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/table_header_loss"
-            android:textSize="@dimen/body"
             app:layout_constraintEnd_toStartOf="@+id/textView_header_points"
             app:layout_constraintHorizontal_weight="1.5"
             app:layout_constraintStart_toEndOf="@+id/textView_header_draws"
@@ -68,11 +68,11 @@
 
     <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textView_header_points"
+            style="@style/TextAppearance.MaterialComponents.Body1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="start"
             android:text="@string/table_header_points"
-            android:textSize="@dimen/body"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toEndOf="@+id/textView_header_losses"

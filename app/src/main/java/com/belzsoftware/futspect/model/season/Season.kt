@@ -9,7 +9,7 @@ import java.util.*
 @JsonClass(generateAdapter = true)
 data class Season(
     val year: Int,
-    val start: Date,
-    val end: Date,
+    val start: Date?,
+    val end: Date?,
     val current: Boolean
 ) : Parcelable
