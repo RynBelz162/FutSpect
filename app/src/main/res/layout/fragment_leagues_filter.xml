@@ -5,6 +5,35 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_leagueFulters_close"
+                style="@style/Widget.Futspect.Button.Muted"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                app:icon="@drawable/ic_close"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp" />
+
+        <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+        <com.google.android.material.button.MaterialButton
+                style="@style/Widget.Futspect.Button.Muted"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_weight=".4"
+                android:text="@string/league_filter_reset" />
+    </LinearLayout>
+
     <com.google.android.material.textview.MaterialTextView
             style="@style/TextAppearance.MaterialComponents.Headline6"
             android:layout_width="wrap_content"
@@ -21,13 +50,13 @@
             android:layout_marginEnd="@dimen/margin_normal">
 
         <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Filter"
+                style="@style/Widget.FutSpect.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/league_chip_filter_league" />
 
         <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Filter"
+                style="@style/Widget.FutSpect.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/league_chip_filter_cup" />
@@ -39,17 +68,24 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_normal"
             android:hint="@string/league_filter_search_hint"
-            app:endIconMode="clear_text">
+            app:boxStrokeColor="?attr/colorAccent"
+            app:endIconMode="clear_text"
+            app:hintTextColor="?attr/colorAccent">
 
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:textCursorDrawable="@null" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:id="@+id/button_leagueFilters_apply"
+            style="@style/Widget.MaterialComponents.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_normal"
             android:text="@string/league_filter_apply" />
 
 </LinearLayout>

@@ -12,8 +12,20 @@
         <item name="iconTint">?attr/colorPrimary</item>
     </style>
 
+    <style name="Widget.Futspect.Button.Muted" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="iconTint">?attr/colorOnBackground</item>
+        <item name="android:textColor">?attr/colorOnBackground</item>
+        <item name="rippleColor">?attr/colorOnBackground</item>
+    </style>
+
     <style name="Widget.FutSpect.TitleHeader" parent="TextAppearance.MaterialComponents.Headline4">
         <item name="android:layout_margin">@dimen/margin_normal</item>
+    </style>
+
+    <style name="Widget.FutSpect.Chip.Filter" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="chipBackgroundColor">@color/bg_chip_filter_state_list</item>
+        <item name="checkedIcon">@drawable/ic_check_white</item>
+        <item name="android:textColor">@android:color/white</item>
     </style>
 
 </resources>

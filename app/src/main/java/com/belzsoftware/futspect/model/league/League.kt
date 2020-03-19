@@ -12,7 +12,7 @@ data class League(
     val type: String = "",
     val logo: String? = "",
     val country: String = "",
-    val flag: String = "",
+    val flag: String? = "",
     val season: Int = 0,
     val round: String = ""
 ) : Parcelable

@@ -30,7 +30,7 @@
 
     <!--    Leagues-->
     <string name="league_filter_search_hint">Search</string>
-    <string name="league_filter_clear">Clear</string>
+    <string name="league_filter_reset">Reset</string>
     <string name="league_chip_filter_league">League</string>
     <string name="league_chip_filter_cup">Cup</string>
     <string name="league_filter_apply">Apply</string>
