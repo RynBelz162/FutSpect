@@ -2,6 +2,7 @@ package com.belzsoftware.futspect.ui.leagues
 
 import androidx.lifecycle.ViewModel
 import com.belzsoftware.futspect.di.ViewModelKey
+import com.belzsoftware.futspect.ui.leagues.filter.LeagueFilterBottomSheetModalFragment
 import com.belzsoftware.futspect.ui.leagues.table.TableFragment
 import com.belzsoftware.futspect.ui.leagues.table.TableViewModel
 import dagger.Binds
@@ -13,18 +14,21 @@ import dagger.multibindings.IntoMap
 abstract class LeaguesModule {
 
     @ContributesAndroidInjector
-    abstract fun contributesLeaguesFragment() : LeaguesFragment
+    abstract fun contributesLeaguesFragment(): LeaguesFragment
 
     @Binds
     @IntoMap
     @ViewModelKey(LeaguesViewModel::class)
-    abstract fun bindLeaguesViewModel(viewModel: LeaguesViewModel) : ViewModel
+    abstract fun bindLeaguesViewModel(viewModel: LeaguesViewModel): ViewModel
 
     @ContributesAndroidInjector
-    abstract fun contributesTableFragment() : TableFragment
+    abstract fun contributesTableFragment(): TableFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributesLeagueFilterBottomSheetFragment(): LeagueFilterBottomSheetModalFragment
 
     @Binds
     @IntoMap
     @ViewModelKey(TableViewModel::class)
-    abstract fun bindTableViewModel(viewModel: TableViewModel) : ViewModel
+    abstract fun bindTableViewModel(viewModel: TableViewModel): ViewModel
 }

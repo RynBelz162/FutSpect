@@ -12,6 +12,7 @@ class FixturesViewModel @Inject constructor(
     fixturesRepository: FixturesRepository
 ) : ViewModel() {
 
-    val fixtures: LiveData<Result<ApiCall<List<FixtureResponse>>>> = fixturesRepository.getFixtures(262)
+    val fixtures: LiveData<Result<ApiCall<List<FixtureResponse>>>> =
+        fixturesRepository.getFixtures(262)
 
 }

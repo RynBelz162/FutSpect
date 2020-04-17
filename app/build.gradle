@@ -93,6 +93,8 @@ dependencies {
     implementation "io.coil-kt:coil:$coilVersion"
     implementation "io.coil-kt:coil-svg:$coilVersion"
 
+    // Timber
+    implementation "com.jakewharton.timber:timber:$timberVersion"
 
     // Local unit tests
     testImplementation 'junit:junit:4.13'

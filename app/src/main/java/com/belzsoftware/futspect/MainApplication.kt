@@ -11,11 +11,13 @@ import com.belzsoftware.futspect.util.NIGHT_MODE_PREF
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 import okhttp3.OkHttpClient
+import timber.log.Timber
 
 class MainApplication : DaggerApplication() {
 
     override fun onCreate() {
         super.onCreate()
+        setUpTimber()
         setNightMode()
         setUpCoil()
     }
@@ -47,5 +49,13 @@ class MainApplication : DaggerApplication() {
                 placeholder(R.drawable.ic_loop)
             }
         }
+    }
+
+    private fun setUpTimber() {
+        if (!BuildConfig.DEBUG) {
+            return
+        }
+
+        Timber.plant(Timber.DebugTree())
     }
 }
