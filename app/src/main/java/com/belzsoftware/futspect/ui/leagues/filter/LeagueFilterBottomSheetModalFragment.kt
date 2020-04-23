@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.belzsoftware.futspect.R
-import com.belzsoftware.futspect.ui.leagues.LeaguesViewModel
+import com.belzsoftware.futspect.databinding.FragmentLeaguesFilterBinding
 import com.belzsoftware.futspect.util.viewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.android.support.AndroidSupportInjection
@@ -19,7 +19,8 @@ class LeagueFilterBottomSheetModalFragment : BottomSheetDialogFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    private lateinit var leaguesViewModel: LeaguesViewModel
+    private lateinit var leagueFilterViewModel: LeagueFilterViewModel
+    private lateinit var binding: FragmentLeaguesFilterBinding;
 
     override fun onAttach(context: Context) {
         AndroidSupportInjection.inject(this)
@@ -31,17 +32,24 @@ class LeagueFilterBottomSheetModalFragment : BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        leaguesViewModel = viewModelProvider(viewModelFactory)
+        leagueFilterViewModel = viewModelProvider(viewModelFactory)
 
-        return inflater.inflate(R.layout.fragment_leagues_filter, container, false)
+        binding = FragmentLeaguesFilterBinding.inflate(inflater, container, false).apply {
+            viewModel = leagueFilterViewModel
+            lifecycleOwner = viewLifecycleOwner
+        }
+
+        leagueFilterViewModel.navigateToLeagues.observe(viewLifecycleOwner, Observer {
+            it.getContentIfNotHandled()?.let {
+                closeSheet()
+            }
+        })
+
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        button_leagueFilters_apply.setOnClickListener {
-            closeSheet()
-        }
 
         button_leagueFulters_close.setOnClickListener {
             closeSheet()
