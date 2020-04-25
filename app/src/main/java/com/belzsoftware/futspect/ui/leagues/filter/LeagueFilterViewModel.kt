@@ -3,18 +3,30 @@ package com.belzsoftware.futspect.ui.leagues.filter
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.belzsoftware.futspect.data.league.LeaguesRepository
+import com.belzsoftware.futspect.entity.league.LeagueFilters
 import com.belzsoftware.futspect.util.Event
-import timber.log.Timber
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class LeagueFilterViewModel @Inject constructor() : ViewModel() {
-    val isLeagueChecked = MutableLiveData(true)
-    val isCupChecked = MutableLiveData(true)
-    val searchTerm = MutableLiveData("Hello")
+class LeagueFilterViewModel @Inject constructor(
+    private val leaguesRepository: LeaguesRepository
+) : ViewModel() {
+    val isLeagueChecked = MutableLiveData<Boolean>()
+    val isCupChecked = MutableLiveData<Boolean>()
+    val searchTerm = MutableLiveData<String>()
 
     private val _navigateToLeagues = MutableLiveData<Event<String>>()
     val navigateToLeagues: LiveData<Event<String>>
         get() = _navigateToLeagues
+
+    init {
+        viewModelScope.launch {
+            val filters = leaguesRepository.getFilters()
+            setFilters(filters)
+        }
+    }
 
     fun clearFilters() {
         isLeagueChecked.value = false
@@ -23,8 +35,21 @@ class LeagueFilterViewModel @Inject constructor() : ViewModel() {
     }
 
     fun apply() {
-        // save selections
-        Timber.i("Saved")
+        viewModelScope.launch {
+            val filters = LeagueFilters(
+                searchTerm = searchTerm.value ?: "",
+                isLeagueChecked = isLeagueChecked.value ?: false,
+                isCupChecked = isCupChecked.value ?: false
+            )
+            leaguesRepository.saveFilters(filters)
+        }
+
         _navigateToLeagues.value = Event("Navigate")
+    }
+
+    private fun setFilters(filters: LeagueFilters) {
+        isLeagueChecked.value = filters.isLeagueChecked
+        isCupChecked.value = filters.isCupChecked
+        searchTerm.value = filters.searchTerm
     }
 }

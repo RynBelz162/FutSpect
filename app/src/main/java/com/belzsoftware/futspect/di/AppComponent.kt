@@ -15,12 +15,13 @@ import javax.inject.Singleton
         ViewModelModule::class,
         AppModule::class,
         FootballApiModule::class,
-        DataModule::class
+        DataModule::class,
+        DatabaseModule::class
     ]
 )
 interface AppComponent : AndroidInjector<MainApplication> {
     @Component.Factory
     interface Factory {
-        fun create(@BindsInstance application: MainApplication) : AppComponent
+        fun create(@BindsInstance application: MainApplication): AppComponent
     }
 }
