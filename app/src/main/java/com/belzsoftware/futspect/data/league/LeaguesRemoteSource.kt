@@ -6,8 +6,8 @@ import javax.inject.Inject
 
 class LeaguesRemoteSource @Inject constructor(private val service: FootballApiService) {
 
-    suspend fun fetchLeagues() =
-        getResult { service.getLeaguesAsync() }
+    suspend fun filterLeagues(search: String?) =
+        getResult { service.filterLeaguesAsync(search) }
 
     suspend fun fetchTable(leagueId: Int) =
         getResult { service.getStandingsForLeagueAsync(2019, leagueId) }

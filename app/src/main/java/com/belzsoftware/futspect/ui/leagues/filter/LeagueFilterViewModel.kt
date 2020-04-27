@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.belzsoftware.futspect.data.league.LeaguesRepository
 import com.belzsoftware.futspect.entity.league.LeagueFilters
 import com.belzsoftware.futspect.util.Event
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -23,7 +24,10 @@ class LeagueFilterViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            val filters = leaguesRepository.getFilters()
+            val filters = leaguesRepository
+                .getFilters()
+                .first()
+
             setFilters(filters)
         }
     }

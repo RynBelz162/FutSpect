@@ -11,7 +11,9 @@ import retrofit2.http.Query
 interface FootballApiService {
 
     @GET("leagues")
-    suspend fun getLeaguesAsync(): Response<ApiCall<List<LeagueResponse>>>
+    suspend fun filterLeaguesAsync(
+        @Query("search") search: String?
+    ): Response<ApiCall<List<LeagueResponse>>>
 
     @GET("fixtures")
     suspend fun getFixturesForLeagueAndDateAsync(

@@ -2,8 +2,6 @@ package com.belzsoftware.futspect.data.league
 
 import com.belzsoftware.futspect.entity.league.LeagueFilters
 import com.belzsoftware.futspect.util.resultLiveData
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -13,15 +11,13 @@ class LeaguesRepository @Inject constructor(
     private val leaguesDao: LeaguesDao
 ) {
 
-    fun getLeagues() =
-        resultLiveData { remoteSource.fetchLeagues() }
+    fun filterLeaguesAsync(search: String?) =
+        resultLiveData { remoteSource.filterLeagues(search) }
 
     fun getTable(leagueId: Int) =
         resultLiveData { remoteSource.fetchTable(leagueId) }
 
-    suspend fun getFilters() = withContext(Dispatchers.IO) {
-        leaguesDao.getLeagueFilters()
-    }
+    fun getFilters() = leaguesDao.getLeagueFilters()
 
     suspend fun saveFilters(filters: LeagueFilters) = leaguesDao.insert(filters)
 }
