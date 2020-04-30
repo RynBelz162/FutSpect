@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 interface LeaguesDao {
 
     @Query("SELECT * FROM ${LeagueFilters.TABLE_NAME} LIMIT 1")
-    fun getLeagueFilters(): Flow<LeagueFilters>
+    fun getLeagueFilters(): Flow<LeagueFilters?>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(filters: LeagueFilters)

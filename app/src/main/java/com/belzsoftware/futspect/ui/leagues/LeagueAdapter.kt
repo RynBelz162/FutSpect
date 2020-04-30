@@ -38,7 +38,9 @@ class LeagueViewHolder(private val binding: ViewDataBinding) :
     private fun createOnClickListener(leagueResponse: LeagueResponse): View.OnClickListener {
         return View.OnClickListener {
             val direction =
-                LeaguesFragmentDirections.actionNavigationTablesToTableStandingFragment(leagueResponse)
+                LeaguesFragmentDirections.actionNavigationTablesToTableStandingFragment(
+                    leagueResponse
+                )
             it.findNavController().navigate(direction)
 
         }
@@ -49,5 +51,6 @@ class LeagueDiff : DiffUtil.ItemCallback<LeagueResponse>() {
     override fun areItemsTheSame(oldItem: LeagueResponse, newItem: LeagueResponse): Boolean =
         oldItem.league.id == newItem.league.id
 
-    override fun areContentsTheSame(oldItem: LeagueResponse, newItem: LeagueResponse): Boolean = oldItem == newItem
+    override fun areContentsTheSame(oldItem: LeagueResponse, newItem: LeagueResponse): Boolean =
+        oldItem == newItem
 }

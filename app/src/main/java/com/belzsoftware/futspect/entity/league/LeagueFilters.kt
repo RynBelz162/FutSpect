@@ -8,7 +8,7 @@ import com.belzsoftware.futspect.entity.league.LeagueFilters.Companion.TABLE_NAM
 data class LeagueFilters(
     @PrimaryKey
     val id: Int = 1,
-    val searchTerm: String,
+    val searchTerm: String?,
     val isLeagueChecked: Boolean,
     val isCupChecked: Boolean
 ) {

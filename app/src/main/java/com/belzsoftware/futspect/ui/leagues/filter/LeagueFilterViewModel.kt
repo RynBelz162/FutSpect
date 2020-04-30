@@ -28,6 +28,7 @@ class LeagueFilterViewModel @Inject constructor(
                 .getFilters()
                 .first()
 
+            filters ?: return@launch
             setFilters(filters)
         }
     }
@@ -40,8 +41,14 @@ class LeagueFilterViewModel @Inject constructor(
 
     fun apply() {
         viewModelScope.launch {
+
+            var finalSearchTerm: String? = searchTerm.value
+            if (searchTerm.value.isNullOrBlank() || searchTerm.value.isNullOrEmpty()) {
+                finalSearchTerm = null
+            }
+
             val filters = LeagueFilters(
-                searchTerm = searchTerm.value ?: "",
+                searchTerm = finalSearchTerm,
                 isLeagueChecked = isLeagueChecked.value ?: false,
                 isCupChecked = isCupChecked.value ?: false
             )
