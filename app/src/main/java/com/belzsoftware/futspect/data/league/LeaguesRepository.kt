@@ -4,7 +4,6 @@ import com.belzsoftware.futspect.entity.league.LeagueFilters
 import com.belzsoftware.futspect.model.shared.Result
 import com.belzsoftware.futspect.util.resultLiveData
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -17,7 +16,6 @@ class LeaguesRepository @Inject constructor(
     private val leaguesDao: LeaguesDao
 ) {
 
-    @ExperimentalCoroutinesApi
     fun filterLeaguesAsync() = flow {
         emit(Result.Loading())
 

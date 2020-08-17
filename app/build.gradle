@@ -10,7 +10,7 @@ apply plugin: 'androidx.navigation.safeargs.kotlin'
 
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -41,6 +41,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+        freeCompilerArgs += ["-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi"]
     }
     sourceSets { main { java.srcDirs = ['src/main/java'] } }
     packagingOptions {

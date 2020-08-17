@@ -7,7 +7,7 @@ import java.util.*
 @JsonClass(generateAdapter = true)
 data class Fixture(
     val id: Int,
-    val venue: String?,
+    val venue: Venue,
     val referee: String?,
     val timezone: String,
     val date: Date,
