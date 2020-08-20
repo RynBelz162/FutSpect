@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.NavigationUI
@@ -18,18 +18,16 @@ import com.belzsoftware.futspect.ui.shared.HeaderItemDecoration
 import com.belzsoftware.futspect.util.createLongSnackbar
 import com.belzsoftware.futspect.util.hideView
 import com.belzsoftware.futspect.util.showView
-import com.belzsoftware.futspect.util.viewModelProvider
-import dagger.android.support.DaggerFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_table.*
-import javax.inject.Inject
 
-class TableFragment : DaggerFragment() {
+@AndroidEntryPoint
+class TableFragment : Fragment() {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-    private lateinit var tableViewModel: TableViewModel
     private lateinit var binding: FragmentTableBinding
+
     private val tableAdapter = TableAdapter()
+    private val tableViewModel: TableViewModel by viewModels()
     private val args: TableFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -37,7 +35,6 @@ class TableFragment : DaggerFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        tableViewModel = viewModelProvider(viewModelFactory)
 
         binding = FragmentTableBinding.inflate(inflater, container, false).apply {
             viewModel = tableViewModel
@@ -70,7 +67,7 @@ class TableFragment : DaggerFragment() {
     private fun setUpViewModel() {
         tableViewModel.setLeagueId(args.leagueResponse.league)
 
-        tableViewModel.standings.observe(viewLifecycleOwner, Observer { result ->
+        tableViewModel.standings.observe(viewLifecycleOwner, { result ->
             when (result) {
                 is Result.Loading -> progressbar_table.showView()
                 is Result.Success -> {

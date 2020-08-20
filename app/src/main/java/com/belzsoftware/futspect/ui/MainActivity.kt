@@ -1,6 +1,7 @@
 package com.belzsoftware.futspect.ui
 
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI.onNavDestinationSelected
@@ -8,19 +9,17 @@ import androidx.navigation.ui.setupWithNavController
 import com.belzsoftware.futspect.R
 import com.belzsoftware.futspect.util.hideView
 import com.belzsoftware.futspect.util.showView
-import dagger.android.AndroidInjection
-import dagger.android.support.DaggerAppCompatActivity
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : DaggerAppCompatActivity() {
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity() {
 
     private val navController: NavController by lazy {
         findNavController(R.id.nav_host_fragment)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
-
         setTheme(R.style.Theme_FutSpect)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

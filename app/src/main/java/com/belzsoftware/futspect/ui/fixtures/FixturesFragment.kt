@@ -4,25 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.belzsoftware.futspect.databinding.FragmentFixturesBinding
 import com.belzsoftware.futspect.model.shared.Result
 import com.belzsoftware.futspect.util.createLongSnackbar
 import com.belzsoftware.futspect.util.hideView
 import com.belzsoftware.futspect.util.showView
-import com.belzsoftware.futspect.util.viewModelProvider
-import dagger.android.support.DaggerFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_fixtures.*
-import javax.inject.Inject
 
-class FixturesFragment : DaggerFragment() {
+@AndroidEntryPoint
+class FixturesFragment : Fragment() {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-    private lateinit var fixturesViewModel: FixturesViewModel
     private lateinit var binding: FragmentFixturesBinding
+
+    private val fixturesViewModel: FixturesViewModel by viewModels()
     private val fixturesAdapter = FixturesAdapter()
 
     override fun onCreateView(
@@ -30,14 +28,12 @@ class FixturesFragment : DaggerFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        fixturesViewModel = viewModelProvider(viewModelFactory)
-
         binding = FragmentFixturesBinding.inflate(inflater, container, false).apply {
             viewModel = fixturesViewModel
             lifecycleOwner = viewLifecycleOwner
         }
 
-        fixturesViewModel.fixtures.observe(viewLifecycleOwner, Observer { result ->
+        fixturesViewModel.fixtures.observe(viewLifecycleOwner, { result ->
             when (result) {
                 is Result.Loading -> progressbar_fixtures.showView()
                 is Result.Success -> {

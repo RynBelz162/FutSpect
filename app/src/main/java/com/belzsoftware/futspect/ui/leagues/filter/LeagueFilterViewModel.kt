@@ -1,5 +1,6 @@
 package com.belzsoftware.futspect.ui.leagues.filter
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,9 +10,8 @@ import com.belzsoftware.futspect.entity.league.LeagueFilters
 import com.belzsoftware.futspect.util.Event
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-class LeagueFilterViewModel @Inject constructor(
+class LeagueFilterViewModel @ViewModelInject constructor(
     private val leaguesRepository: LeaguesRepository
 ) : ViewModel() {
     val isLeagueChecked = MutableLiveData<Boolean>()

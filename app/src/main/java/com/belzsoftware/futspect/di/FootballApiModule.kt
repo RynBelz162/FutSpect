@@ -8,6 +8,8 @@ import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -16,6 +18,7 @@ import java.util.*
 import javax.inject.Singleton
 
 @Module
+@InstallIn(ApplicationComponent::class)
 class FootballApiModule {
 
     @Provides

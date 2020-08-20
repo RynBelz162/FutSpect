@@ -1,28 +1,24 @@
 package com.belzsoftware.futspect
 
+import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
 import coil.ImageLoader
 import coil.ImageLoaderFactory
 import coil.decode.SvgDecoder
 import coil.util.CoilUtils
-import com.belzsoftware.futspect.di.DaggerAppComponent
 import com.belzsoftware.futspect.util.NIGHT_MODE_PREF
-import dagger.android.AndroidInjector
-import dagger.android.DaggerApplication
+import dagger.hilt.android.HiltAndroidApp
 import okhttp3.OkHttpClient
 import timber.log.Timber
 
-class MainApplication : DaggerApplication(), ImageLoaderFactory {
+@HiltAndroidApp
+class MainApplication : Application(), ImageLoaderFactory {
 
     override fun onCreate() {
         super.onCreate()
         setUpTimber()
         setNightMode()
-    }
-
-    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
-        return DaggerAppComponent.factory().create(this)
     }
 
     override fun newImageLoader(): ImageLoader {

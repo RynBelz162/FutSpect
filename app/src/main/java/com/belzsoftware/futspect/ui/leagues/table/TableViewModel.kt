@@ -1,5 +1,6 @@
 package com.belzsoftware.futspect.ui.leagues.table
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,9 +11,8 @@ import com.belzsoftware.futspect.model.shared.ApiCall
 import com.belzsoftware.futspect.model.shared.Result
 import com.belzsoftware.futspect.model.standings.StandingResponse
 import com.belzsoftware.futspect.util.defaultResult
-import javax.inject.Inject
 
-class TableViewModel @Inject constructor(
+class TableViewModel @ViewModelInject constructor(
     private val leaguesRepository: LeaguesRepository
 ) : ViewModel() {
 

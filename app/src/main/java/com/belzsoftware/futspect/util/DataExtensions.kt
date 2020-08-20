@@ -1,15 +1,11 @@
 package com.belzsoftware.futspect.util
 
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.liveData
 import com.belzsoftware.futspect.model.shared.Result
 import kotlinx.coroutines.Dispatchers
 import retrofit2.Response
-
-inline fun <reified VM : ViewModel> Fragment.viewModelProvider(
-    provider: ViewModelProvider.Factory
-) =
-    ViewModelProvider(this, provider).get(VM::class.java)
 
 fun <T> resultLiveData(networkCall: suspend () -> Result<T>): LiveData<Result<T>> =
     liveData(Dispatchers.IO) {

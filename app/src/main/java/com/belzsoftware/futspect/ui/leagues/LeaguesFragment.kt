@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.belzsoftware.futspect.databinding.FragmentLeaguesBinding
@@ -13,17 +13,15 @@ import com.belzsoftware.futspect.model.shared.Result
 import com.belzsoftware.futspect.util.createLongSnackbar
 import com.belzsoftware.futspect.util.hideView
 import com.belzsoftware.futspect.util.showView
-import com.belzsoftware.futspect.util.viewModelProvider
-import dagger.android.support.DaggerFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_leagues.*
-import javax.inject.Inject
 
-class LeaguesFragment : DaggerFragment() {
+@AndroidEntryPoint
+class LeaguesFragment : Fragment() {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-    private lateinit var leaguesViewModel: LeaguesViewModel
     private lateinit var binding: FragmentLeaguesBinding
+
+    private val leaguesViewModel: LeaguesViewModel by viewModels()
     private val leagueAdapter = LeagueAdapter()
 
     override fun onCreateView(
@@ -31,14 +29,13 @@ class LeaguesFragment : DaggerFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        leaguesViewModel = viewModelProvider(viewModelFactory)
 
         binding = FragmentLeaguesBinding.inflate(inflater, container, false).apply {
             viewModel = leaguesViewModel
             lifecycleOwner = viewLifecycleOwner
         }
 
-        leaguesViewModel.leagues.observe(viewLifecycleOwner, Observer { result ->
+        leaguesViewModel.leagues.observe(viewLifecycleOwner, { result ->
             when (result) {
                 is Result.Loading -> {
                     progressbar_leagues.showView()
