@@ -6,10 +6,14 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.belzsoftware.futspect.data.FutspectDatabase.Companion.DB_VERSION
 import com.belzsoftware.futspect.data.league.LeaguesDao
+import com.belzsoftware.futspect.entity.league.LeagueEntity
 import com.belzsoftware.futspect.entity.league.LeagueFilters
 
 @Database(
-    entities = [LeagueFilters::class],
+    entities = [
+        LeagueFilters::class,
+        LeagueEntity::class
+    ],
     version = DB_VERSION
 )
 abstract class FutspectDatabase : RoomDatabase() {

@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.belzsoftware.futspect.entity.league.LeagueEntity
 import com.belzsoftware.futspect.entity.league.LeagueFilters
 import kotlinx.coroutines.flow.Flow
 
@@ -14,5 +15,11 @@ interface LeaguesDao {
     fun getLeagueFilters(): Flow<LeagueFilters?>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(filters: LeagueFilters)
+    suspend fun insertFilters(filters: LeagueFilters)
+
+    @Insert(onConflict =  OnConflictStrategy.REPLACE)
+    suspend fun insertLeagues(leagues: List<LeagueEntity>)
+
+    @Query("SELECT * FROM ${LeagueEntity.TABLE_NAME}")
+    fun getLeagues(): Flow<List<LeagueEntity>>
 }
