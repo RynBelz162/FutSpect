@@ -16,7 +16,11 @@
     </fragment>
     <fragment android:id="@+id/navigation_fixtures"
               android:name="com.belzsoftware.futspect.ui.fixtures.FixturesFragment"
-              android:label="fragment_fixtures" tools:layout="@layout/fragment_fixtures"/>
+              android:label="fragment_fixtures" tools:layout="@layout/fragment_fixtures">
+        <action
+                android:id="@+id/action_navigation_fixtures_to_fixtureInfoFragment"
+                app:destination="@id/fixtureInfoFragment" />
+    </fragment>
     <fragment android:id="@+id/navigation_more" android:name="com.belzsoftware.futspect.ui.more.MoreFragment"
               android:label="fragment_more" tools:layout="@layout/fragment_more"/>
     <fragment
@@ -32,4 +36,12 @@
             android:id="@+id/navigation_league_filters"
             android:name="com.belzsoftware.futspect.ui.leagues.filter.LeagueFilterBottomSheetModalFragment"
             android:label="LeagueFilterBottomSheetModalFragment" />
+    <fragment
+            android:id="@+id/fixtureInfoFragment"
+            android:name="com.belzsoftware.futspect.ui.fixtures.info.FixtureInfoFragment"
+            android:label="FixtureInfoFragment" >
+        <argument
+                android:name="fixtureId"
+                app:argType="integer" />
+    </fragment>
 </navigation>

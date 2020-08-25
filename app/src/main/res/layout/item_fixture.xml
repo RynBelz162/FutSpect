@@ -8,6 +8,10 @@
         <variable
                 name="fixtureResponse"
                 type="com.belzsoftware.futspect.model.fixture.FixtureResponse" />
+
+        <variable
+                name="clickListener"
+                type="android.view.View.OnClickListener" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -16,7 +20,8 @@
             android:layout_marginStart="@dimen/margin_normal"
             android:layout_marginTop="@dimen/margin_small"
             android:layout_marginEnd="@dimen/margin_normal"
-            android:layout_marginBottom="@dimen/margin_small">
+            android:layout_marginBottom="@dimen/margin_small"
+            android:onClick="@{clickListener}">
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="fill_parent"

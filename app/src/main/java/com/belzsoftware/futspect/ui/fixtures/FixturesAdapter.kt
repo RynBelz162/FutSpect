@@ -1,9 +1,11 @@
 package com.belzsoftware.futspect.ui.fixtures
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -28,7 +30,15 @@ class FixturesAdapter : ListAdapter<FixtureResponse, FixtureViewHolder>(MatchDif
 class FixtureViewHolder(private val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
     fun bind(item: FixtureResponse) {
         binding.setVariable(BR.fixtureResponse, item)
+        binding.setVariable(BR.clickListener, createOnClickListener(item))
         binding.executePendingBindings()
+    }
+
+    private fun createOnClickListener(fixtureResponse: FixtureResponse): View.OnClickListener {
+        return View.OnClickListener {
+            val direction = FixturesFragmentDirections.actionNavigationFixturesToFixtureInfoFragment(fixtureResponse.fixture.id)
+            it.findNavController().navigate(direction)
+        }
     }
 }
 
