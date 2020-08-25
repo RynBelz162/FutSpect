@@ -21,5 +21,5 @@ interface LeaguesDao {
     suspend fun insertLeagues(leagues: List<LeagueEntity>)
 
     @Query("SELECT * FROM ${LeagueEntity.TABLE_NAME}")
-    fun getLeagues(): Flow<List<LeagueEntity>>
+    fun getLeagues(): List<LeagueEntity>
 }

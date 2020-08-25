@@ -28,21 +28,18 @@ class LeaguesRepository @Inject constructor(
         // when filters change reload data
         getFilters()
             .collect { filters ->
-                emit(Result.Loading())
 
-                leaguesDao.getLeagues()
-                    .collect CacheCollect@ {
+                val cachedLeagues = leaguesDao.getLeagues()
 
-                        if (it.isNotEmpty()) {
-                            val response = mapToResponse(it)
-                            emit(Result.Success(response))
-                            return@CacheCollect
-                        }
+                if (cachedLeagues.isNotEmpty()) {
+                    val response = mapToResponse(cachedLeagues)
+                    emit(Result.Success(response))
+                    return@collect
+                }
 
-                        val result = remoteSource.filterLeagues(filters?.searchTerm)
-                        cacheAllLeagues(result, filters)
-                        emit(result)
-                    }
+                val result = remoteSource.filterLeagues(filters?.searchTerm)
+                cacheAllLeagues(result, filters)
+                emit(result)
             }
 
     }.flowOn(Dispatchers.IO)
@@ -54,14 +51,17 @@ class LeaguesRepository @Inject constructor(
 
     suspend fun saveFilters(filters: LeagueFilters) = leaguesDao.insertFilters(filters)
 
-    private suspend fun cacheAllLeagues(result: Result<ApiCall<List<LeagueResponse>>>, filters: LeagueFilters? ) {
+    private suspend fun cacheAllLeagues(
+        result: Result<ApiCall<List<LeagueResponse>>>,
+        filters: LeagueFilters?
+    ) {
 
         if (!filters?.searchTerm.isNullOrEmpty() || result !is Result.Success) {
             return
         }
 
         val entities = result.data.response.map {
-            it.league.reverseMap()
+            it.reverseMap()
         }
 
         leaguesDao.insertLeagues(entities)
@@ -71,7 +71,7 @@ class LeaguesRepository @Inject constructor(
         val responses =
             entities.map { entity ->
                 LeagueResponse(entity.map(), entity.mapToCountry(), emptyList())
-        }
+            }
 
         return ApiCall(responses.count(), responses)
     }
