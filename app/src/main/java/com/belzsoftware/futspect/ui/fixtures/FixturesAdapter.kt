@@ -36,7 +36,7 @@ class FixtureViewHolder(private val binding: ViewDataBinding) : RecyclerView.Vie
 
     private fun createOnClickListener(fixtureResponse: FixtureResponse): View.OnClickListener {
         return View.OnClickListener {
-            val direction = FixturesFragmentDirections.actionNavigationFixturesToFixtureInfoFragment(fixtureResponse.fixture.id)
+            val direction = FixturesFragmentDirections.actionNavigationFixturesToFixtureInfoFragment(fixtureResponse)
             it.findNavController().navigate(direction)
         }
     }

@@ -23,7 +23,7 @@ class FixtureInfoFragment : Fragment(R.layout.fragment_fixture_info) {
         savedInstanceState: Bundle?
     ): View? {
 
-        fixtureInfoViewModel.setFixtureId(args.fixtureId)
+        fixtureInfoViewModel.setFixtureResponse(args.fixture)
 
         return super.onCreateView(inflater, container, savedInstanceState)
     }

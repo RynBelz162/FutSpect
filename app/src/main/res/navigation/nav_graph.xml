@@ -41,7 +41,7 @@
             android:name="com.belzsoftware.futspect.ui.fixtures.info.FixtureInfoFragment"
             android:label="FixtureInfoFragment" >
         <argument
-                android:name="fixtureId"
-                app:argType="integer" />
+                android:name="fixture"
+                app:argType="com.belzsoftware.futspect.model.fixture.FixtureResponse" />
     </fragment>
 </navigation>
