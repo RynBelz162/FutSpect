@@ -19,6 +19,8 @@
     <!--    Fixtures-->
     <string name="fixtures_vs">vs.</string>
     <string name="fixtures_dash">-</string>
+    <string name="fixtureInfo_title">Fixture</string>
+    <string name="fixtureInfo_events">Events</string>
 
     <!--    Table-->
     <string name="table_header_rank">#</string>

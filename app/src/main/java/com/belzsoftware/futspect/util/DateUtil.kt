@@ -15,3 +15,8 @@ fun getCurrentDateTimeString(format: String): String {
     val simpleDateFormatter = SimpleDateFormat(format, Locale.US)
     return simpleDateFormatter.format(Date())
 }
+
+fun Date.toFormattedString(format: String): String {
+    val dateFormat = SimpleDateFormat(format, Locale.US)
+    return dateFormat.format(this)
+}
