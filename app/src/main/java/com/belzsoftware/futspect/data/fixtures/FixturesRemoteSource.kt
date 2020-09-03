@@ -13,4 +13,8 @@ class FixturesRemoteSource @Inject constructor(private val service: FootballApiS
             2019
         )
     }
+
+    suspend fun getFixtureEvents(fixtureId: Int) = getResult {
+        service.getFixtureEventsAsync(fixtureId)
+    }
 }

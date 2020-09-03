@@ -1,5 +1,6 @@
 package com.belzsoftware.futspect.data.network
 
+import com.belzsoftware.futspect.model.fixture.Event
 import com.belzsoftware.futspect.model.fixture.FixtureResponse
 import com.belzsoftware.futspect.model.league.LeagueResponse
 import com.belzsoftware.futspect.model.shared.ApiCall
@@ -27,4 +28,9 @@ interface FootballApiService {
         @Query("season") season: Int,
         @Query("league") leagueId: Int
     ): Response<ApiCall<List<StandingResponse>>>
+
+    @GET("fixtures/events")
+    suspend fun getFixtureEventsAsync(
+        @Query("fixture") fixtureId: Int
+    ) : Response<ApiCall<List<Event>>>
 }

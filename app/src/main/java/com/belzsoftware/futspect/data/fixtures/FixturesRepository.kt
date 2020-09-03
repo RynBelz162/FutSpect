@@ -10,4 +10,6 @@ class FixturesRepository @Inject constructor(private val dataSource: FixturesRem
     fun getFixtures(leagueId: Int) =
         resultLiveData { dataSource.getFixtures(leagueId) }
 
+    fun getFixtureEvents(fixtureId: Int) =
+        resultLiveData { dataSource.getFixtureEvents(fixtureId) }
 }

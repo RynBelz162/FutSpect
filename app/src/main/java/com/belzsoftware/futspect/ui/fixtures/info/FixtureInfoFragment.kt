@@ -11,6 +11,10 @@ import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.NavigationUI
 import com.belzsoftware.futspect.R
 import com.belzsoftware.futspect.databinding.FragmentFixtureInfoBinding
+import com.belzsoftware.futspect.model.shared.Result
+import com.belzsoftware.futspect.util.createLongSnackbar
+import com.belzsoftware.futspect.util.hideView
+import com.belzsoftware.futspect.util.showView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_fixture_info.*
 
@@ -35,6 +39,19 @@ class FixtureInfoFragment : Fragment(R.layout.fragment_fixture_info) {
             viewModel = fixtureInfoViewModel
             lifecycleOwner = viewLifecycleOwner
         }
+
+        fixtureInfoViewModel.fixtureEvents.observe(viewLifecycleOwner, { result ->
+            when(result) {
+                is Result.Loading -> progressbar_fixtureInfo.showView()
+                is Result.Success -> {
+                    progressbar_fixtureInfo.hideView()
+                }
+                is Result.Error -> {
+                    progressbar_fixtureInfo.hideView()
+                    activity?.createLongSnackbar(result.message)
+                }
+            }
+        })
 
         return binding.root
     }

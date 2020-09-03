@@ -4,8 +4,6 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class Player(
-    val id: Int,
-    val name: String,
-    val position: String,
-    val shirtNumber: Int
+    val id: Int?,
+    val name: String?,
 )
