@@ -2,7 +2,15 @@ package com.belzsoftware.futspect.ui
 
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
+import com.belzsoftware.futspect.model.fixture.Venue
+import com.belzsoftware.futspect.ui.fixtures.info.setFixtureDatetime
+import com.belzsoftware.futspect.ui.fixtures.info.setVenue
+import com.google.android.material.textview.MaterialTextView
+import org.junit.Assert
 import org.junit.Before
+import org.junit.Test
+import java.time.LocalDateTime
+import java.time.Month
 
 class FixtureInfoAdapterTest {
     private lateinit var context: Context
@@ -12,12 +20,30 @@ class FixtureInfoAdapterTest {
         context = ApplicationProvider.getApplicationContext()
     }
 
-//    @Test
-//    fun setFixtureDatetime() {
-//        val view = MaterialTextView(context)
-//        val date = java.util.Calendar.se
-//
-//        setFixtureDatetime(view, date)
-//        Assert.assertEquals(view.visibility, View.VISIBLE)
-//    }
+    @Test
+    fun setFixtureDatetime_FebSixteen_ShowsFormattedDate() {
+        val view = MaterialTextView(context)
+        val date = LocalDateTime.of(2050, Month.FEBRUARY, 16, 12, 0)
+
+        setFixtureDatetime(view, date)
+        Assert.assertEquals(view.text, "Wed Feb 16, 2050. 12:00 PM")
+    }
+
+    @Test
+    fun setVenue_NameAndCity_ShowsBothFormatted() {
+        val view = MaterialTextView(context)
+        val venue = Venue(1000, "Emirates Stadium", "London")
+
+        setVenue(view, venue)
+        Assert.assertEquals(view.text, "Emirates Stadium, London")
+    }
+
+    @Test
+    fun setVenue_OnlyName_ShowsOnlyNameNoComma() {
+        val view = MaterialTextView(context)
+        val venue = Venue(1000, "Emirates Stadium", "")
+
+        setVenue(view, venue)
+        Assert.assertEquals(view.text, "Emirates Stadium")
+    }
 }

@@ -3,7 +3,6 @@ package com.belzsoftware.futspect.ui.fixtures.info
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.belzsoftware.futspect.R
-import com.belzsoftware.futspect.model.fixture.Event
 import com.belzsoftware.futspect.model.fixture.Venue
 import com.belzsoftware.futspect.util.EVENT_GOAL
 import com.belzsoftware.futspect.util.EVENT_RED_CARD
@@ -38,12 +37,12 @@ fun setVenue(textView: MaterialTextView, venue: Venue?) {
 }
 
 @BindingAdapter("setEventIcon")
-fun setEventIcon(imageView: ImageView, event: Event?) {
-    if (event == null) {
+fun setEventIcon(imageView: ImageView, eventType: String?) {
+    if (eventType == null) {
         return
     }
 
-    when (event.type) {
+    when (eventType) {
         EVENT_GOAL -> imageView.setImageResource(R.drawable.ic_soccer)
         EVENT_YELLOW_CARD, EVENT_RED_CARD -> imageView.setImageResource(R.drawable.ic_card)
         EVENT_SUBSTITUTION -> imageView.setImageResource(R.drawable.ic_swap)
