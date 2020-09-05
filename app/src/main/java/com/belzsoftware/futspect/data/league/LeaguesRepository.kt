@@ -5,10 +5,10 @@ import com.belzsoftware.futspect.entity.league.LeagueFilters
 import com.belzsoftware.futspect.model.league.LeagueResponse
 import com.belzsoftware.futspect.model.shared.ApiCall
 import com.belzsoftware.futspect.model.shared.Result
+import com.belzsoftware.futspect.util.extensions.resultLiveData
 import com.belzsoftware.futspect.util.mappers.map
 import com.belzsoftware.futspect.util.mappers.mapToCountry
 import com.belzsoftware.futspect.util.mappers.reverseMap
-import com.belzsoftware.futspect.util.resultLiveData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow

@@ -2,7 +2,7 @@ package com.belzsoftware.futspect.model.standings
 
 import com.belzsoftware.futspect.model.team.Team
 import com.squareup.moshi.JsonClass
-import java.util.*
+import java.time.LocalDateTime
 
 @JsonClass(generateAdapter = true)
 data class Standing(
@@ -17,5 +17,5 @@ data class Standing(
     val all: MatchesPlayed,
     val home: MatchesPlayed,
     val away: MatchesPlayed,
-    val update: Date
+    val update: LocalDateTime
 )

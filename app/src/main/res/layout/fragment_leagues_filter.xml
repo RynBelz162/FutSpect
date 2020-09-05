@@ -20,7 +20,7 @@
                 android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button_leagueFulters_close"
+                    android:id="@+id/button_leagueFilters_close"
                     style="@style/Widget.Futspect.Button.Muted"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

@@ -3,8 +3,9 @@ package com.belzsoftware.futspect.di
 import com.belzsoftware.futspect.data.network.FootballApiService
 import com.belzsoftware.futspect.util.BASE_FOOTBALL_URL
 import com.belzsoftware.futspect.util.FUTSPECT_API_KEY
+import com.belzsoftware.futspect.util.adapters.LocalDateAdapter
+import com.belzsoftware.futspect.util.adapters.LocalDateTimeAdapter
 import com.squareup.moshi.Moshi
-import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
@@ -14,7 +15,6 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import java.util.*
 import javax.inject.Singleton
 
 @Module
@@ -37,7 +37,8 @@ class FootballApiModule {
     internal fun providesMoshi(): Moshi {
 
         return Moshi.Builder()
-            .add(Date::class.java, Rfc3339DateJsonAdapter().nullSafe())
+            .add(LocalDateAdapter())
+            .add(LocalDateTimeAdapter())
             .add(KotlinJsonAdapterFactory())
             .build()
     }

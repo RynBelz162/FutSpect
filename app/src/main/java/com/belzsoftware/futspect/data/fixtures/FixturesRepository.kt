@@ -1,6 +1,6 @@
 package com.belzsoftware.futspect.data.fixtures
 
-import com.belzsoftware.futspect.util.resultLiveData
+import com.belzsoftware.futspect.util.extensions.resultLiveData
 import javax.inject.Inject
 import javax.inject.Singleton
 

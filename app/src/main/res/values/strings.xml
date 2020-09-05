@@ -21,6 +21,7 @@
     <string name="fixtures_dash">-</string>
     <string name="fixtureInfo_title">Fixture</string>
     <string name="fixtureInfo_events">Events</string>
+    <string name="fixtureEvent_contentDescription">Soccer Ball</string>
 
     <!--    Table-->
     <string name="table_header_rank">#</string>

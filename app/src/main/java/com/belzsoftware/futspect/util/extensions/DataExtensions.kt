@@ -1,4 +1,4 @@
-package com.belzsoftware.futspect.util
+package com.belzsoftware.futspect.util.extensions
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

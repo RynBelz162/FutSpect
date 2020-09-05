@@ -15,9 +15,9 @@ import com.belzsoftware.futspect.databinding.FragmentTableBinding
 import com.belzsoftware.futspect.model.shared.Result
 import com.belzsoftware.futspect.model.standings.DataItem
 import com.belzsoftware.futspect.ui.shared.HeaderItemDecoration
-import com.belzsoftware.futspect.util.createLongSnackbar
-import com.belzsoftware.futspect.util.hideView
-import com.belzsoftware.futspect.util.showView
+import com.belzsoftware.futspect.util.extensions.createLongSnackbar
+import com.belzsoftware.futspect.util.extensions.hideView
+import com.belzsoftware.futspect.util.extensions.showView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_table.*
 

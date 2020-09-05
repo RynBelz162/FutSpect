@@ -7,8 +7,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import com.belzsoftware.futspect.R
-import com.belzsoftware.futspect.util.hideView
-import com.belzsoftware.futspect.util.showView
+import com.belzsoftware.futspect.util.extensions.hideView
+import com.belzsoftware.futspect.util.extensions.showView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 

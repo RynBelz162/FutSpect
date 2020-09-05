@@ -1,4 +1,4 @@
-package com.belzsoftware.futspect.util
+package com.belzsoftware.futspect.util.extensions
 
 import android.content.Context
 import android.util.TypedValue

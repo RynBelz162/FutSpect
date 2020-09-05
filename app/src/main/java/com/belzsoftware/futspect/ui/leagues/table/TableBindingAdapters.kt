@@ -3,7 +3,7 @@ package com.belzsoftware.futspect.ui.leagues.table
 import android.view.View
 import androidx.databinding.BindingAdapter
 import com.belzsoftware.futspect.R
-import com.belzsoftware.futspect.util.getAttrColor
+import com.belzsoftware.futspect.util.extensions.getAttrColor
 
 private const val PROMOTION = "Promotion"
 private const val RELEGATION = "Relegation"

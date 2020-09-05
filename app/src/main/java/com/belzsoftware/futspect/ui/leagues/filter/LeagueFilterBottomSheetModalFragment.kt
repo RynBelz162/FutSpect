@@ -41,7 +41,7 @@ class LeagueFilterBottomSheetModalFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        button_leagueFulters_close.setOnClickListener {
+        button_leagueFilters_close.setOnClickListener {
             closeSheet()
         }
     }

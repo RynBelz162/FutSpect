@@ -10,7 +10,7 @@ import com.belzsoftware.futspect.model.league.League
 import com.belzsoftware.futspect.model.shared.ApiCall
 import com.belzsoftware.futspect.model.shared.Result
 import com.belzsoftware.futspect.model.standings.StandingResponse
-import com.belzsoftware.futspect.util.defaultResult
+import com.belzsoftware.futspect.util.extensions.defaultResult
 
 class TableViewModel @ViewModelInject constructor(
     private val leaguesRepository: LeaguesRepository

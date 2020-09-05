@@ -6,7 +6,7 @@ import android.view.View
 import androidx.test.core.app.ApplicationProvider
 import com.belzsoftware.futspect.R
 import com.belzsoftware.futspect.ui.leagues.table.rankColor
-import com.belzsoftware.futspect.util.getAttrColor
+import com.belzsoftware.futspect.util.extensions.getAttrColor
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -17,7 +17,7 @@ class TableAdapterTests {
 
     @Before
     fun setUpTheme() {
-        context = ApplicationProvider.getApplicationContext<Context>()
+        context = ApplicationProvider.getApplicationContext()
         context.setTheme(R.style.Theme_FutSpect)
     }
 

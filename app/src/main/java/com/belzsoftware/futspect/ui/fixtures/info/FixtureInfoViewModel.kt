@@ -10,7 +10,7 @@ import com.belzsoftware.futspect.model.fixture.Event
 import com.belzsoftware.futspect.model.fixture.FixtureResponse
 import com.belzsoftware.futspect.model.shared.ApiCall
 import com.belzsoftware.futspect.model.shared.Result
-import com.belzsoftware.futspect.util.defaultResult
+import com.belzsoftware.futspect.util.extensions.defaultResult
 
 class FixtureInfoViewModel @ViewModelInject constructor(
     private val fixturesRepository: FixturesRepository

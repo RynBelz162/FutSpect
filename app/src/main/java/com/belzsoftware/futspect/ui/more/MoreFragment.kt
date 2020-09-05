@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
 import com.belzsoftware.futspect.R
 import com.belzsoftware.futspect.util.NIGHT_MODE_PREF
-import com.belzsoftware.futspect.util.createLongSnackbar
+import com.belzsoftware.futspect.util.extensions.createLongSnackbar
 import kotlinx.android.synthetic.main.fragment_more.*
 
 class MoreFragment : Fragment() {
