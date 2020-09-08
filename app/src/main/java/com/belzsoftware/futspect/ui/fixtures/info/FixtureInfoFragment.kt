@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.NavigationUI
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.belzsoftware.futspect.R
 import com.belzsoftware.futspect.databinding.FragmentFixtureInfoBinding
 import com.belzsoftware.futspect.model.shared.Result
@@ -22,16 +23,21 @@ import kotlinx.android.synthetic.main.fragment_fixture_info.*
 class FixtureInfoFragment : Fragment(R.layout.fragment_fixture_info) {
 
     private lateinit var binding: FragmentFixtureInfoBinding
+    private lateinit var eventAdapter: FixtureInfoEventAdapter
 
     private val fixtureInfoViewModel: FixtureInfoViewModel by viewModels()
     private val args: FixtureInfoFragmentArgs by navArgs()
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        eventAdapter = FixtureInfoEventAdapter(
+            homeTeamId = args.fixture.teams.home.id,
+            awayTeamId = args.fixture.teams.away.id
+        )
 
         fixtureInfoViewModel.setFixtureResponse(args.fixture)
 
@@ -41,10 +47,11 @@ class FixtureInfoFragment : Fragment(R.layout.fragment_fixture_info) {
         }
 
         fixtureInfoViewModel.fixtureEvents.observe(viewLifecycleOwner, { result ->
-            when(result) {
+            when (result) {
                 is Result.Loading -> progressbar_fixtureInfo.showView()
                 is Result.Success -> {
                     progressbar_fixtureInfo.hideView()
+                    eventAdapter.submitList(result.data.response)
                 }
                 is Result.Error -> {
                     progressbar_fixtureInfo.hideView()
@@ -59,6 +66,11 @@ class FixtureInfoFragment : Fragment(R.layout.fragment_fixture_info) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setUpToolbar()
         super.onViewCreated(view, savedInstanceState)
+
+        recyclerView_fixtureInfo_events.apply {
+            layoutManager = LinearLayoutManager(activity)
+            adapter = eventAdapter
+        }
     }
 
     private fun setUpToolbar() {

@@ -26,7 +26,7 @@ class FixtureInfoAdapterTest {
         val date = LocalDateTime.of(2050, Month.FEBRUARY, 16, 12, 0)
 
         setFixtureDatetime(view, date)
-        Assert.assertEquals(view.text, "Wed Feb 16, 2050. 12:00 PM")
+        Assert.assertEquals("Wed Feb 16, 2050. 12:00 PM", view.text)
     }
 
     @Test
@@ -35,7 +35,7 @@ class FixtureInfoAdapterTest {
         val venue = Venue(1000, "Emirates Stadium", "London")
 
         setVenue(view, venue)
-        Assert.assertEquals(view.text, "Emirates Stadium, London")
+        Assert.assertEquals("Emirates Stadium, London", view.text)
     }
 
     @Test
@@ -44,6 +44,6 @@ class FixtureInfoAdapterTest {
         val venue = Venue(1000, "Emirates Stadium", "")
 
         setVenue(view, venue)
-        Assert.assertEquals(view.text, "Emirates Stadium")
+        Assert.assertEquals("Emirates Stadium", view.text)
     }
 }

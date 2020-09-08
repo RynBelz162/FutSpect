@@ -21,4 +21,8 @@
     <!--    Reds-->
     <color name="material_red_500">#f44336</color>
     <color name="material_red_200">#ef9a9a</color>
+
+    <!--    Yellows-->
+    <color name="material_yellow_500">#ffeb3b</color>
+    <color name="material_yellow_200">#fff59d</color>
 </resources>

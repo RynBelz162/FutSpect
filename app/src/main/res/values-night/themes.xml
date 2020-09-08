@@ -8,5 +8,6 @@
         <item name="colorAccent">@color/material_indigo_200</item>
         <item name="colorOkay">@color/material_green_200</item>
         <item name="colorError">@color/material_red_200</item>
+        <item name="colorCaution">@color/material_yellow_200</item>
     </style>
 </resources>
