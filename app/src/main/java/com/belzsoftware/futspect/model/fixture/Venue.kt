@@ -8,6 +8,6 @@ import kotlinx.android.parcel.Parcelize
 @JsonClass(generateAdapter = true)
 data class Venue(
     val id: Int?,
-    val name: String,
-    val city: String
+    val name: String?,
+    val city: String?
 ) : Parcelable

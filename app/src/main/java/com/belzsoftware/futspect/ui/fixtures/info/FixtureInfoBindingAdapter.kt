@@ -32,7 +32,7 @@ fun setVenue(textView: MaterialTextView, venue: Venue?) {
     }
 
     var formattedVenue = venue.name
-    if (venue.city.isNotEmpty()) {
+    if (!venue.city.isNullOrEmpty()) {
         formattedVenue += ", ${venue.city}"
     }
 
