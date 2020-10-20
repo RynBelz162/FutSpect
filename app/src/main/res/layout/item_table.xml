@@ -8,6 +8,10 @@
         <variable
                 name="standing"
                 type="com.belzsoftware.futspect.model.standings.Standing" />
+
+        <variable
+                name="clickListener"
+                type="android.view.View.OnClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -54,7 +58,8 @@
                 app:layout_constraintHorizontal_weight="10"
                 app:layout_constraintStart_toEndOf="@+id/textView_header_rank"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Arsenal" />
+                tools:text="Arsenal"
+                android:onClick="@{clickListener}"/>
 
         <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textView_header_wins"

@@ -10,5 +10,5 @@ class LeaguesRemoteSource @Inject constructor(private val service: FootballApiSe
         getResult { service.filterLeaguesAsync(search) }
 
     suspend fun fetchTable(leagueId: Int) =
-        getResult { service.getStandingsForLeagueAsync(2019, leagueId) }
+        getResult { service.getStandingsForLeagueAsync(2020, leagueId) }
 }

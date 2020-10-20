@@ -6,15 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.navArgs
-import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.belzsoftware.futspect.R
 import com.belzsoftware.futspect.databinding.FragmentFixtureInfoBinding
 import com.belzsoftware.futspect.model.shared.Result
 import com.belzsoftware.futspect.util.extensions.createLongSnackbar
 import com.belzsoftware.futspect.util.extensions.hideView
+import com.belzsoftware.futspect.util.extensions.setUpToolbar
 import com.belzsoftware.futspect.util.extensions.showView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_fixture_info.*
@@ -64,18 +63,13 @@ class FixtureInfoFragment : Fragment(R.layout.fragment_fixture_info) {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        setUpToolbar()
+
+        this.setUpToolbar(R.string.fixtureInfo_title)
         super.onViewCreated(view, savedInstanceState)
 
         recyclerView_fixtureInfo_events.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = eventAdapter
         }
-    }
-
-    private fun setUpToolbar() {
-        val navHostFragment = NavHostFragment.findNavController(this)
-        NavigationUI.setupWithNavController(toolbarLayout_fixtureInfo, navHostFragment)
-        toolbarLayout_fixtureInfo.title = resources.getString(R.string.fixtureInfo_title)
     }
 }

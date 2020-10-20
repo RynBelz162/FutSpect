@@ -39,4 +39,7 @@
     <string name="league_filter_apply">Apply</string>
     <string name="league_filter_header">Filter Leagues</string>
 
+    <!--    Team-->
+    <string name="team_title">Team</string>
+
 </resources>

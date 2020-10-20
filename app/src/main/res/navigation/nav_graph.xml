@@ -31,6 +31,9 @@
         <argument
                 android:name="leagueResponse"
                 app:argType="com.belzsoftware.futspect.model.league.LeagueResponse" />
+        <action
+                android:id="@+id/action_tableStandingFragment_to_teamFragment"
+                app:destination="@id/teamFragment" />
     </fragment>
     <dialog
             android:id="@+id/navigation_league_filters"
@@ -44,4 +47,8 @@
                 android:name="fixture"
                 app:argType="com.belzsoftware.futspect.model.fixture.FixtureResponse" />
     </fragment>
+    <fragment
+            android:id="@+id/teamFragment"
+            android:name="com.belzsoftware.futspect.ui.team.TeamFragment"
+            android:label="TeamFragment" />
 </navigation>

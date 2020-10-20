@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -65,6 +66,7 @@ class StandingViewHolder(private val binding: ItemTableBinding) :
     RecyclerView.ViewHolder(binding.root) {
     fun bind(item: Standing) {
         binding.setVariable(BR.standing, item)
+        binding.setVariable(BR.clickListener, createOnClickListener(item))
         binding.executePendingBindings()
     }
 
@@ -73,6 +75,13 @@ class StandingViewHolder(private val binding: ItemTableBinding) :
             val layoutInflater = LayoutInflater.from(parent.context)
             val binding = ItemTableBinding.inflate(layoutInflater, parent, false)
             return StandingViewHolder(binding)
+        }
+    }
+
+    private fun createOnClickListener(standing: Standing): View.OnClickListener {
+        return View.OnClickListener {
+            val direction = TableFragmentDirections.actionTableStandingFragmentToTeamFragment()
+            it.findNavController().navigate(direction)
         }
     }
 }

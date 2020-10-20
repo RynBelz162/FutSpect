@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="viewModel"
+                type="com.belzsoftware.futspect.ui.fixtures.info.FixtureInfoViewModel" />
+    </data>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbarLayout_fixtureInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/toolbarLayout_fixtureInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <!--    Top Card-->
+        <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardView_fixtureInfo_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_normal">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/margin_normal">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imageView_team_logo"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:src="@tools:sample/avatars" />
+
+                <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/textView_team_name"
+                        style="@style/TextAppearance.MaterialComponents.Headline6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_normal"
+                        android:paddingBottom="@dimen/padding_small"
+                        app:layout_constraintStart_toEndOf="@id/imageView_team_logo"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Orlando City SC" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imageView_team_flag"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="@dimen/margin_normal"
+                        app:layout_constraintStart_toEndOf="@id/imageView_team_logo"
+                        app:layout_constraintTop_toBottomOf="@id/textView_team_name"
+                        tools:src="@tools:sample/avatars" />
+
+                <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/textView_team_country"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_small"
+                        app:layout_constraintStart_toEndOf="@id/imageView_team_flag"
+                        app:layout_constraintTop_toBottomOf="@id/textView_team_name"
+                        tools:text="United States" />
+
+                <com.google.android.material.textview.MaterialTextView
+                        style="@style/TextAppearance.MaterialComponents.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/padding_small"
+                        app:layout_constraintStart_toStartOf="@id/imageView_team_flag"
+                        app:layout_constraintTop_toBottomOf="@id/imageView_team_flag"
+                        tools:text="Explora Stadium, Orlando FL" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!--        Bottom Card-->
+        <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/margin_normal">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/margin_normal">
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+</layout>
