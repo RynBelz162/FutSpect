@@ -50,5 +50,12 @@
     <fragment
             android:id="@+id/teamFragment"
             android:name="com.belzsoftware.futspect.ui.team.TeamFragment"
-            android:label="TeamFragment" />
+            android:label="TeamFragment" >
+        <argument
+                android:name="teamId"
+                app:argType="integer" />
+        <argument
+                android:name="leagueId"
+                app:argType="integer" />
+    </fragment>
 </navigation>

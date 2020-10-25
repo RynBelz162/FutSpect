@@ -5,6 +5,7 @@ import com.belzsoftware.futspect.model.fixture.FixtureResponse
 import com.belzsoftware.futspect.model.league.LeagueResponse
 import com.belzsoftware.futspect.model.shared.ApiCall
 import com.belzsoftware.futspect.model.standings.StandingResponse
+import com.belzsoftware.futspect.model.team.TeamStatisticResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -33,4 +34,11 @@ interface FootballApiService {
     suspend fun getFixtureEventsAsync(
         @Query("fixture") fixtureId: Int
     ) : Response<ApiCall<List<Event>>>
+
+    @GET("teams/statistics")
+    suspend fun getTeamStatisticsAsync(
+        @Query("team") teamId: Int,
+        @Query("season") season: String,
+        @Query("league") leagueId: Int,
+    ) : Response<ApiCall<TeamStatisticResponse>>
 }

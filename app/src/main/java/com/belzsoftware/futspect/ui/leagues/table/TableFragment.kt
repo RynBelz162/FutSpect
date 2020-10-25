@@ -25,8 +25,8 @@ import kotlinx.android.synthetic.main.fragment_table.*
 class TableFragment : Fragment() {
 
     private lateinit var binding: FragmentTableBinding
+    private lateinit var tableAdapter: TableAdapter
 
-    private val tableAdapter = TableAdapter()
     private val tableViewModel: TableViewModel by viewModels()
     private val args: TableFragmentArgs by navArgs()
 
@@ -50,6 +50,8 @@ class TableFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setUpToolbar()
+
+        tableAdapter = TableAdapter(args.leagueResponse.league.id)
 
         recyclerView_table.apply {
             layoutManager = LinearLayoutManager(activity)

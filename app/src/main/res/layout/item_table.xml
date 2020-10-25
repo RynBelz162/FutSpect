@@ -24,13 +24,13 @@
                 android:layout_width="@dimen/view_table_accent_width"
                 android:layout_height="0dp"
                 app:layout_constraintDimensionRatio="h,1:6"
-                app:layout_constraintEnd_toStartOf="@+id/textView_header_rank"
+                app:layout_constraintEnd_toStartOf="@+id/textView_table_rank"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:background="?attr/colorOkay" />
 
         <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textView_header_rank"
+                android:id="@+id/textView_table_rank"
                 style="@style/TextAppearance.MaterialComponents.Body1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -39,30 +39,30 @@
                 android:gravity="center"
                 android:text="@{String.valueOf(standing.rank)}"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textView_header_name"
+                app:layout_constraintEnd_toStartOf="@+id/textView_table_name"
                 app:layout_constraintHorizontal_weight="1.5"
                 app:layout_constraintStart_toEndOf="@id/view_table_accentView"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="1" />
 
         <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textView_header_name"
+                android:id="@+id/textView_table_name"
                 style="@style/TextAppearance.MaterialComponents.Body1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/padding_small"
                 android:layout_marginBottom="@dimen/padding_small"
+                android:onClick="@{clickListener}"
                 android:text="@{standing.team.name}"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textView_header_wins"
+                app:layout_constraintEnd_toStartOf="@+id/textView_table_wins"
                 app:layout_constraintHorizontal_weight="10"
-                app:layout_constraintStart_toEndOf="@+id/textView_header_rank"
+                app:layout_constraintStart_toEndOf="@+id/textView_table_rank"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Arsenal"
-                android:onClick="@{clickListener}"/>
+                tools:text="Arsenal" />
 
         <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textView_header_wins"
+                android:id="@+id/textView_table_wins"
                 style="@style/TextAppearance.MaterialComponents.Body1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -70,14 +70,14 @@
                 android:layout_marginBottom="@dimen/padding_small"
                 android:text="@{String.valueOf(standing.all.win)}"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textView_header_draws"
+                app:layout_constraintEnd_toStartOf="@+id/textView_table_draws"
                 app:layout_constraintHorizontal_weight="1.5"
-                app:layout_constraintStart_toEndOf="@+id/textView_header_name"
+                app:layout_constraintStart_toEndOf="@+id/textView_table_name"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="13" />
 
         <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textView_header_draws"
+                android:id="@+id/textView_table_draws"
                 style="@style/TextAppearance.MaterialComponents.Body1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -85,14 +85,14 @@
                 android:layout_marginBottom="@dimen/padding_small"
                 android:text="@{String.valueOf(standing.all.draw)}"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textView_header_losses"
+                app:layout_constraintEnd_toStartOf="@+id/textView_table_losses"
                 app:layout_constraintHorizontal_weight="1.5"
-                app:layout_constraintStart_toEndOf="@+id/textView_header_wins"
+                app:layout_constraintStart_toEndOf="@+id/textView_table_wins"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="2" />
 
         <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textView_header_losses"
+                android:id="@+id/textView_table_losses"
                 style="@style/TextAppearance.MaterialComponents.Body1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -100,14 +100,14 @@
                 android:layout_marginBottom="@dimen/padding_small"
                 android:text="@{String.valueOf(standing.all.lose)}"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textView_header_points"
+                app:layout_constraintEnd_toStartOf="@+id/textView_table_points"
                 app:layout_constraintHorizontal_weight="1.5"
-                app:layout_constraintStart_toEndOf="@+id/textView_header_draws"
+                app:layout_constraintStart_toEndOf="@+id/textView_table_draws"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="7" />
 
         <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textView_header_points"
+                android:id="@+id/textView_table_points"
                 style="@style/TextAppearance.MaterialComponents.Body1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -119,7 +119,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_weight="1"
-                app:layout_constraintStart_toEndOf="@+id/textView_header_losses"
+                app:layout_constraintStart_toEndOf="@+id/textView_table_losses"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="43" />
 

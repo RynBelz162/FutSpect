@@ -21,7 +21,8 @@ import kotlinx.coroutines.withContext
 private const val ITEM_VIEW_TYPE_HEADER = 0
 private const val ITEM_VIEW_TYPE_ITEM = 1
 
-class TableAdapter : ListAdapter<DataItem, RecyclerView.ViewHolder>(StandingDiff()) {
+class TableAdapter(private val leagueId: Int) :
+    ListAdapter<DataItem, RecyclerView.ViewHolder>(StandingDiff()) {
 
     private val adapterScope = CoroutineScope(Dispatchers.Default)
 
@@ -40,7 +41,7 @@ class TableAdapter : ListAdapter<DataItem, RecyclerView.ViewHolder>(StandingDiff
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             ITEM_VIEW_TYPE_HEADER -> HeaderViewHolder.from(parent)
-            ITEM_VIEW_TYPE_ITEM -> StandingViewHolder.from(parent)
+            ITEM_VIEW_TYPE_ITEM -> StandingViewHolder.from(parent, leagueId)
             else -> throw ClassCastException("Unknown viewType $viewType")
         }
     }
@@ -62,7 +63,10 @@ class TableAdapter : ListAdapter<DataItem, RecyclerView.ViewHolder>(StandingDiff
     }
 }
 
-class StandingViewHolder(private val binding: ItemTableBinding) :
+class StandingViewHolder(
+    private val binding: ItemTableBinding,
+    private val leagueId: Int
+) :
     RecyclerView.ViewHolder(binding.root) {
     fun bind(item: Standing) {
         binding.setVariable(BR.standing, item)
@@ -71,16 +75,19 @@ class StandingViewHolder(private val binding: ItemTableBinding) :
     }
 
     companion object {
-        fun from(parent: ViewGroup): StandingViewHolder {
+        fun from(parent: ViewGroup, leagueId: Int): StandingViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
             val binding = ItemTableBinding.inflate(layoutInflater, parent, false)
-            return StandingViewHolder(binding)
+            return StandingViewHolder(binding, leagueId)
         }
     }
 
     private fun createOnClickListener(standing: Standing): View.OnClickListener {
         return View.OnClickListener {
-            val direction = TableFragmentDirections.actionTableStandingFragmentToTeamFragment()
+            val direction = TableFragmentDirections.actionTableStandingFragmentToTeamFragment(
+                standing.team.id,
+                leagueId
+            )
             it.findNavController().navigate(direction)
         }
     }
