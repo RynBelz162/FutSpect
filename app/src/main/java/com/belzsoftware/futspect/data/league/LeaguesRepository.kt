@@ -32,7 +32,8 @@ class LeaguesRepository @Inject constructor(
                 val cachedLeagues = leaguesDao.getLeagues()
 
                 if (cachedLeagues.isNotEmpty()) {
-                    val response = mapToResponse(cachedLeagues)
+                    val filteredCache = filterCachedLeagues(filters?.searchTerm, cachedLeagues)
+                    val response = mapToResponse(filteredCache)
                     emit(Result.Success(response))
                     return@collect
                 }
@@ -74,5 +75,13 @@ class LeaguesRepository @Inject constructor(
             }
 
         return ApiCall(responses.count(), responses)
+    }
+
+    private fun filterCachedLeagues(searchTerm: String?, leagues: List<LeagueEntity>): List<LeagueEntity> {
+        val nonNullSearchTerm = searchTerm ?: return leagues
+
+        return leagues.filter {
+            it.name.contains(nonNullSearchTerm) || it.country.contains(nonNullSearchTerm)
+        }
     }
 }

@@ -11,7 +11,7 @@ data class Standing(
     val points: Int,
     val goalDiff: Int?,
     val group: String,
-    val form: String,
+    val form: String?,
     val status: String?,
     val description: String?,
     val all: MatchesPlayed,
