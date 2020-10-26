@@ -34,13 +34,17 @@ class LeaguesRepository @Inject constructor(
                 if (cachedLeagues.isNotEmpty()) {
                     val filteredCache = filterCachedLeagues(filters?.searchTerm, cachedLeagues)
                     val response = mapToResponse(filteredCache)
-                    emit(Result.Success(response))
+                    emit(groupedLeagueResult(response))
                     return@collect
                 }
 
                 val result = remoteSource.filterLeagues(filters?.searchTerm)
-                cacheAllLeagues(result, filters)
-                emit(result)
+                if (result is Result.Success) {
+                    cacheAllLeagues(result, filters)
+                    emit(groupedLeagueResult(result.data.response))
+                }
+
+                emit(Result.Error<HashMap<String, List<LeagueResponse>>>("There was an error trying to retrieve the leagues. Please try again."))
             }
 
     }.flowOn(Dispatchers.IO)
@@ -68,13 +72,10 @@ class LeaguesRepository @Inject constructor(
         leaguesDao.insertLeagues(entities)
     }
 
-    private fun mapToResponse(entities: List<LeagueEntity>): ApiCall<List<LeagueResponse>> {
-        val responses =
-            entities.map { entity ->
+    private fun mapToResponse(entities: List<LeagueEntity>): List<LeagueResponse> {
+        return entities.map { entity ->
                 LeagueResponse(entity.map(), entity.mapToCountry(), emptyList())
             }
-
-        return ApiCall(responses.count(), responses)
     }
 
     private fun filterCachedLeagues(searchTerm: String?, leagues: List<LeagueEntity>): List<LeagueEntity> {
@@ -83,5 +84,13 @@ class LeaguesRepository @Inject constructor(
         return leagues.filter {
             it.name.contains(nonNullSearchTerm) || it.country.contains(nonNullSearchTerm)
         }
+    }
+
+    private fun groupedLeagueResult(leagues: List<LeagueResponse>): Result<HashMap<String, List<LeagueResponse>>> {
+        var groups = leagues.groupBy {
+            it.country.name
+        } as HashMap<String, List<LeagueResponse>>
+
+        return Result.Success(groups)
     }
 }

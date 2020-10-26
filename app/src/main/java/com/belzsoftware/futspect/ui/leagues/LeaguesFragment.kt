@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.belzsoftware.futspect.databinding.FragmentLeaguesBinding
+import com.belzsoftware.futspect.model.league.LeagueResponse
 import com.belzsoftware.futspect.model.shared.Result
 import com.belzsoftware.futspect.util.extensions.createLongSnackbar
 import com.belzsoftware.futspect.util.extensions.hideView
@@ -22,7 +22,6 @@ class LeaguesFragment : Fragment() {
     private lateinit var binding: FragmentLeaguesBinding
 
     private val leaguesViewModel: LeaguesViewModel by viewModels()
-    private val leagueAdapter = LeagueAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,18 +38,15 @@ class LeaguesFragment : Fragment() {
             when (result) {
                 is Result.Loading -> {
                     progressbar_leagues.showView()
-                    recyclerView_leagues.hideView()
                 }
                 is Result.Success -> {
                     progressbar_leagues.hideView()
-                    leagueAdapter.submitList(null)
-                    leagueAdapter.submitList(result.data.response) {
-                        recyclerView_leagues.showView()
-                    }
+                    setAdapterForListView(result.data)
+                    expandableListView_leagues.showView()
                 }
                 is Result.Error -> {
                     progressbar_leagues.hideView()
-                    recyclerView_leagues.showView()
+                    expandableListView_leagues.showView()
                     activity?.createLongSnackbar(result.message)
                 }
             }
@@ -62,16 +58,15 @@ class LeaguesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recyclerView_leagues.apply {
-            layoutManager = LinearLayoutManager(activity)
-            adapter = leagueAdapter
-        }
-
         fab_leagues_filter.setOnClickListener {
             val direction =
                 LeaguesFragmentDirections.actionNavigationLeaguesToLeagueFilterBottomSheetModalFragment()
             it.findNavController().navigate(direction)
         }
+    }
 
+    private fun setAdapterForListView(groups: HashMap<String, List<LeagueResponse>>) {
+        val adapter = LeagueExpandableAdapter(requireContext(), groups.keys.toList(), groups)
+        expandableListView_leagues.setAdapter(adapter)
     }
 }

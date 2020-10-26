@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_marginTop="@dimen/margin_normal">
+
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textView_league_header_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="England"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:layout_margin="@dimen/margin_normal"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>
