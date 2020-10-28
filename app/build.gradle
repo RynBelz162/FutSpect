@@ -41,6 +41,7 @@ android {
     }
     buildFeatures {
         dataBinding true
+        viewBinding true
     }
     kotlinOptions {
         jvmTarget = "1.8"
@@ -49,6 +50,9 @@ android {
     sourceSets { main { java.srcDirs = ['src/main/java'] } }
     packagingOptions {
         exclude 'META-INF/atomicfu.kotlin_module'
+    }
+    androidExtensions {
+        experimental = true
     }
 }
 
@@ -68,6 +72,11 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
     implementation "com.google.android.material:material:$materialVersion"
     implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
+
+    // Groupie
+    implementation "com.xwray:groupie:$groupieVersion"
+    implementation "com.xwray:groupie-kotlin-android-extensions:$groupieVersion"
+    implementation "com.xwray:groupie-viewbinding:$groupieVersion"
 
     // Architecture Components
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
@@ -116,16 +125,16 @@ dependencies {
     androidTestImplementation "androidx.room:room-testing:$roomVersion"
 
     // Local unit tests
-    testImplementation 'junit:junit:4.13.1'
+    testImplementation "junit:junit:$jUnitVersion"
     testImplementation "com.google.dagger:hilt-android-testing:$hiltVersion"
     kaptTest "com.google.dagger:hilt-android-compiler:$hiltVersion"
 
     // Instrumentation tests
-    androidTestImplementation 'androidx.test:core:1.3.0'
-    androidTestImplementation 'androidx.test:runner:1.3.0'
-    androidTestImplementation 'androidx.test:rules:1.3.0'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation "androidx.test:core:$androidTestCoreVersion"
+    androidTestImplementation "androidx.test:runner:$androidTestRunnerVersion"
+    androidTestImplementation "androidx.test:rules:$androidTestRulesVersion"
+    androidTestImplementation "androidx.test.ext:junit:$androidxJUnitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
     androidTestImplementation  "com.google.dagger:hilt-android-testing:$hiltVersion"
     kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hiltVersion"
     kaptAndroidTest "androidx.hilt:hilt-compiler:$hiltJetpackVersion"
