@@ -19,5 +19,5 @@
     <dimen name="view_table_accent_width">6dp</dimen>
 
     <!--league fragment-->
-    <dimen name="league_imageView_heightWidth">50dp</dimen>
+    <dimen name="league_imageView_heightWidth">35dp</dimen>
 </resources>

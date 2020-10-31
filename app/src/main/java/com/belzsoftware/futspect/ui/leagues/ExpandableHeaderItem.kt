@@ -1,5 +1,6 @@
 package com.belzsoftware.futspect.ui.leagues
 
+import android.graphics.drawable.Animatable
 import com.belzsoftware.futspect.R
 import com.belzsoftware.futspect.databinding.ItemLeagueGroupHeaderBinding
 import com.xwray.groupie.ExpandableGroup
@@ -15,6 +16,7 @@ class ExpandableHeaderItem(
         super.bind(viewBinding, position)
 
         bindIcon(viewBinding)
+        viewBinding.iconLeagueGroupHeader.setImageResource(if (expandableGroup!!.isExpanded) R.drawable.ic_up_arrow else R.drawable.ic_down_arrow)
         viewBinding.cardViewLeagueGroupHeader.setOnClickListener {
             expandableGroup!!.onToggleExpanded()
             bindIcon(viewBinding)
@@ -22,7 +24,9 @@ class ExpandableHeaderItem(
     }
 
     private fun bindIcon(viewBinding: ItemLeagueGroupHeaderBinding) {
-        viewBinding.iconLeagueGroupHeader.setImageResource(if (expandableGroup!!.isExpanded) R.drawable.ic_up_arrow else R.drawable.ic_down_arrow)
+        viewBinding.iconLeagueGroupHeader.setImageResource(if (expandableGroup!!.isExpanded) R.drawable.up_arrow_animated else R.drawable.down_arrow_animated)
+        val drawable = viewBinding.iconLeagueGroupHeader.drawable as Animatable
+        drawable.start()
     }
 
     override fun setExpandableGroup(onToggleListener: ExpandableGroup) {

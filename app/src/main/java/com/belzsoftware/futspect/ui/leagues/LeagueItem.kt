@@ -19,7 +19,6 @@ class LeagueItem constructor(
         viewBinding.apply {
             setLeagueLogo(this.imageViewLeagueLogo, leagueResponse)
             this.textViewLeagueName.text = leagueResponse.league.name
-            this.textViewLeagueCountry.text = leagueResponse.country.name
 
             this.cardViewLeagueItem.setOnClickListener {
                 val navigation =
