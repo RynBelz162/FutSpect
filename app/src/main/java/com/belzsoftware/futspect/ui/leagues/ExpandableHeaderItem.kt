@@ -3,12 +3,13 @@ package com.belzsoftware.futspect.ui.leagues
 import android.graphics.drawable.Animatable
 import com.belzsoftware.futspect.R
 import com.belzsoftware.futspect.databinding.ItemLeagueGroupHeaderBinding
+import com.belzsoftware.futspect.model.country.Country
 import com.xwray.groupie.ExpandableGroup
 import com.xwray.groupie.ExpandableItem
 
 class ExpandableHeaderItem(
-    title: String
-) : HeaderItem(title), ExpandableItem {
+    country: Country
+) : HeaderItem(country), ExpandableItem {
 
     private var expandableGroup: ExpandableGroup? = null
 

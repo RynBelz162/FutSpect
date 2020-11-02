@@ -2,6 +2,7 @@ package com.belzsoftware.futspect.data.league
 
 import com.belzsoftware.futspect.entity.league.LeagueEntity
 import com.belzsoftware.futspect.entity.league.LeagueFilters
+import com.belzsoftware.futspect.model.country.Country
 import com.belzsoftware.futspect.model.league.LeagueResponse
 import com.belzsoftware.futspect.model.shared.ApiCall
 import com.belzsoftware.futspect.model.shared.Result
@@ -44,7 +45,7 @@ class LeaguesRepository @Inject constructor(
                     emit(groupedLeagueResult(result.data.response))
                 }
 
-                emit(Result.Error<HashMap<String, List<LeagueResponse>>>("There was an error trying to retrieve the leagues. Please try again."))
+                emit(Result.Error<HashMap<Country, List<LeagueResponse>>>("There was an error trying to retrieve the leagues. Please try again."))
             }
 
     }.flowOn(Dispatchers.IO)
@@ -86,10 +87,10 @@ class LeaguesRepository @Inject constructor(
         }
     }
 
-    private fun groupedLeagueResult(leagues: List<LeagueResponse>): Result<HashMap<String, List<LeagueResponse>>> {
-        var groups = leagues.groupBy {
-            it.country.name
-        } as HashMap<String, List<LeagueResponse>>
+    private fun groupedLeagueResult(leagues: List<LeagueResponse>): Result<HashMap<Country, List<LeagueResponse>>> {
+        val groups = leagues.groupBy {
+            it.country
+        } as HashMap<Country, List<LeagueResponse>>
 
         return Result.Success(groups)
     }

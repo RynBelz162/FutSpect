@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.belzsoftware.futspect.databinding.FragmentLeaguesBinding
+import com.belzsoftware.futspect.model.country.Country
 import com.belzsoftware.futspect.model.league.LeagueResponse
 import com.belzsoftware.futspect.model.shared.Result
 import com.belzsoftware.futspect.util.extensions.createLongSnackbar
@@ -67,7 +68,7 @@ class LeaguesFragment : Fragment() {
         }
     }
 
-    private fun bindGroupieAdapter(groups: HashMap<String, List<LeagueResponse>>) {
+    private fun bindGroupieAdapter(groups: HashMap<Country, List<LeagueResponse>>) {
         val adapter = GroupAdapter<GroupieViewHolder>()
 
         groups.forEach { group ->

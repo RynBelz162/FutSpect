@@ -7,6 +7,6 @@ fun LeagueEntity.mapToCountry(): Country {
     return Country(
         this.country,
         null,
-        null
+        this.flag
     )
 }

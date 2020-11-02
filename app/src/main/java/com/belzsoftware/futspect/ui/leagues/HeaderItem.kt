@@ -3,10 +3,12 @@ package com.belzsoftware.futspect.ui.leagues
 import android.view.View
 import com.belzsoftware.futspect.R
 import com.belzsoftware.futspect.databinding.ItemLeagueGroupHeaderBinding
+import com.belzsoftware.futspect.model.country.Country
+import com.belzsoftware.futspect.ui.shared.setCircleImage
 import com.xwray.groupie.viewbinding.BindableItem
 
 open class HeaderItem constructor(
-    private val title: String
+    private val country: Country
 ) : BindableItem<ItemLeagueGroupHeaderBinding>() {
 
     override fun getLayout(): Int = R.layout.item_league_group_header
@@ -16,7 +18,8 @@ open class HeaderItem constructor(
 
     override fun bind(viewBinding: ItemLeagueGroupHeaderBinding, position: Int) {
         viewBinding.apply {
-            this.textViewLeagueHeaderTitle.text = title
+            this.textViewLeagueHeaderTitle.text = country.name
+            setCircleImage(this.imageViewLeagueHeaderFlag, country.flag)
         }
     }
 }

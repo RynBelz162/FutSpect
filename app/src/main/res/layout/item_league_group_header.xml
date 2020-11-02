@@ -13,6 +13,14 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
+        <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageView_league_header_flag"
+                android:layout_width="@dimen/league_card_icon_heightWidth"
+                android:layout_height="@dimen/league_card_icon_heightWidth"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/margin_normal"
+                tools:src="@tools:sample/avatars" />
+
         <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textView_league_header_title"
                 style="@style/TextAppearance.MaterialComponents.Headline6"
@@ -25,8 +33,8 @@
 
         <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/icon_league_group_header"
-                android:layout_width="38dp"
-                android:layout_height="38dp"
+                android:layout_width="@dimen/league_group_header_chevron_heightWidth"
+                android:layout_height="@dimen/league_group_header_chevron_heightWidth"
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="@dimen/margin_normal"
                 android:src="@drawable/ic_down_arrow" />

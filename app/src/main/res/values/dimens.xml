@@ -19,5 +19,6 @@
     <dimen name="view_table_accent_width">6dp</dimen>
 
     <!--league fragment-->
-    <dimen name="league_imageView_heightWidth">35dp</dimen>
+    <dimen name="league_card_icon_heightWidth">20dp</dimen>
+    <dimen name="league_group_header_chevron_heightWidth">38dp</dimen>
 </resources>
