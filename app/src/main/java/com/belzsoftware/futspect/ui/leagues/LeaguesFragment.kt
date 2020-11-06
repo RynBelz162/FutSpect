@@ -8,10 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.belzsoftware.futspect.R
 import com.belzsoftware.futspect.databinding.FragmentLeaguesBinding
 import com.belzsoftware.futspect.model.country.Country
 import com.belzsoftware.futspect.model.league.LeagueResponse
 import com.belzsoftware.futspect.model.shared.Result
+import com.belzsoftware.futspect.ui.shared.ExpandableItemDecorator
 import com.belzsoftware.futspect.util.extensions.createLongSnackbar
 import com.belzsoftware.futspect.util.extensions.hideView
 import com.belzsoftware.futspect.util.extensions.showView
@@ -81,6 +83,11 @@ class LeaguesFragment : Fragment() {
         }
 
         binding.recyclerViewLeague.apply {
+            addItemDecoration(
+                ExpandableItemDecorator(
+                    R.layout.item_league
+                )
+            )
             this.layoutManager = LinearLayoutManager(activity)
             this.adapter = adapter
         }
