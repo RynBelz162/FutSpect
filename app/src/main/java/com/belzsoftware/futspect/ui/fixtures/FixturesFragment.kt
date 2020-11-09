@@ -13,12 +13,12 @@ import com.belzsoftware.futspect.util.extensions.createLongSnackbar
 import com.belzsoftware.futspect.util.extensions.hideView
 import com.belzsoftware.futspect.util.extensions.showView
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_fixtures.*
 
 @AndroidEntryPoint
 class FixturesFragment : Fragment() {
 
-    private lateinit var binding: FragmentFixturesBinding
+    private var _binding: FragmentFixturesBinding? = null
+    private val binding get() = _binding!!
 
     private val fixturesViewModel: FixturesViewModel by viewModels()
     private val fixturesAdapter = FixturesAdapter()
@@ -28,20 +28,17 @@ class FixturesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentFixturesBinding.inflate(inflater, container, false).apply {
-            viewModel = fixturesViewModel
-            lifecycleOwner = viewLifecycleOwner
-        }
+        _binding = FragmentFixturesBinding.inflate(inflater)
 
         fixturesViewModel.fixtures.observe(viewLifecycleOwner, { result ->
             when (result) {
-                is Result.Loading -> progressbar_fixtures.showView()
+                is Result.Loading -> binding.progressbarFixtures.showView()
                 is Result.Success -> {
-                    progressbar_fixtures.hideView()
+                    binding.progressbarFixtures.hideView()
                     fixturesAdapter.submitList(result.data.response)
                 }
                 is Result.Error -> {
-                    progressbar_fixtures.hideView()
+                    binding.progressbarFixtures.hideView()
                     activity?.createLongSnackbar(result.message)
                 }
             }
@@ -53,9 +50,14 @@ class FixturesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recyclerView_fixtures.apply {
+        binding.recyclerViewFixtures.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = fixturesAdapter
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -26,8 +26,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class LeaguesFragment : Fragment() {
 
     private var _binding: FragmentLeaguesBinding? = null
-
     private val binding get() = _binding!!
+
     private val leaguesViewModel: LeaguesViewModel by viewModels()
 
     override fun onCreateView(

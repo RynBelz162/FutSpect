@@ -3,7 +3,6 @@ package com.belzsoftware.futspect.ui.fixtures.info
 import android.view.Gravity
 import android.widget.ImageView
 import android.widget.LinearLayout
-import androidx.databinding.BindingAdapter
 import com.belzsoftware.futspect.R
 import com.belzsoftware.futspect.model.fixture.Venue
 import com.belzsoftware.futspect.util.EVENT_GOAL
@@ -15,7 +14,6 @@ import com.belzsoftware.futspect.util.extensions.toFormattedString
 import com.google.android.material.textview.MaterialTextView
 import java.time.LocalDateTime
 
-@BindingAdapter("setFixtureDatetime")
 fun setFixtureDatetime(textView: MaterialTextView, date: LocalDateTime?) {
     if (date == null) {
         return
@@ -25,7 +23,6 @@ fun setFixtureDatetime(textView: MaterialTextView, date: LocalDateTime?) {
     textView.text = formattedString
 }
 
-@BindingAdapter("setVenue")
 fun setVenue(textView: MaterialTextView, venue: Venue?) {
     if (venue == null) {
         return
@@ -39,7 +36,6 @@ fun setVenue(textView: MaterialTextView, venue: Venue?) {
     textView.text = formattedVenue
 }
 
-@BindingAdapter("setEventIcon")
 fun setEventIcon(imageView: ImageView, eventDetails: String?) {
     if (eventDetails == null) {
         return
@@ -65,7 +61,6 @@ fun setEventIcon(imageView: ImageView, eventDetails: String?) {
     }
 }
 
-@BindingAdapter(value = ["bind:homeTeam", "bind:eventTeam"], requireAll = true)
 fun setTeamGravity(view: LinearLayout, homeTeamId: Int, eventTeamId: Int) {
     if (eventTeamId == 0 || eventTeamId == homeTeamId) {
         return

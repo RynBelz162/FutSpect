@@ -3,21 +3,20 @@ package com.belzsoftware.futspect.ui.fixtures
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.belzsoftware.futspect.BR
 import com.belzsoftware.futspect.R
+import com.belzsoftware.futspect.databinding.ItemFixtureBinding
 import com.belzsoftware.futspect.model.fixture.FixtureResponse
+import com.belzsoftware.futspect.ui.shared.setImage
 
 class FixturesAdapter : ListAdapter<FixtureResponse, FixtureViewHolder>(MatchDiff()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FixtureViewHolder {
         return FixtureViewHolder(
-            DataBindingUtil.inflate(LayoutInflater.from(parent.context), viewType, parent, false)
+            ItemFixtureBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 
@@ -27,11 +26,25 @@ class FixturesAdapter : ListAdapter<FixtureResponse, FixtureViewHolder>(MatchDif
         = holder.bind(getItem(position))
 }
 
-class FixtureViewHolder(private val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
+class FixtureViewHolder(private val binding: ItemFixtureBinding) : RecyclerView.ViewHolder(binding.root) {
     fun bind(item: FixtureResponse) {
-        binding.setVariable(BR.fixtureResponse, item)
-        binding.setVariable(BR.clickListener, createOnClickListener(item))
-        binding.executePendingBindings()
+
+        // home team
+        binding.textViewFixtureHomeTeam.text = item.teams.home.name
+        setImage(binding.imageViewFixtureHomeTeamLogo, item.teams.home.logo)
+        scoreVisibility(binding.textViewFixtureHomeScore, item.fixture.status.shortStatus)
+        binding.textViewFixtureHomeScore.text = item.goals.home?.toString() ?: "0"
+
+        // away team
+        binding.textViewFixtureAwayTeam.text = item.teams.away.name
+        setImage(binding.imageViewFixtureAwayTeamLogo, item.teams.away.logo)
+        scoreVisibility(binding.textViewFixtureAwayScore, item.fixture.status.shortStatus)
+        binding.textViewFixtureAwayScore.text = item.goals.away?.toString() ?: "0"
+
+        scoreVisibility(binding.textViewFixtureDash, item.fixture.status.shortStatus)
+        infoVisibility(binding.textViewFixtureVs, item.fixture.status.shortStatus)
+
+        binding.cardViewFixture.setOnClickListener(createOnClickListener(item))
     }
 
     private fun createOnClickListener(fixtureResponse: FixtureResponse): View.OnClickListener {

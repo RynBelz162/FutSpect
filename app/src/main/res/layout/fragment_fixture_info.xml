@@ -1,212 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <data>
-
-        <variable
-                name="viewModel"
-                type="com.belzsoftware.futspect.ui.fixtures.info.FixtureInfoViewModel" />
-    </data>
-
-    <LinearLayout
+    <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbarLayout_fixtureInfo"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-        <com.google.android.material.appbar.AppBarLayout
-                android:id="@+id/appbarLayout_fixtureInfo"
+        <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbarLayout_fixtureInfo"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="?attr/actionBarSize" />
 
-            <com.google.android.material.appbar.MaterialToolbar
-                    android:id="@+id/toolbarLayout_fixtureInfo"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-        </com.google.android.material.appbar.AppBarLayout>
+    <!--    Top Card-->
+    <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardView_fixtureInfo_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_normal">
 
-        <!--    Top Card-->
-        <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardView_fixtureInfo_main"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_normal">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="@dimen/margin_normal">
-
-                <!--            Info-->
-                <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/textView_fixtureInfo_date"
-                        style="@style/TextAppearance.MaterialComponents.Body2"
-                        setFixtureDatetime="@{viewModel.fixtureResponse.fixture.date}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:text="Tue Aug 25, 2020. 8:00 PM" />
-
-                <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/textView_fixtureInfo_venue"
-                        style="@style/TextAppearance.MaterialComponents.Overline"
-                        setVenue="@{viewModel.fixtureResponse.fixture.venue}"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_small"
-                        android:ellipsize="end"
-                        android:gravity="center"
-                        android:maxLines="1"
-                        android:paddingBottom="@dimen/padding_normal"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/textView_fixtureInfo_date"
-                        tools:text="Emirates Stadium, London" />
-
-                <!--            Teams-->
-                <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/imageView_fixtureInfo_homeLogo"
-                        setImage="@{viewModel.fixtureResponse.teams.home.logo}"
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-                        app:layout_constraintEnd_toStartOf="@id/textView_fixtureInfo_homeScore"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/textView_fixtureInfo_venue"
-                        tools:src="@tools:sample/avatars" />
-
-                <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/textView_fixtureInfo_homeName"
-                        style="@style/TextAppearance.MaterialComponents.Headline6"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_small"
-                        android:ellipsize="end"
-                        android:gravity="center"
-                        android:maxLines="1"
-                        android:text="@{viewModel.fixtureResponse.teams.home.name}"
-                        app:layout_constraintEnd_toStartOf="@+id/textView_fixtureInfo_homeScore"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/imageView_fixtureInfo_homeLogo"
-                        tools:text="Arsenal" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/imageView_fixtureInfo_awayLogo"
-                        setImage="@{viewModel.fixtureResponse.teams.away.logo}"
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/textView_fixtureInfo_awayScore"
-                        app:layout_constraintTop_toBottomOf="@id/textView_fixtureInfo_venue"
-                        tools:src="@tools:sample/avatars" />
-
-                <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/textView_fixtureInfo_awayName"
-                        style="@style/TextAppearance.MaterialComponents.Headline6"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_small"
-                        android:ellipsize="end"
-                        android:gravity="center"
-                        android:maxLines="1"
-                        android:text="@{viewModel.fixtureResponse.teams.away.name}"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/textView_fixtureInfo_awayScore"
-                        app:layout_constraintTop_toBottomOf="@id/imageView_fixtureInfo_awayLogo"
-                        tools:text="Liverpool" />
-
-                <!--            Scores-->
-                <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/textView_fixtureInfo_homeScore"
-                        style="@style/TextAppearance.MaterialComponents.Headline4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(viewModel.fixtureResponse.goals.home)}"
-                        app:layout_constraintBottom_toBottomOf="@id/textView_fixtureInfo_dash"
-                        app:layout_constraintEnd_toStartOf="@id/textView_fixtureInfo_dash"
-                        app:layout_constraintTop_toTopOf="@id/textView_fixtureInfo_dash"
-                        tools:text="3" />
-
-                <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/textView_fixtureInfo_dash"
-                        style="@style/TextAppearance.MaterialComponents.Headline4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingStart="@dimen/padding_normal"
-                        android:paddingEnd="@dimen/padding_normal"
-                        android:text="@string/fixtures_dash"
-                        app:layout_constraintBottom_toBottomOf="@id/imageView_fixtureInfo_homeLogo"
-                        app:layout_constraintEnd_toStartOf="@id/imageView_fixtureInfo_awayLogo"
-                        app:layout_constraintStart_toEndOf="@id/imageView_fixtureInfo_homeLogo"
-                        app:layout_constraintTop_toTopOf="@id/imageView_fixtureInfo_homeLogo" />
-
-                <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/textView_fixtureInfo_awayScore"
-                        style="@style/TextAppearance.MaterialComponents.Headline4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(viewModel.fixtureResponse.goals.away)}"
-                        app:layout_constraintBottom_toBottomOf="@id/textView_fixtureInfo_dash"
-                        app:layout_constraintStart_toEndOf="@id/textView_fixtureInfo_dash"
-                        app:layout_constraintTop_toTopOf="@id/textView_fixtureInfo_dash"
-                        tools:text="0" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
+        <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/margin_normal">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <!--            Info-->
+            <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView_fixtureInfo_date"
+                    style="@style/TextAppearance.MaterialComponents.Body2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Tue Aug 25, 2020. 8:00 PM" />
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView_fixtureInfo_venue"
+                    style="@style/TextAppearance.MaterialComponents.Overline"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:paddingBottom="@dimen/padding_normal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textView_fixtureInfo_date"
+                    tools:text="Emirates Stadium, London" />
+
+            <!--            Teams-->
+            <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imageView_fixtureInfo_homeLogo"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    app:layout_constraintEnd_toStartOf="@id/textView_fixtureInfo_homeScore"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textView_fixtureInfo_venue"
+                    tools:src="@tools:sample/avatars" />
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView_fixtureInfo_homeName"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    app:layout_constraintEnd_toStartOf="@+id/textView_fixtureInfo_homeScore"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imageView_fixtureInfo_homeLogo"
+                    tools:text="Arsenal" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imageView_fixtureInfo_awayLogo"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/textView_fixtureInfo_awayScore"
+                    app:layout_constraintTop_toBottomOf="@id/textView_fixtureInfo_venue"
+                    tools:src="@tools:sample/avatars" />
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView_fixtureInfo_awayName"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView_fixtureInfo_awayScore"
+                    app:layout_constraintTop_toBottomOf="@id/imageView_fixtureInfo_awayLogo"
+                    tools:text="Liverpool" />
+
+            <!--            Scores-->
+            <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView_fixtureInfo_homeScore"
+                    style="@style/TextAppearance.MaterialComponents.Headline4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf(viewModel.fixtureResponse.goals.home)}"
+                    app:layout_constraintBottom_toBottomOf="@id/textView_fixtureInfo_dash"
+                    app:layout_constraintEnd_toStartOf="@id/textView_fixtureInfo_dash"
+                    app:layout_constraintTop_toTopOf="@id/textView_fixtureInfo_dash"
+                    tools:text="3" />
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView_fixtureInfo_dash"
+                    style="@style/TextAppearance.MaterialComponents.Headline4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/padding_normal"
+                    android:paddingEnd="@dimen/padding_normal"
+                    android:text="@string/fixtures_dash"
+                    app:layout_constraintBottom_toBottomOf="@id/imageView_fixtureInfo_homeLogo"
+                    app:layout_constraintEnd_toStartOf="@id/imageView_fixtureInfo_awayLogo"
+                    app:layout_constraintStart_toEndOf="@id/imageView_fixtureInfo_homeLogo"
+                    app:layout_constraintTop_toTopOf="@id/imageView_fixtureInfo_homeLogo" />
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView_fixtureInfo_awayScore"
+                    style="@style/TextAppearance.MaterialComponents.Headline4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@id/textView_fixtureInfo_dash"
+                    app:layout_constraintStart_toEndOf="@id/textView_fixtureInfo_dash"
+                    app:layout_constraintTop_toTopOf="@id/textView_fixtureInfo_dash"
+                    tools:text="0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_normal">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/margin_normal">
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView_fixtureInfo_header"
+                    style="@style/TextAppearance.MaterialComponents.Headline5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fixtureInfo_events"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                    android:id="@+id/view_fixtureInfo_divider"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="@dimen/margin_normal">
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_x_small"
+                    android:background="@android:color/darker_gray"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textView_fixtureInfo_header" />
 
-                <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/textView_fixtureInfo_header"
-                        style="@style/TextAppearance.MaterialComponents.Headline5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/fixtureInfo_events"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+            <ProgressBar
+                    android:id="@+id/progressbar_fixtureInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <View
-                        android:id="@+id/view_fixtureInfo_divider"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="@dimen/margin_x_small"
-                        android:background="@android:color/darker_gray"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/textView_fixtureInfo_header" />
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView_fixtureInfo_events"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view_fixtureInfo_divider"
+                    tools:listitem="@layout/item_fixture_event" />
 
-                <ProgressBar
-                        android:id="@+id/progressbar_fixtureInfo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerView_fixtureInfo_events"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/view_fixtureInfo_divider"
-                        tools:listitem="@layout/item_fixture_event" />
+    </com.google.android.material.card.MaterialCardView>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-    </LinearLayout>
-
-</layout>
+</LinearLayout>

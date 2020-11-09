@@ -1,140 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/cardView_fixture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:layout_marginBottom="@dimen/margin_small">
 
-    <data>
-
-        <variable
-                name="fixtureResponse"
-                type="com.belzsoftware.futspect.model.fixture.FixtureResponse" />
-
-        <variable
-                name="clickListener"
-                type="android.view.View.OnClickListener" />
-    </data>
-
-    <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_normal"
-            android:layout_marginTop="@dimen/margin_small"
-            android:layout_marginEnd="@dimen/margin_normal"
-            android:layout_marginBottom="@dimen/margin_small"
-            android:onClick="@{clickListener}">
+            android:layout_margin="@dimen/margin_small">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="fill_parent"
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textView_fixture_homeTeam"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_small">
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                app:layout_constraintEnd_toStartOf="@+id/imageView_fixture_homeTeamLogo"
+                app:layout_constraintHorizontal_weight="5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Arsenal" />
 
-            <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/textView_fixture_homeTeam"
-                    style="@style/TextAppearance.MaterialComponents.Body1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:gravity="center"
-                    android:maxLines="1"
-                    android:text="@{fixtureResponse.teams.home.name}"
-                    app:layout_constraintEnd_toStartOf="@+id/imageView_fixture_homeTeamLogo"
-                    app:layout_constraintHorizontal_weight="5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Arsenal" />
+        <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageView_fixture_homeTeamLogo"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="@dimen/margin_small"
+                app:layout_constraintEnd_toStartOf="@id/textView_fixture_homeScore"
+                app:layout_constraintStart_toEndOf="@id/textView_fixture_homeTeam"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/imageView_fixture_homeTeamLogo"
-                    setImage="@{fixtureResponse.teams.home.logo}"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="@dimen/margin_small"
-                    app:layout_constraintEnd_toStartOf="@id/textView_fixture_homeScore"
-                    app:layout_constraintStart_toEndOf="@id/textView_fixture_homeTeam"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@tools:sample/avatars" />
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textView_fixture_homeScore"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                app:layout_constraintEnd_toStartOf="@+id/textView_fixture_vs"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@+id/imageView_fixture_homeTeamLogo"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="2" />
 
-            <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/textView_fixture_homeScore"
-                    style="@style/TextAppearance.MaterialComponents.Body1"
-                    scoreVisibility="@{fixtureResponse.fixture.status.shortStatus}"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:text="@{String.valueOf(fixtureResponse.goals.home)}"
-                    app:layout_constraintEnd_toStartOf="@+id/textView_fixture_vs"
-                    app:layout_constraintHorizontal_weight="1"
-                    app:layout_constraintStart_toEndOf="@+id/imageView_fixture_homeTeamLogo"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="2" />
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textView_fixture_vs"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/fixtures_vs"
+                app:layout_constraintEnd_toStartOf="@+id/textView_fixture_dash"
+                app:layout_constraintHorizontal_weight="2.5"
+                app:layout_constraintStart_toEndOf="@+id/textView_fixture_homeScore"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/textView_fixture_vs"
-                    style="@style/TextAppearance.MaterialComponents.Body1"
-                    infoVisibility="@{fixtureResponse.fixture.status.shortStatus}"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/fixtures_vs"
-                    app:layout_constraintEnd_toStartOf="@+id/textView_fixture_dash"
-                    app:layout_constraintHorizontal_weight="2.5"
-                    app:layout_constraintStart_toEndOf="@+id/textView_fixture_homeScore"
-                    app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textView_fixture_dash"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/fixtures_dash"
+                app:layout_constraintEnd_toStartOf="@+id/textView_fixture_awayScore"
+                app:layout_constraintHorizontal_weight=".5"
+                app:layout_constraintStart_toEndOf="@+id/textView_fixture_vs"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/textView_fixture_dash"
-                    style="@style/TextAppearance.MaterialComponents.Body1"
-                    scoreVisibility="@{fixtureResponse.fixture.status.shortStatus}"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/fixtures_dash"
-                    app:layout_constraintEnd_toStartOf="@+id/textView_fixture_awayScore"
-                    app:layout_constraintHorizontal_weight=".5"
-                    app:layout_constraintStart_toEndOf="@+id/textView_fixture_vs"
-                    app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textView_fixture_awayScore"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                app:layout_constraintEnd_toStartOf="@+id/imageView_fixture_awayTeamLogo"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@+id/textView_fixture_dash"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="1" />
 
-            <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/textView_fixture_awayScore"
-                    style="@style/TextAppearance.MaterialComponents.Body1"
-                    scoreVisibility="@{fixtureResponse.fixture.status.shortStatus}"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="start"
-                    android:text="@{String.valueOf(fixtureResponse.goals.away)}"
-                    app:layout_constraintEnd_toStartOf="@+id/imageView_fixture_awayTeamLogo"
-                    app:layout_constraintHorizontal_weight="1"
-                    app:layout_constraintStart_toEndOf="@+id/textView_fixture_dash"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="1" />
+        <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageView_fixture_awayTeamLogo"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="@dimen/margin_small"
+                app:layout_constraintEnd_toStartOf="@id/textView_fixture_awayTeam"
+                app:layout_constraintStart_toEndOf="@id/textView_fixture_awayScore"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/imageView_fixture_awayTeamLogo"
-                    setImage="@{fixtureResponse.teams.away.logo}"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginEnd="@dimen/margin_small"
-                    app:layout_constraintEnd_toStartOf="@id/textView_fixture_awayTeam"
-                    app:layout_constraintStart_toEndOf="@id/textView_fixture_awayScore"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@tools:sample/avatars" />
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textView_fixture_awayTeam"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="5"
+                app:layout_constraintStart_toEndOf="@+id/imageView_fixture_awayTeamLogo"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Liverpool" />
 
-            <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/textView_fixture_awayTeam"
-                    style="@style/TextAppearance.MaterialComponents.Body1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:gravity="center"
-                    android:maxLines="1"
-                    android:text="@{fixtureResponse.teams.away.name}"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_weight="5"
-                    app:layout_constraintStart_toEndOf="@+id/imageView_fixture_awayTeamLogo"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Liverpool" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-</layout>
+</com.google.android.material.card.MaterialCardView>

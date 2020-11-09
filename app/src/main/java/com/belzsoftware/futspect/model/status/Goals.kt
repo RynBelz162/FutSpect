@@ -7,6 +7,6 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 @JsonClass(generateAdapter = true)
 data class Goals(
-    val home: Int? = 0,
-    val away: Int? = 0
+    val home: Int?,
+    val away: Int?
 ) : Parcelable

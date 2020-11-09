@@ -17,7 +17,6 @@ import com.belzsoftware.futspect.util.extensions.hideView
 import com.belzsoftware.futspect.util.extensions.setUpToolbar
 import com.belzsoftware.futspect.util.extensions.showView
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_team.*
 
 @AndroidEntryPoint
 class TeamFragment : Fragment() {
@@ -39,14 +38,14 @@ class TeamFragment : Fragment() {
 
         teamViewModel.teamStatsPromise.observe(viewLifecycleOwner, { result ->
             when (result) {
-                is Result.Loading -> progressbar_team.showView()
+                is Result.Loading -> binding.progressbarTeam.showView()
                 is Result.Error -> {
-                    progressbar_team.hideView()
+                    binding.progressbarTeam.hideView()
                     activity?.createLongSnackbar(result.message)
                 }
                 is Result.Success -> {
                     setViewItems(result.data.response)
-                    progressbar_team.hideView()
+                    binding.progressbarTeam.hideView()
                 }
             }
         })

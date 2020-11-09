@@ -10,7 +10,7 @@ class FixturesRemoteSource @Inject constructor(private val service: FootballApiS
         service.getFixturesForLeagueAndDateAsync(
             //leagueId,
             getCurrentDateTimeString("YYYY-MM-dd"),
-            2019
+            2020
         )
     }
 

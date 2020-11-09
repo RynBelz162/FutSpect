@@ -1,13 +1,11 @@
 package com.belzsoftware.futspect.ui.fixtures
 
 import android.view.View
-import androidx.databinding.BindingAdapter
 import com.belzsoftware.futspect.util.extensions.hideView
 import com.belzsoftware.futspect.util.extensions.showView
 
 private const val NOT_STARTED = "NS"
 
-@BindingAdapter("infoVisibility")
 fun infoVisibility(view: View, description: String?) {
     val nonNullDescription = description ?: return
 
@@ -17,7 +15,6 @@ fun infoVisibility(view: View, description: String?) {
     }
 }
 
-@BindingAdapter("scoreVisibility")
 fun scoreVisibility(view: View, description: String?) {
     val nonNullDescription = description ?: return
 

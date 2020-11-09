@@ -2,25 +2,21 @@ package com.belzsoftware.futspect.ui.fixtures.info
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.belzsoftware.futspect.BR
 import com.belzsoftware.futspect.R
+import com.belzsoftware.futspect.databinding.ItemFixtureEventBinding
 import com.belzsoftware.futspect.model.fixture.Event
 
 class FixtureInfoEventAdapter(
-    val homeTeamId: Int,
-    val awayTeamId: Int
+    val homeTeamId: Int
 ) : ListAdapter<Event, EventViewHolder>(EventDiff()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         return EventViewHolder(
-            DataBindingUtil.inflate(LayoutInflater.from(parent.context), viewType, parent, false),
-            homeTeamId,
-            awayTeamId
+            ItemFixtureEventBinding.inflate(LayoutInflater.from(parent.context), parent, false),
+            homeTeamId
         )
     }
 
@@ -31,18 +27,15 @@ class FixtureInfoEventAdapter(
 }
 
 class EventViewHolder(
-    private val binding: ViewDataBinding,
+    private val binding: ItemFixtureEventBinding,
     private val homeTeamId: Int,
-    private val awayTeamId: Int
-) :
-
-    RecyclerView.ViewHolder(binding.root) {
+) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(item: Event) {
-        binding.setVariable(BR.event, item)
-        binding.setVariable(BR.homeTeamId, homeTeamId)
-        binding.setVariable(BR.awayTeamId, awayTeamId)
-        binding.executePendingBindings()
+        setTeamGravity(binding.linearLayoutFixtureEvent, homeTeamId, item.team.id)
+        binding.textViewFixtureEventTime.text = item.time.elapsed.toString()
+        binding.textViewFixtureEventPlayer.text = item.player.name
+        setEventIcon(binding.imageViewFixtureEventIcon, item.detail)
     }
 }
 

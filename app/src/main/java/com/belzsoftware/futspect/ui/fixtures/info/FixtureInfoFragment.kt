@@ -10,18 +10,21 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.belzsoftware.futspect.R
 import com.belzsoftware.futspect.databinding.FragmentFixtureInfoBinding
+import com.belzsoftware.futspect.model.fixture.FixtureResponse
 import com.belzsoftware.futspect.model.shared.Result
+import com.belzsoftware.futspect.ui.shared.setImage
 import com.belzsoftware.futspect.util.extensions.createLongSnackbar
 import com.belzsoftware.futspect.util.extensions.hideView
 import com.belzsoftware.futspect.util.extensions.setUpToolbar
 import com.belzsoftware.futspect.util.extensions.showView
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_fixture_info.*
 
 @AndroidEntryPoint
 class FixtureInfoFragment : Fragment(R.layout.fragment_fixture_info) {
 
-    private lateinit var binding: FragmentFixtureInfoBinding
+    private var _binding: FragmentFixtureInfoBinding? = null
+    private val binding get() = _binding!!
+
     private lateinit var eventAdapter: FixtureInfoEventAdapter
 
     private val fixtureInfoViewModel: FixtureInfoViewModel by viewModels()
@@ -34,26 +37,23 @@ class FixtureInfoFragment : Fragment(R.layout.fragment_fixture_info) {
     ): View? {
 
         eventAdapter = FixtureInfoEventAdapter(
-            homeTeamId = args.fixture.teams.home.id,
-            awayTeamId = args.fixture.teams.away.id
+            homeTeamId = args.fixture.teams.home.id
         )
 
-        fixtureInfoViewModel.setFixtureResponse(args.fixture)
+        _binding = FragmentFixtureInfoBinding.inflate(inflater)
 
-        binding = FragmentFixtureInfoBinding.inflate(inflater, container, false).apply {
-            viewModel = fixtureInfoViewModel
-            lifecycleOwner = viewLifecycleOwner
-        }
+        fixtureInfoViewModel.setFixtureResponse(args.fixture)
+        setViewItems(args.fixture)
 
         fixtureInfoViewModel.fixtureEvents.observe(viewLifecycleOwner, { result ->
             when (result) {
-                is Result.Loading -> progressbar_fixtureInfo.showView()
+                is Result.Loading -> binding.progressbarFixtureInfo.showView()
                 is Result.Success -> {
-                    progressbar_fixtureInfo.hideView()
+                    binding.progressbarFixtureInfo.hideView()
                     eventAdapter.submitList(result.data.response)
                 }
                 is Result.Error -> {
-                    progressbar_fixtureInfo.hideView()
+                    binding.progressbarFixtureInfo.hideView()
                     activity?.createLongSnackbar(result.message)
                 }
             }
@@ -62,14 +62,35 @@ class FixtureInfoFragment : Fragment(R.layout.fragment_fixture_info) {
         return binding.root
     }
 
+    private fun setViewItems(response: FixtureResponse) {
+        setFixtureDatetime(binding.textViewFixtureInfoDate, response.fixture.date)
+        setVenue(binding.textViewFixtureInfoVenue, response.fixture.venue)
+
+        // home team
+        setImage(binding.imageViewFixtureInfoHomeLogo, response.teams.home.logo)
+        binding.textViewFixtureInfoHomeName.text = response.teams.home.name
+        binding.textViewFixtureInfoHomeScore.text = response.goals.home?.toString() ?: "0"
+
+        // away team
+        setImage(binding.imageViewFixtureInfoAwayLogo, response.teams.away.logo)
+        binding.textViewFixtureInfoAwayName.text = response.teams.away.name
+        binding.textViewFixtureInfoAwayScore.text = response.goals.away?.toString() ?: "0"
+
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         this.setUpToolbar(R.string.fixtureInfo_title)
         super.onViewCreated(view, savedInstanceState)
 
-        recyclerView_fixtureInfo_events.apply {
+        binding.recyclerViewFixtureInfoEvents.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = eventAdapter
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
