@@ -1,139 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <data>
+    <View
+            android:id="@+id/view_table_accentView"
+            android:layout_width="@dimen/view_table_accent_width"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="h,1:6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="?attr/colorOkay" />
 
-        <variable
-                name="standing"
-                type="com.belzsoftware.futspect.model.standings.Standing" />
+    <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView_table_rank"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_small"
+            android:layout_marginBottom="@dimen/padding_small"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageView_table_logo"
+            app:layout_constraintHorizontal_weight="1.5"
+            app:layout_constraintStart_toEndOf="@id/view_table_accentView"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="1" />
 
-        <variable
-                name="clickListener"
-                type="android.view.View.OnClickListener" />
-    </data>
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView_table_logo"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="@dimen/margin_small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/textView_table_name"
+            app:layout_constraintStart_toEndOf="@id/textView_table_rank"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView_table_name"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_small"
+            android:layout_marginBottom="@dimen/padding_small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textView_table_wins"
+            app:layout_constraintHorizontal_weight="10"
+            app:layout_constraintStart_toEndOf="@+id/imageView_table_logo"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Arsenal" />
 
-        <View
-                android:id="@+id/view_table_accentView"
-                rankColor="@{standing.description}"
-                android:layout_width="@dimen/view_table_accent_width"
-                android:layout_height="0dp"
-                app:layout_constraintDimensionRatio="h,1:6"
-                app:layout_constraintEnd_toStartOf="@+id/textView_table_rank"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:background="?attr/colorOkay" />
+    <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView_table_wins"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_small"
+            android:layout_marginBottom="@dimen/padding_small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textView_table_draws"
+            app:layout_constraintHorizontal_weight="1.5"
+            app:layout_constraintStart_toEndOf="@+id/textView_table_name"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="13" />
 
-        <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textView_table_rank"
-                style="@style/TextAppearance.MaterialComponents.Body1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/padding_small"
-                android:layout_marginBottom="@dimen/padding_small"
-                android:gravity="center"
-                android:text="@{String.valueOf(standing.rank)}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageView_table_logo"
-                app:layout_constraintHorizontal_weight="1.5"
-                app:layout_constraintStart_toEndOf="@id/view_table_accentView"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="1" />
+    <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView_table_draws"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_small"
+            android:layout_marginBottom="@dimen/padding_small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textView_table_losses"
+            app:layout_constraintHorizontal_weight="1.5"
+            app:layout_constraintStart_toEndOf="@+id/textView_table_wins"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="2" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imageView_table_logo"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginEnd="@dimen/margin_small"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/textView_table_name"
-                app:layout_constraintStart_toEndOf="@id/textView_table_rank"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@tools:sample/avatars"
-                setImage="@{standing.team.logo}"/>
+    <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView_table_losses"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_small"
+            android:layout_marginBottom="@dimen/padding_small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textView_table_points"
+            app:layout_constraintHorizontal_weight="1.5"
+            app:layout_constraintStart_toEndOf="@+id/textView_table_draws"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="7" />
 
-        <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textView_table_name"
-                style="@style/TextAppearance.MaterialComponents.Body1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/padding_small"
-                android:layout_marginBottom="@dimen/padding_small"
-                android:onClick="@{clickListener}"
-                android:text="@{standing.team.name}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textView_table_wins"
-                app:layout_constraintHorizontal_weight="10"
-                app:layout_constraintStart_toEndOf="@+id/imageView_table_logo"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Arsenal" />
+    <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView_table_points"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_small"
+            android:layout_marginEnd="@dimen/padding_small"
+            android:layout_marginBottom="@dimen/padding_small"
+            android:gravity="start"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@+id/textView_table_losses"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="43" />
 
-        <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textView_table_wins"
-                style="@style/TextAppearance.MaterialComponents.Body1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/padding_small"
-                android:layout_marginBottom="@dimen/padding_small"
-                android:text="@{String.valueOf(standing.all.win)}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textView_table_draws"
-                app:layout_constraintHorizontal_weight="1.5"
-                app:layout_constraintStart_toEndOf="@+id/textView_table_name"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="13" />
-
-        <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textView_table_draws"
-                style="@style/TextAppearance.MaterialComponents.Body1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/padding_small"
-                android:layout_marginBottom="@dimen/padding_small"
-                android:text="@{String.valueOf(standing.all.draw)}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textView_table_losses"
-                app:layout_constraintHorizontal_weight="1.5"
-                app:layout_constraintStart_toEndOf="@+id/textView_table_wins"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="2" />
-
-        <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textView_table_losses"
-                style="@style/TextAppearance.MaterialComponents.Body1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/padding_small"
-                android:layout_marginBottom="@dimen/padding_small"
-                android:text="@{String.valueOf(standing.all.lose)}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textView_table_points"
-                app:layout_constraintHorizontal_weight="1.5"
-                app:layout_constraintStart_toEndOf="@+id/textView_table_draws"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="7" />
-
-        <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textView_table_points"
-                style="@style/TextAppearance.MaterialComponents.Body1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/padding_small"
-                android:layout_marginEnd="@dimen/padding_small"
-                android:layout_marginBottom="@dimen/padding_small"
-                android:gravity="start"
-                android:text="@{String.valueOf(standing.points)}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_weight="1"
-                app:layout_constraintStart_toEndOf="@+id/textView_table_losses"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="43" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,7 +22,7 @@ class TableViewModel @ViewModelInject constructor(
     private val _standings = MediatorLiveData<Result<ApiCall<List<StandingResponse>>>>()
     val standings: LiveData<Result<ApiCall<List<StandingResponse>>>> = _standings
 
-    fun setLeagueId(league: League) {
+    fun setLeague(league: League) {
         _league.value = league
 
         _standings.addSource(loadStandings()) { value ->

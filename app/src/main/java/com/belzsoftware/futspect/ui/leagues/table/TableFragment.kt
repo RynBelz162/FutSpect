@@ -19,12 +19,12 @@ import com.belzsoftware.futspect.util.extensions.createLongSnackbar
 import com.belzsoftware.futspect.util.extensions.hideView
 import com.belzsoftware.futspect.util.extensions.showView
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_table.*
 
 @AndroidEntryPoint
 class TableFragment : Fragment() {
 
-    private lateinit var binding: FragmentTableBinding
+    private var _binding: FragmentTableBinding? = null
+    private val binding get() = _binding!!
 
     private val tableViewModel: TableViewModel by viewModels()
     private val args: TableFragmentArgs by navArgs()
@@ -37,12 +37,9 @@ class TableFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentTableBinding.inflate(inflater, container, false).apply {
-            viewModel = tableViewModel
-            lifecycleOwner = viewLifecycleOwner
-        }
+        _binding = FragmentTableBinding.inflate(inflater)
 
-        setUpViewModel()
+        setupView()
 
         return binding.root
     }
@@ -52,7 +49,7 @@ class TableFragment : Fragment() {
 
         setUpToolbar()
 
-        recyclerView_table.apply {
+        binding.recyclerViewTable.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = tableAdapter
             addItemDecoration(HeaderItemDecoration(this, false, isHeader()))
@@ -62,23 +59,24 @@ class TableFragment : Fragment() {
 
     private fun setUpToolbar() {
         val navHostFragment = NavHostFragment.findNavController(this)
-        NavigationUI.setupWithNavController(toolbar_table, navHostFragment)
+        NavigationUI.setupWithNavController(binding.toolbarTable, navHostFragment)
     }
 
-    private fun setUpViewModel() {
-        tableViewModel.setLeagueId(args.leagueResponse.league)
+    private fun setupView() {
+        tableViewModel.setLeague(args.leagueResponse.league)
 
+        binding.toolbarLayoutTable.title = args.leagueResponse.league.name
         tableViewModel.standings.observe(viewLifecycleOwner, { result ->
             when (result) {
-                is Result.Loading -> progressbar_table.showView()
+                is Result.Loading -> binding.progressbarTable.showView()
                 is Result.Success -> {
-                    progressbar_table.hideView()
+                    binding.progressbarTable.hideView()
 
                     val list = result.data.response.firstOrNull()?.league?.standings?.flatten()
                     tableAdapter.addHeaderAndSubmitList(list)
                 }
                 is Result.Error -> {
-                    progressbar_table.hideView()
+                    binding.progressbarTable.hideView()
                     activity?.createLongSnackbar(result.message)
                 }
             }
@@ -89,5 +87,10 @@ class TableFragment : Fragment() {
         return {
             tableAdapter.currentList[it].id == DataItem.Header.id
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -1,13 +1,11 @@
 package com.belzsoftware.futspect.ui.leagues
 
 import android.widget.ImageView
-import androidx.databinding.BindingAdapter
 import coil.load
 import com.belzsoftware.futspect.R
 import com.belzsoftware.futspect.model.league.LeagueResponse
 import com.belzsoftware.futspect.util.extensions.getAttrColor
 
-@BindingAdapter("setLeagueLogo")
 fun setLeagueLogo(imageView: ImageView, leagueResponse: LeagueResponse?) {
     leagueResponse ?: return
 

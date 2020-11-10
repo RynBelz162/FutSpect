@@ -8,11 +8,11 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.belzsoftware.futspect.BR
 import com.belzsoftware.futspect.R
 import com.belzsoftware.futspect.databinding.ItemTableBinding
 import com.belzsoftware.futspect.model.standings.DataItem
 import com.belzsoftware.futspect.model.standings.Standing
+import com.belzsoftware.futspect.ui.shared.setImage
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -66,12 +66,20 @@ class TableAdapter(private val leagueId: Int) :
 class StandingViewHolder(
     private val binding: ItemTableBinding,
     private val leagueId: Int
-) :
-    RecyclerView.ViewHolder(binding.root) {
+) : RecyclerView.ViewHolder(binding.root) {
+
     fun bind(item: Standing) {
-        binding.setVariable(BR.standing, item)
-        binding.setVariable(BR.clickListener, createOnClickListener(item))
-        binding.executePendingBindings()
+        rankColor(binding.viewTableAccentView, item.description)
+        binding.textViewTableRank.text = item.rank.toString()
+        setImage(binding.imageViewTableLogo, item.team.logo)
+
+        binding.textViewTableName.text = item.team.name
+        binding.textViewTableName.setOnClickListener(createOnClickListener(item))
+
+        binding.textViewTableWins.text = item.all.win.toString()
+        binding.textViewTableDraws.text = item.all.draw.toString()
+        binding.textViewTableLosses.text = item.all.lose.toString()
+        binding.textViewTablePoints.text = item.points.toString()
     }
 
     companion object {
