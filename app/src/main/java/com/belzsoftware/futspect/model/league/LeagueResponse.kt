@@ -4,7 +4,7 @@ import android.os.Parcelable
 import com.belzsoftware.futspect.model.country.Country
 import com.belzsoftware.futspect.model.season.Season
 import com.squareup.moshi.JsonClass
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
 @JsonClass(generateAdapter = true)

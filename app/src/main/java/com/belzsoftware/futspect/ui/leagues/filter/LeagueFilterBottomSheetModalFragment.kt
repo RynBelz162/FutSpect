@@ -9,7 +9,6 @@ import androidx.navigation.fragment.findNavController
 import com.belzsoftware.futspect.databinding.FragmentLeaguesFilterBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_leagues_filter.*
 
 @AndroidEntryPoint
 class LeagueFilterBottomSheetModalFragment : BottomSheetDialogFragment() {
@@ -41,7 +40,7 @@ class LeagueFilterBottomSheetModalFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        button_leagueFilters_close.setOnClickListener {
+        binding.buttonLeagueFiltersClose.setOnClickListener {
             closeSheet()
         }
     }

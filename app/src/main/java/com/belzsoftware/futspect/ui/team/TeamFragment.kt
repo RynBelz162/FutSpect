@@ -61,7 +61,7 @@ class TeamFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        this.setUpToolbar(R.string.team_title)
+        this.setUpToolbar(binding.toolbarLayoutFixtureInfo, R.string.team_title)
         super.onViewCreated(view, savedInstanceState)
     }
 

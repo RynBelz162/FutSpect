@@ -80,7 +80,7 @@ class FixtureInfoFragment : Fragment(R.layout.fragment_fixture_info) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        this.setUpToolbar(R.string.fixtureInfo_title)
+        this.setUpToolbar(binding.toolbarLayoutFixtureInfo, R.string.fixtureInfo_title)
         super.onViewCreated(view, savedInstanceState)
 
         binding.recyclerViewFixtureInfoEvents.apply {

@@ -3,7 +3,7 @@ package com.belzsoftware.futspect.model.fixture
 import android.os.Parcelable
 import com.belzsoftware.futspect.model.status.Status
 import com.squareup.moshi.JsonClass
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 import java.time.LocalDateTime
 
 @Parcelize

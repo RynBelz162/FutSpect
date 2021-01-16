@@ -7,8 +7,8 @@ import androidx.annotation.AttrRes
 import androidx.annotation.ColorInt
 import androidx.annotation.StringRes
 import androidx.fragment.app.FragmentActivity
+import com.belzsoftware.futspect.ui.MainActivity
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_main.*
 
 fun View.showView() {
     visibility = View.VISIBLE
@@ -19,18 +19,23 @@ fun View.hideView() {
 }
 
 fun FragmentActivity.createLongSnackbar(message: String) {
-    createSnackBar(this, message, Snackbar.LENGTH_LONG)
+    createSnackBar(this, message)
 }
 
 fun FragmentActivity.createLongSnackbar(@StringRes stringId: Int) {
     val message: String = getString(stringId)
 
-    createSnackBar(this, message, Snackbar.LENGTH_LONG)
+    createSnackBar(this, message)
 }
 
-private fun createSnackBar(activity: FragmentActivity, message: String, length: Int) {
-    Snackbar.make(activity.coordinator, message, length).apply {
-        anchorView = activity.navigation_main
+private fun createSnackBar(activity: FragmentActivity, message: String) {
+    if (activity !is MainActivity) {
+        // don't show a toast if not in main activity lifecycle
+        return
+    }
+
+    Snackbar.make(activity.coordinator, message, Snackbar.LENGTH_LONG).apply {
+        anchorView = activity.navigationMain
         show()
     }
 }

@@ -6,7 +6,7 @@ import com.belzsoftware.futspect.model.status.Goals
 import com.belzsoftware.futspect.model.status.Score
 import com.belzsoftware.futspect.model.team.Teams
 import com.squareup.moshi.JsonClass
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
 @JsonClass(generateAdapter = true)

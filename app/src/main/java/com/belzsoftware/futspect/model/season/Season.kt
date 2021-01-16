@@ -2,7 +2,7 @@ package com.belzsoftware.futspect.model.season
 
 import android.os.Parcelable
 import com.squareup.moshi.JsonClass
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 import java.time.LocalDate
 
 @Parcelize

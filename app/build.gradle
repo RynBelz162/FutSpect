@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 
-apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-parcelize'
 
 apply plugin: 'kotlin-kapt'
 
@@ -50,9 +50,6 @@ android {
     sourceSets { main { java.srcDirs = ['src/main/java'] } }
     packagingOptions {
         exclude 'META-INF/atomicfu.kotlin_module'
-    }
-    androidExtensions {
-        experimental = true
     }
 }
 
