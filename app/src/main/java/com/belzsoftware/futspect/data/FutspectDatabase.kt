@@ -8,11 +8,13 @@ import com.belzsoftware.futspect.data.FutspectDatabase.Companion.DB_VERSION
 import com.belzsoftware.futspect.data.league.LeaguesDao
 import com.belzsoftware.futspect.entity.league.LeagueEntity
 import com.belzsoftware.futspect.entity.league.LeagueFilters
+import com.belzsoftware.futspect.entity.league.LeaguePreference
 
 @Database(
     entities = [
         LeagueFilters::class,
-        LeagueEntity::class
+        LeagueEntity::class,
+        LeaguePreference::class,
     ],
     version = DB_VERSION
 )

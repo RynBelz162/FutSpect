@@ -35,7 +35,7 @@ class TableFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentTableBinding.inflate(inflater)
 

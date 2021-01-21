@@ -2,6 +2,7 @@ package com.belzsoftware.futspect.data.league
 
 import com.belzsoftware.futspect.entity.league.LeagueEntity
 import com.belzsoftware.futspect.entity.league.LeagueFilters
+import com.belzsoftware.futspect.entity.league.LeaguePreference
 import com.belzsoftware.futspect.model.country.Country
 import com.belzsoftware.futspect.model.league.LeagueResponse
 import com.belzsoftware.futspect.model.shared.ApiCall
@@ -43,6 +44,7 @@ class LeaguesRepository @Inject constructor(
                 if (result is Result.Success) {
                     cacheAllLeagues(result, filters)
                     emit(groupedLeagueResult(result.data.response))
+                    return@collect
                 }
 
                 emit(Result.Error<HashMap<Country, List<LeagueResponse>>>("There was an error trying to retrieve the leagues. Please try again."))
@@ -56,6 +58,16 @@ class LeaguesRepository @Inject constructor(
     fun getFilters() = leaguesDao.getLeagueFilters()
 
     suspend fun saveFilters(filters: LeagueFilters) = leaguesDao.insertFilters(filters)
+
+    suspend fun saveLeaguePreferences(ids: List<Int>) {
+        val leaguePreferences = ids.map {
+            LeaguePreference(it)
+        }
+
+        leaguesDao.insertLeaguePreferences(leaguePreferences)
+    }
+
+    fun getLeaguePreferences() = leaguesDao.getLeaguePreferences()
 
     private suspend fun cacheAllLeagues(
         result: Result<ApiCall<List<LeagueResponse>>>,

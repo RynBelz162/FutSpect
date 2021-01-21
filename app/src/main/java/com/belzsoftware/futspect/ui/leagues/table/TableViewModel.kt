@@ -12,7 +12,7 @@ import com.belzsoftware.futspect.model.shared.Result
 import com.belzsoftware.futspect.model.standings.StandingResponse
 import com.belzsoftware.futspect.util.extensions.defaultResult
 
-class TableViewModel @ViewModelInject constructor(
+class  TableViewModel @ViewModelInject constructor(
     private val leaguesRepository: LeaguesRepository
 ) : ViewModel() {
 

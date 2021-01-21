@@ -21,7 +21,7 @@ class LeagueFilterBottomSheetModalFragment : BottomSheetDialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = FragmentLeaguesFilterBinding.inflate(inflater, container, false).apply {
             viewModel = leagueFilterViewModel

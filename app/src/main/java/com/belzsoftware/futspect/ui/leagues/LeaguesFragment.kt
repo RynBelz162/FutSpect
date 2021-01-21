@@ -34,7 +34,7 @@ class LeaguesFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentLeaguesBinding.inflate(inflater)
 
