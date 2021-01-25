@@ -11,7 +11,7 @@ buildscript {
     ext.retrofitVersion = '2.9.0'
     ext.okhttp3Version = '4.9.0'
     ext.navVersion = '2.3.2'
-    ext.hiltVersion = '2.31-alpha'
+    ext.hiltVersion = '2.31.2-alpha'
     ext.hiltJetpackVersion = '1.0.0-alpha02'
     ext.preferenceVersion = '1.1.1'
     ext.recyclerViewVersion = '1.1.0'
@@ -34,7 +34,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.1'
+        classpath 'com.android.tools.build:gradle:4.1.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navVersion"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
